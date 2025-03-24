@@ -1,0 +1,58 @@
+// config/config.go
+package config
+
+import (
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+)
+
+// AppConfig 应用程序配置结构体
+type AppConfigStruct struct {
+	DBHost      string
+	DBPort      string
+	DBUser      string
+	DBPassword  string
+	DBName      string
+	DB_SSLMODE  string
+	DB_TIMEZONE string
+	JWTSecret   string
+}
+
+var AppConfig AppConfigStruct
+
+// LoadConfig 加载配置
+func LoadConfig() {
+	// 加载 .env 文件
+	err := godotenv.Load()
+	if err != nil {
+		log.Printf("Warning: .env file not found, using default environment variables: %v", err)
+	}
+
+	// 从环境变量加载配置
+	dbPort := os.Getenv("DB_PORT")
+	//dbPort, err := strconv.Atoi(dbPortStr)
+	if err != nil {
+		log.Fatalf("Invalid DB_PORT value: %v", err)
+	}
+
+	// 验证必要的环境变量是否存在
+	requiredEnvVars := []string{"DB_HOST", "DB_PORT", "DB_USER", "DB_PASSWORD", "DB_NAME", "JWT_SECRET"}
+	for _, envVar := range requiredEnvVars {
+		if os.Getenv(envVar) == "" {
+			log.Fatalf("Missing required environment variable: %s", envVar)
+		}
+	}
+
+	AppConfig = AppConfigStruct{
+		DBHost:      os.Getenv("DB_HOST"),
+		DBPort:      dbPort,
+		DBUser:      os.Getenv("DB_USER"),
+		DBPassword:  os.Getenv("DB_PASSWORD"),
+		DBName:      os.Getenv("DB_NAME"),
+		DB_SSLMODE:  os.Getenv("DB_SSLMODE"),
+		DB_TIMEZONE: os.Getenv("DB_TIMEZONE"),
+		JWTSecret:   os.Getenv("JWT_SECRET"),
+	}
+}
