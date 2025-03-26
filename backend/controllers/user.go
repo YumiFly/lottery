@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 // GetCustomers godoc
@@ -116,13 +117,15 @@ func VerifyCustomer(c *gin.Context) {
 		return
 	}
 
+	// 从上下文获取 ValidationMiddleware 绑定的 verification 对象
 	var verification models.KYCVerificationHistory
+	//verification.HistoryID = uint(uuid.New()[8:]).
 	// 绑定 JSON 请求体到结构体
 	if err := c.ShouldBindJSON(&verification); err != nil {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
 		return
 	}
-
+	logrus.Info("verification: ", verification)
 	// 调用服务层进行验证
 	if err := services.VerifyCustomer(&verification); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to verify customer", err.Error()))

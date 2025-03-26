@@ -28,6 +28,9 @@ type RefreshResponse struct {
 	Token string `json:"token"`
 }
 
+//TODO支持使用邮箱登录
+// Register godoc
+
 // Login godoc
 // @Summary 用户登录
 // @Description 认证用户并返回 JWT
@@ -41,7 +44,21 @@ type RefreshResponse struct {
 // @Router /auth/login [post]
 func Login(c *gin.Context) {
 	var req LoginRequest
-	result, err := services.Login(c.GetHeader("Authorization"), req.WalletAddress, c.ClientIP())
+	if err := c.ShouldBindJSON(&req); err != nil {
+		utils.Logger.WithField("error", err.Error()).Error("Invalid request body")
+		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeBadRequest, "Invalid request body", err.Error()))
+		return
+	}
+	utils.Logger.WithField("wallet_address", req.WalletAddress).Info("Login request received")
+
+	//TODO 验证请求参数是钱包地址
+	// if err := utils.ValidateWalletAddress(req.WalletAddress); err != nil {
+	// 	utils.Logger.WithField("error", err.Error()).Error("Invalid wallet address")
+	// 	c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeBadRequest, "Invalid wallet address", err.Error()))
+	// 	return
+	// }
+
+	result, err := services.Login(req.WalletAddress, c.ClientIP())
 	if err != nil {
 		utils.Logger.WithField("error", err.Error()).Error("Login failed")
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Login failed", err.Error()))
@@ -70,10 +87,9 @@ func Login(c *gin.Context) {
 // @Router /auth/refresh [post]
 func RefreshToken(c *gin.Context) {
 	customerAddress, _ := c.Get("customer_address")
-	email, _ := c.Get("email")
 	role, _ := c.Get("role")
 
-	newToken, err := services.RefreshToken(customerAddress.(string), email.(string), role.(string))
+	newToken, err := services.RefreshToken(customerAddress.(string), role.(string))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to refresh token", err.Error()))
 		return

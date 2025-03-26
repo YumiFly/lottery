@@ -4,6 +4,7 @@ package services
 import (
 	"backend/db"
 	"backend/models"
+	"backend/utils"
 	"errors"
 	"time"
 )
@@ -15,7 +16,7 @@ func GetCustomers() ([]models.Customer, error) {
 	if err := db.DB.Find(&customers).Error; err != nil {
 		return nil, err
 	}
-
+	utils.Logger.Info("customers from database ", customers)
 	// 遍历用户，手动查询关联数据
 	for i := range customers {
 		// 查询 KYCData
@@ -55,6 +56,7 @@ func GetCustomerByAddress(customerAddress string) (*models.Customer, error) {
 	if err := db.DB.Where("customer_address = ?", customerAddress).First(&customer).Error; err != nil {
 		return nil, err
 	}
+	utils.Logger.Info("GetCustomerByAddress's customer from database ,", customer)
 
 	// 手动查询关联数据
 	// 查询 KYCData
@@ -62,12 +64,14 @@ func GetCustomerByAddress(customerAddress string) (*models.Customer, error) {
 	if err := db.DB.Where("customer_address = ?", customer.CustomerAddress).First(&kycData).Error; err == nil {
 		customer.KYCData = kycData
 	}
+	utils.Logger.Info("GetCustomerByAddress's kycData from database ,", kycData)
 
 	// 查询 KYCVerifications
 	var kycVerifications []models.KYCVerificationHistory
 	if err := db.DB.Where("customer_address = ?", customer.CustomerAddress).Find(&kycVerifications).Error; err == nil {
 		customer.KYCVerifications = kycVerifications
 	}
+	utils.Logger.Info("GetCustomerByAddress's kycVerifications from database ,", kycVerifications)
 
 	// 查询 Role（如果 role_id 不为 0）
 	if customer.RoleID != 0 {
@@ -82,7 +86,6 @@ func GetCustomerByAddress(customerAddress string) (*models.Customer, error) {
 			customer.Role.Menus = menus
 		}
 	}
-
 	return &customer, nil
 }
 
@@ -116,47 +119,43 @@ func CreateCustomer(customer *models.Customer) error {
 
 // VerifyCustomer 验证用户 KYC 信息
 func VerifyCustomer(verification *models.KYCVerificationHistory) error {
-	// 使用事务确保数据一致性
-	tx := db.DB.Begin()
-	defer func() {
-		if r := recover(); r != nil {
-			tx.Rollback()
-		}
-	}()
-
-	// 插入验证记录
-	if err := tx.Create(verification).Error; err != nil {
-		tx.Rollback()
+	// 插入验证记录（无论 Approved 还是 Rejected 都会插入）
+	if err := db.DB.Create(verification).Error; err != nil {
 		return err
 	}
 
 	// 查询用户
 	var customer models.Customer
-	if err := tx.Where("customer_address = ?", verification.CustomerAddress).First(&customer).Error; err != nil {
-		tx.Rollback()
+	if err := db.DB.Where("customer_address = ?", verification.CustomerAddress).First(&customer).Error; err != nil {
 		return err
 	}
+	utils.Logger.Info("VerifyCustomer'customer from database , ", customer)
 
 	// 根据验证状态更新用户记录
 	if verification.VerifyStatus == "Approved" {
 		// 验证通过，更新 Customer 记录
-		customer.IsVerified = true
-		customer.VerifierAddress = verification.VerifierAddress
-		customer.VerificationTime = verification.VerificationDate
-		// 分配角色（这里假设分配 normal_user 角色，role_id 为 2）
-		customer.RoleID = 2
-		customer.AssignedDate = time.Now()
-
-		if err := tx.Save(&customer).Error; err != nil {
-			tx.Rollback()
+		updates := map[string]interface{}{
+			"is_verified":       true,
+			"verifier_address":  verification.VerifierAddress,
+			"verification_time": verification.VerificationDate,
+			"role_id":           2, // 分配 normal_user 角色
+			"assigned_date":     time.Now(),
+		}
+		// 明确指定更新条件
+		if err := db.DB.Model(&customer).Where("customer_address = ?", customer.CustomerAddress).Updates(updates).Error; err != nil {
 			return err
 		}
-	} else if verification.VerifyStatus == "Rejected" {
-		// 验证失败，不更新 Customer 记录，仅记录验证历史
-	} else {
-		tx.Rollback()
+
+		//TODO 调用链上KYC的相关函数，更新KYC状态
+		updateKycStatusOnChain()
+	} else if verification.VerifyStatus != "Rejected" {
+		// 如果 verify_status 既不是 Approved 也不是 Rejected，返回错误
 		return errors.New("invalid verify_status, must be 'Approved' or 'Rejected'")
 	}
 
-	return tx.Commit().Error
+	// Rejected 状态下无需更新 Customer 表，仅插入验证记录
+	return nil
+}
+func updateKycStatusOnChain() {
+
 }

@@ -10,6 +10,8 @@ import (
 
 // AppConfig 应用程序配置结构体
 type AppConfigStruct struct {
+
+	// 数据库配置
 	DBHost      string
 	DBPort      string
 	DBUser      string
@@ -18,6 +20,12 @@ type AppConfigStruct struct {
 	DB_SSLMODE  string
 	DB_TIMEZONE string
 	JWTSecret   string
+
+	//blockchain配置
+	EthereumNodeURL        string // 以太坊节点 URL（例如 Infura）
+	AdminPrivateKey        string // 管理员私钥（用于调用 verifyKYC）
+	KYCContractAddress     string // KYC 合约地址
+	LotteryContractAddress string // Lottery 合约地址
 }
 
 var AppConfig AppConfigStruct
@@ -54,5 +62,10 @@ func LoadConfig() {
 		DB_SSLMODE:  os.Getenv("DB_SSLMODE"),
 		DB_TIMEZONE: os.Getenv("DB_TIMEZONE"),
 		JWTSecret:   os.Getenv("JWT_SECRET"),
+
+		EthereumNodeURL:        os.Getenv("ETHEREUM_NODE_URL"),
+		AdminPrivateKey:        os.Getenv("ADMIN_PRIVATE_KEY"),
+		KYCContractAddress:     os.Getenv("KYC_CONTRACT_ADDRESS"),
+		LotteryContractAddress: os.Getenv("LOTTERY_CONTRACT_ADDRESS"),
 	}
 }

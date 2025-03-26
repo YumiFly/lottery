@@ -1,4 +1,9 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
 contract KYC {
+    address public admin;
+
     // 客户信息结构体
     struct Customer {
         address customerAddress; // 用户地址
@@ -15,15 +20,24 @@ contract KYC {
     event KYCRegistered(address indexed customer, uint256 timestamp);
     event KYCVerified(address indexed customer, address indexed verifier, uint256 timestamp);
 
-    // 注册
-    function register() external {
-        require(customers[msg.sender].customerAddress == address(0), "Already registered");
-        customers[msg.sender] = Customer(msg.sender, false, address(0), 0, block.timestamp);
-        emit KYCRegistered(msg.sender, block.timestamp);
+    constructor() {
+        admin = msg.sender;
     }
 
-    // 验证KYC（链下控制验证者权限）
-    function verifyKYC(address _customer) external {
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Only admin can call this function");
+        _;
+    }
+
+    // 注册（允许管理员代为注册）
+    function register(address _customer) external onlyAdmin {
+        require(customers[_customer].customerAddress == address(0), "Already registered");
+        customers[_customer] = Customer(_customer, false, address(0), 0, block.timestamp);
+        emit KYCRegistered(_customer, block.timestamp);
+    }
+
+    // 验证KYC
+    function verifyKYC(address _customer) external onlyAdmin {
         Customer storage customer = customers[_customer];
         require(customer.customerAddress != address(0), "Customer not found");
         require(!customer.isVerified, "Already verified");

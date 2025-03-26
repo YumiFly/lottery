@@ -9,6 +9,7 @@ const (
 	ErrCodeUnauthorized     = 1003
 	ErrCodeInternalServer   = 1004
 	ErrCodeForbidden        = 1005
+	ErrCodeBadRequest       = 1006
 )
 
 func ErrorResponse(code int, message string, data interface{}) Response {

@@ -19,7 +19,7 @@ func TestAuthService(t *testing.T) {
 	defer suite.TearDown()
 
 	t.Run("Login", func(t *testing.T) {
-		result, err := services.Login("test@example.com", "0xTestAddress123", "127.0.0.1")
+		result, err := services.Login("0xTestAddress123", "127.0.0.1")
 		assert.NoError(t, err)
 		assert.NotNil(t, result)
 		assert.Equal(t, "0xTestAddress123", result.Customer.CustomerAddress)
@@ -27,14 +27,14 @@ func TestAuthService(t *testing.T) {
 	})
 
 	t.Run("LoginNonExistent", func(t *testing.T) {
-		result, err := services.Login("new@example.com", "0xNewAddress789", "127.0.0.1")
+		result, err := services.Login("0xNewAddress789", "127.0.0.1")
 		assert.NoError(t, err)
 		assert.NotNil(t, result)
 		assert.Equal(t, "0xNewAddress789", result.Customer.CustomerAddress)
 	})
 
 	t.Run("RefreshToken", func(t *testing.T) {
-		newToken, err := services.RefreshToken("0xTestAddress123", "test@example.com", "lottery_admin")
+		newToken, err := services.RefreshToken("test@example.com", "lottery_admin")
 		assert.NoError(t, err)
 		assert.NotEmpty(t, newToken)
 	})
