@@ -22,10 +22,14 @@ type AppConfigStruct struct {
 	JWTSecret   string
 
 	//blockchain配置
-	EthereumNodeURL        string // 以太坊节点 URL（例如 Infura）
-	AdminPrivateKey        string // 管理员私钥（用于调用 verifyKYC）
-	KYCContractAddress     string // KYC 合约地址
+	EthereumNodeURL    string // 以太坊节点 URL（例如 Infura）
+	AdminPrivateKey    string // 管理员私钥（用于调用 verifyKYC）
+	KYCContractAddress string // KYC 合约地址
+
 	LotteryContractAddress string // Lottery 合约地址
+
+	RolloutContractAddress  string // Rollout 合约地址
+	CallbackContractAddress string // Callback 合约地址
 }
 
 var AppConfig AppConfigStruct
@@ -63,9 +67,11 @@ func LoadConfig() {
 		DB_TIMEZONE: os.Getenv("DB_TIMEZONE"),
 		JWTSecret:   os.Getenv("JWT_SECRET"),
 
-		EthereumNodeURL:        os.Getenv("ETHEREUM_NODE_URL"),
-		AdminPrivateKey:        os.Getenv("ADMIN_PRIVATE_KEY"),
-		KYCContractAddress:     os.Getenv("KYC_CONTRACT_ADDRESS"),
-		LotteryContractAddress: os.Getenv("LOTTERY_CONTRACT_ADDRESS"),
+		EthereumNodeURL:    os.Getenv("ETHEREUM_NODE_URL"),
+		AdminPrivateKey:    os.Getenv("ADMIN_PRIVATE_KEY"),
+		KYCContractAddress: os.Getenv("KYC_CONTRACT_ADDRESS"),
+
+		RolloutContractAddress:  os.Getenv("ROLLOUT_CONTRACT_ADDRESS"),
+		CallbackContractAddress: os.Getenv("CALLBACK_CONTRACT_ADDRESS"),
 	}
 }

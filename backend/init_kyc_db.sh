@@ -58,6 +58,13 @@ DROP TABLE IF EXISTS kyc_data CASCADE;
 DROP TABLE IF EXISTS customers CASCADE;
 DROP TABLE IF EXISTS role_menus CASCADE;
 DROP TABLE IF EXISTS roles CASCADE;
+DROP TABLE IF EXISTS lottery CASCADE;
+DROP TABLE IF EXISTS lotteries CASCADE;
+DROP TABLE IF EXISTS lottery_types CASCADE;
+DROP TABLE IF EXISTS lottery_issues CASCADE;
+DROP TABLE IF EXISTS lottery_tickets CASCADE;
+DROP TABLE IF EXISTS winners CASCADE;
+
 "
 
 # 定义 SQL 语句：创建表（不设置主键和外键约束）
@@ -126,6 +133,73 @@ CREATE TABLE kyc_verification_histories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 创建 lottery_types 表
+CREATE TABLE lottery_types (
+    type_id VARCHAR(50),
+    type_name VARCHAR(255) NOT NULL,
+    description VARCHAR(1000),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- 创建 lottery_issues 表
+CREATE TABLE lottery_issues (
+    issue_id VARCHAR(50),
+    lottery_id VARCHAR(50) NOT NULL,
+    issue_number VARCHAR(50) NOT NULL,
+    sale_end_time TIMESTAMP NOT NULL,
+    draw_time TIMESTAMP NOT NULL,
+    prize_pool VARCHAR(50) NOT NULL,
+    draw_status VARCHAR(20) NOT NULL,
+    winning_numbers VARCHAR(100),
+    random_seed VARCHAR(100),
+    draw_tx_hash VARCHAR(66),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- 创建 lottery 表
+CREATE TABLE lotteries (
+    lottery_id VARCHAR(50),
+    type_id VARCHAR(50) NOT NULL,
+    ticket_name VARCHAR(255) NOT NULL,
+    ticket_price VARCHAR(50) NOT NULL,
+    betting_rules VARCHAR(1000) NOT NULL,
+    prize_structure VARCHAR(1000) NOT NULL,
+    contract_address VARCHAR(66) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- 创建 lottery_tickets 表
+CREATE TABLE lottery_tickets (
+    ticket_id VARCHAR(50),
+    issue_id VARCHAR(50) NOT NULL,
+    buyer_address VARCHAR(66) NOT NULL,
+    purchase_time TIMESTAMP NOT NULL,
+    bet_content VARCHAR(100) NOT NULL,
+    purchase_amount VARCHAR(50) NOT NULL,
+    transaction_hash VARCHAR(66),
+    claim_status VARCHAR(20),
+    claim_time TIMESTAMP,
+    claim_tx_hash VARCHAR(66),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+-- 创建 winners 表
+CREATE TABLE winners (
+    winner_id VARCHAR(50),
+    issue_id VARCHAR(50) NOT NULL,
+    ticket_id VARCHAR(50) NOT NULL,
+    address VARCHAR(66) NOT NULL,
+    prize_level VARCHAR(50) NOT NULL,
+    prize_amount VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
 "
 
 # 定义 SQL 语句：插入初始数据

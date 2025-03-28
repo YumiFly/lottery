@@ -101,9 +101,11 @@ TODO:
    ```bash
    solc --bin KYC.sol -o build
    abigen --bin build/KYC.bin --abi build/KYC.abi --pkg blockchain --type KYC --out blockchain/kyc.go
+
+   solc --abi sample_rollout.sol -o ../../backend/build
+   abigen --abi build/SimpleRollout.abi --pkg blockchain --type SimpleRollout --out blockchain/simple_rollout.go
+
    ```
-
-
  测试用例：
    - 用户注册和登录  
       用户登录：
@@ -172,6 +174,61 @@ TODO:
       ```bash
          `curl http://localhost:8080/customers/address/456%20Elm%20St
       ```
+      创建彩票类型
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/types \
+               -H "Content-Type: application/json" \
+               -d '{"type_id":"LT001","type_name":"简单型","description":"A simple lottery type"}'`
+      ```
+      获取彩票类型列表
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/types
+      ```
+      创建彩票
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/lottery \
+               -H "Content-Type: application/json" \
+               -d '{"lottery_id":"L001","type_id":"9ab4a412-6d2c-47cb-b246-89ab4d23410d","ticket_name":"SimpleTicket","ticket_price":"0.1","betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool","contract_address":"0x1234567890abcdef1234567890abcdef12345678"}'`
+      ```
+      获取彩票列表
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/lottery
+      ```
+      
+      创建彩票期号 (CreateIssue)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/issues \
+               -H "Content-Type: application/json" \
+                -d '{"issue_id":"IS001","lottery_id":"L001","issue_number":"20250327","sale_end_time":"2025-03-28T12:00:00Z","draw_time":"2025-03-27T12:00:00Z","prize_pool":"100"}'
+      ```
+     
+      获取根据彩票ID获取最近的发行信息
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/issues/latest/L001
+      ```
+
+      购买彩票 (BuyTicket)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/tickets \
+               -H "Content-Type: application/json" \
+               -d '{"ticket_id":"TK001","issue_id":"IS001","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","bet_content":"6,11,16","purchase_amount":"0.1"}'
+      ```
+      获取用户购买的彩票列表 (GetUserTickets)
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/tickets/user/0xabcdef1234567890abcdef1234567890abcdef12
+      ```
+      开奖
+      ```bash
+         `curl -X POST "http://localhost:8080/lottery/draw?issue_id=IS001" \
+               -H "Authorization: Bearer <admin_token>"
+      ```
+      
+      获取开奖结果
+      ```bash
+         `curl -X GET "http://localhost:8080/lottery/draw?issue_id=IS001"
+      ```
+      
+
    - 角色权限检查
    - Token 黑名单功能
    - 日志持久化功能
