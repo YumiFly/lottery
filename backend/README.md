@@ -217,6 +217,12 @@ TODO:
       ```bash
          `curl -X GET http://localhost:8080/lottery/tickets/customer/0xabcdef1234567890abcdef1234567890abcdef12
       ```
+      
+      获取总奖池
+      ```bash
+         curl -X GET "http://localhost:8080/lottery/pools"
+      ```
+
       开奖
       ```bash
          `curl -X POST "http://localhost:8080/lottery/draw?issue_id=IS001" \

@@ -5,9 +5,11 @@ import (
 	lotteryBlockchain "backend/blockchain/lottery"
 	"backend/db"
 	"backend/models"
+	"backend/utils"
 	"errors"
 	"fmt"
 	"math/big"
+	"strconv"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -44,6 +46,7 @@ func CreateLottery(lottery *models.Lottery) error {
 // CreateIssue 创建彩票期号
 // 该方法用于在数据库中创建一条彩票期号记录，并自动设置创建和更新时间。
 func CreateIssue(issue *models.LotteryIssue) error {
+
 	// 手动检查 lottery_id 是否存在
 	var lottery models.Lottery
 	if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
@@ -57,6 +60,10 @@ func CreateIssue(issue *models.LotteryIssue) error {
 	}
 	issue.CreatedAt = time.Now()
 	issue.UpdatedAt = time.Now()
+
+	//TODO: 在链上创建相关数据
+
+	//TODO: 如果成功，则插入数据库；
 
 	return db.DB.Create(issue).Error
 }
@@ -79,10 +86,14 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 	ticket.CreatedAt = time.Now()
 	ticket.UpdatedAt = time.Now()
 
+	//TODO: 在链上创建相关数据
+
+	//TODO: 如果成功，则插入数据库；
+
 	return db.DB.Create(ticket).Error
 }
 
-// DrawLottery 开奖
+// DrawLottery 开奖(主动开奖还是被动开奖？主动开，则到截止日期就开奖；被动开，则需要用户手动开奖)
 // 该方法用于处理彩票的开奖逻辑，更新期号状态并记录中奖号码。
 func DrawLottery(issueID string) error {
 	// 查询期号
@@ -90,7 +101,7 @@ func DrawLottery(issueID string) error {
 	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
 		return errors.New("issue not found")
 	}
-	//查询链上合约获取开奖状态
+	//TODO：查询链上合约获取开奖状态
 
 	// 检查是否到达开奖时间
 	if time.Now().Before(issue.DrawTime) {
@@ -163,6 +174,40 @@ func GetAllLotteryTypes() ([]models.LotteryType, error) {
 	return lotteryTypes, nil
 }
 
+func GetUpcomingIssues() ([]models.LotteryIssue, error) {
+	var issues []models.LotteryIssue
+	if err := db.DB.Where("sale_end_time > ?", time.Now()).Find(&issues).Error; err != nil {
+		return nil, err
+	}
+	return issues, nil
+}
+
+func GetAllPools() (int64, error) {
+	// 获取所有还未开奖的期号
+	var issues []models.LotteryIssue
+	if err := db.DB.Where("sale_end_time > ?", time.Now()).Find(&issues).Error; err != nil {
+		return 0, err
+	}
+	totalPool := int64(0)
+	for _, issue := range issues {
+		// 计算每个期号的奖池金额
+		issuePool := issue.PrizePool
+		// 检查是否为空字符串
+		if issuePool == "" {
+			utils.Logger.Warn("Prize pool is empty for issue_id: ", issue.IssueID, ", setting to 0")
+			issuePool = "0"
+		}
+		num, err := strconv.ParseInt(issuePool, 10, 64)
+		if err != nil {
+			utils.Logger.Error("Failed to parse prize pool for issue_id: ", issue.IssueID, ", error: ", err)
+			return 0, err
+		}
+		// 累加到总奖池金额
+		totalPool += num
+	}
+	return totalPool, nil
+}
+
 func GetAllLotteries() ([]models.Lottery, error) {
 	var lotteries []models.Lottery
 	if err := db.DB.Find(&lotteries).Error; err != nil {
@@ -189,7 +234,8 @@ func GetLatestIssueByLotteryID(lotteryID string) (*models.LotteryIssue, error) {
 
 func GetExpiringIssues() ([]models.LotteryIssue, error) {
 	var issues []models.LotteryIssue
-	if err := db.DB.Where("draw_status = ?", "Pending").Order("sale_end_time asc").Find(&issues).Error; err != nil {
+	// 查询即将开奖的期号
+	if err := db.DB.Where("draw_time > ? and draw_time <= ?", time.Now(), time.Now().Add(24*time.Hour)).Find(&issues).Error; err != nil {
 		return nil, err
 	}
 	return issues, nil

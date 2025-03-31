@@ -14,6 +14,13 @@ import (
 // CreateLottery 创建彩票
 // 该方法处理创建彩票的 HTTP 请求，验证输入并调用服务层方法。
 func CreateLottery(c *gin.Context) {
+	// 检查权限（确保调用者是 lottery_admin）
+	role, exists := c.Get("role")
+	if !exists || (role != "lottery_admin" && role != "admin") {
+		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+		return
+	}
+
 	var lottery models.Lottery
 	if err := c.ShouldBindJSON(&lottery); err != nil {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
@@ -41,6 +48,11 @@ func CreateLottery(c *gin.Context) {
 // CreateIssue 创建彩票期号
 // 该方法处理创建彩票期号的 HTTP 请求，验证输入并调用服务层方法。
 func CreateIssue(c *gin.Context) {
+	role, exists := c.Get("role")
+	if !exists || (role != "lottery_admin" && role != "admin") {
+		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+		return
+	}
 	var issue models.LotteryIssue
 	if err := c.ShouldBindJSON(&issue); err != nil {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
@@ -71,7 +83,7 @@ func CreateIssue(c *gin.Context) {
 func DrawLottery(c *gin.Context) {
 	// 检查权限（确保调用者是 lottery_admin）
 	role, exists := c.Get("role")
-	if !exists || role != "lottery_admin" {
+	if !exists || (role != "lottery_admin" && role != "admin") {
 		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
 		return
 	}
@@ -91,6 +103,16 @@ func DrawLottery(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery draw initiated", nil))
+}
+
+func GetAllPools(c *gin.Context) {
+	pools, err := services.GetAllPools()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get pools", err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, utils.SuccessResponse("Pools retrieved successfully", pools))
 }
 
 // GetLotteries 获取所有彩票
@@ -119,6 +141,17 @@ func GetLotteryByType(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery retrieved successfully", lottery))
+}
+
+// GetUpcomingIssues 获取即将开奖的彩票
+func GetUpcomingIssues(c *gin.Context) {
+	issues, err := services.GetUpcomingIssues()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get upcoming issues", err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, utils.SuccessResponse("Upcoming issues retrieved successfully", issues))
 }
 
 // GetLatestIssueByLotteryID 获取最新期号

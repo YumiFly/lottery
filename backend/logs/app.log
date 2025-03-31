@@ -142,3 +142,8 @@
 {"duration":"5.297701959s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-03-31T10:30:16+08:00"}
 {"duration":"333ns","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/tickets/user/0xabcdef1234567890abcdef1234567890abcdef12","status":404,"time":"2025-03-31T10:30:37+08:00"}
 {"duration":"2.269015458s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/tickets/customer/0xabcdef1234567890abcdef1234567890abcdef12","status":200,"time":"2025-03-31T10:31:49+08:00"}
+{"level":"error","msg":"Failed to parse prize pool: strconv.ParseInt: parsing \"\": invalid syntax","time":"2025-03-31T15:18:24+08:00"}
+{"duration":"4.660627s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":500,"time":"2025-03-31T15:18:24+08:00"}
+{"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-03-31T15:48:48+08:00"}
+{"duration":"1.851295125s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-03-31T15:48:48+08:00"}
+{"duration":"14.667µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/customer/upload-photo","status":404,"time":"2025-03-31T17:49:39+08:00"}

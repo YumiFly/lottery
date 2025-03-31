@@ -5,7 +5,11 @@ import (
 	"backend/models"
 	"backend/services"
 	"backend/utils"
+	"fmt"
 	"net/http"
+	"os"
+	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -58,6 +62,60 @@ func GetCustomerByAddress(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, utils.SuccessResponse("Customer retrieved successfully", customer))
+}
+
+func UploadPhoto(c *gin.Context) {
+	// 获取上传的文件（表单字段名为 "photo"）
+	file, err := c.FormFile("idPhoto")
+	if err != nil {
+		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Failed to get photo from form", err.Error()))
+		return
+	}
+
+	// 验证文件类型（只允许图片）
+	allowedExtensions := map[string]bool{
+		".jpg":  true,
+		".jpeg": true,
+		".png":  true,
+	}
+	ext := strings.ToLower(filepath.Ext(file.Filename))
+	if !allowedExtensions[ext] {
+		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Only JPG, JPEG, and PNG files are allowed", nil))
+		return
+	}
+
+	// 验证文件大小（例如限制为 5MB）
+	const maxSize = 5 << 20 // 5MB
+	if file.Size > maxSize {
+		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "File size exceeds 5MB limit", nil))
+		return
+	}
+
+	// 创建存储路径（uploads/目录）
+	uploadDir := "uploads"
+	if err := os.MkdirAll(uploadDir, os.ModePerm); err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create upload directory", err.Error()))
+		return
+	}
+
+	// 生成唯一的文件名（使用时间戳和原始文件名）
+	filename := fmt.Sprintf("%d_%s", time.Now().UnixNano(), file.Filename)
+	filePath := filepath.Join(uploadDir, filename)
+
+	// 保存文件到指定路径
+	if err := c.SaveUploadedFile(file, filePath); err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to save photo", err.Error()))
+		return
+	}
+
+	// 构造文件访问地址（假设服务端运行在 localhost:8080）
+	// 实际部署时，应使用真实的域名或 CDN 地址
+	fileURL := fmt.Sprintf("/%s", filePath)
+
+	// 返回成功响应
+	c.JSON(http.StatusOK, utils.SuccessResponse("Photo uploaded successfully", map[string]string{
+		"file_url": fileURL,
+	}))
 }
 
 // CreateCustomer godoc

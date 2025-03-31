@@ -31,6 +31,13 @@ func cleanString(s string) string {
 // CreateLotteryType 创建彩票类型
 // 该方法处理创建彩票类型的 HTTP 请求，验证输入并调用服务层方法。
 func CreateLotteryType(c *gin.Context) {
+	// 检查权限（确保调用者是 lottery_admin）
+	role, exists := c.Get("role")
+	if !exists || role != "lottery_admin" {
+		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+		return
+	}
+
 	var lotteryType models.LotteryType
 	if err := c.ShouldBindJSON(&lotteryType); err != nil {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))

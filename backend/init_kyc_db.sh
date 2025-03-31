@@ -203,8 +203,9 @@ CREATE TABLE winners (
 SQL_SEED_DATA="
 -- 初始化角色
 INSERT INTO roles (role_id, role_name, role_type, description) VALUES
-    (1, 'lottery_admin', 'admin', 'Administrator for lottery management'),
+    (1, 'admin', 'admin', 'Administrator for all lottery management,can manage all lottery'),
     (2, 'normal_user', 'user', 'Normal user with limited access');
+    (3, 'lottery_admin', 'lottery_admin', Administrator for only one lottery management,can not manage other lottery');
 
 -- 初始化菜单
 INSERT INTO role_menus (role_menu_id, role_id, menu_name, menu_path) VALUES
