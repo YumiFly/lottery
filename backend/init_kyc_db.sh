@@ -151,7 +151,6 @@ CREATE TABLE lottery_issues (
     sale_end_time TIMESTAMP NOT NULL,
     draw_time TIMESTAMP NOT NULL,
     prize_pool VARCHAR(50) NOT NULL,
-    draw_status VARCHAR(20) NOT NULL,
     winning_numbers VARCHAR(100),
     random_seed VARCHAR(100),
     draw_tx_hash VARCHAR(66),
@@ -181,8 +180,6 @@ CREATE TABLE lottery_tickets (
     bet_content VARCHAR(100) NOT NULL,
     purchase_amount VARCHAR(50) NOT NULL,
     transaction_hash VARCHAR(66),
-    claim_status VARCHAR(20),
-    claim_time TIMESTAMP,
     claim_tx_hash VARCHAR(66),
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL

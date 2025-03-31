@@ -6,6 +6,7 @@ import (
 	"backend/services"
 	"backend/utils"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -88,6 +89,9 @@ func CreateCustomer(c *gin.Context) {
 	// 注册时不分配角色，role_id 设为 0（未分配）
 	cust.RoleID = 0
 
+	// 注册时间
+	cust.RegistrationTime = time.Now()
+
 	// 调用服务层创建用户
 	if err := services.CreateCustomer(cust); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create customer", err.Error()))
@@ -126,6 +130,8 @@ func VerifyCustomer(c *gin.Context) {
 		return
 	}
 	logrus.Info("verification: ", verification)
+
+	verification.VerificationDate = time.Now()
 	// 调用服务层进行验证
 	if err := services.VerifyCustomer(&verification); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to verify customer", err.Error()))

@@ -55,8 +55,6 @@ type LotteryIssue struct {
 	DrawTime time.Time `gorm:"column:draw_time;type:timestamp;not null" json:"draw_time"`
 	// PrizePool 是当前期号的奖池金额，存储为字符串
 	PrizePool string `gorm:"column:prize_pool;type:varchar(50);not null" json:"prize_pool"`
-	// DrawStatus 是开奖状态，例如 "Pending", "Drawn", "Cancelled"
-	DrawStatus string `gorm:"column:draw_status;type:varchar(20);not null" json:"draw_status"`
 	// WinningNumbers 是中奖号码
 	WinningNumbers string `gorm:"column:winning_numbers;type:varchar(100)" json:"winning_numbers"`
 	// RandomSeed 是用于生成中奖号码的随机数种子
@@ -85,10 +83,6 @@ type LotteryTicket struct {
 	PurchaseAmount string `gorm:"column:purchase_amount;type:varchar(50);not null" json:"purchase_amount"`
 	// TransactionHash 是购买彩票的区块链交易哈希
 	TransactionHash string `gorm:"column:transaction_hash;type:varchar(66)" json:"transaction_hash"`
-	// ClaimStatus 是兑奖状态，例如 "Unclaimed", "Claimed", "Expired"
-	ClaimStatus string `gorm:"column:claim_status;type:varchar(20)" json:"claim_status"`
-	// ClaimTime 是兑奖时间，格式为时间戳
-	ClaimTime time.Time `gorm:"column:claim_time;type:timestamp" json:"claim_time"`
 	// ClaimTxHash 是兑奖操作的区块链交易哈希
 	ClaimTxHash string `gorm:"column:claim_tx_hash;type:varchar(66)" json:"claim_tx_hash"`
 	// CreatedAt 是记录的创建时间，格式为时间戳

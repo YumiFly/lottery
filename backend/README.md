@@ -152,7 +152,7 @@ TODO:
       ```bash
         ` curl -X POST http://localhost:8080/auth/verify \
                         -H "Content-Type: application/json" \
-                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDMwNTMzMzcsInJvbGUiOiJsb3R0ZXJ5X2FkbWluIn0.xft0eIk1gLGmtwxkXOfmeShQ52wVCqkAolmWl1h9mvU" \
+                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDM0NzMyODYsInJvbGUiOiJsb3R0ZXJ5X2FkbWluIn0.zYAhvvKXLUs_sWSPrNimDBiyCZfebFe0-LdwUtntzNE" \
                         -d '{
                            "history_id": 2,
                            "customer_address": "0xNewUser789",
@@ -168,7 +168,7 @@ TODO:
       ```
       根据ID获取用户信息 
       ```bash   
-         `curl -X GET http://localhost:8080/customers/0xAdminAddress123
+         `curl -X GET http://localhost:8080/customers/0xNewUser789
       ```
       根据钱包地址获取用户信息：
       ```bash
@@ -178,7 +178,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/types \
                -H "Content-Type: application/json" \
-               -d '{"type_id":"LT001","type_name":"简单型","description":"A simple lottery type"}'`
+               -d '{"type_name":"简单型","description":"A simple lottery type"}'`
       ```
       获取彩票类型列表
       ```bash
@@ -188,7 +188,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/lottery \
                -H "Content-Type: application/json" \
-               -d '{"lottery_id":"L001","type_id":"9ab4a412-6d2c-47cb-b246-89ab4d23410d","ticket_name":"SimpleTicket","ticket_price":"0.1","betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool","contract_address":"0x1234567890abcdef1234567890abcdef12345678"}'`
+               -d '{"type_id":"3e3ff670-9201-4f17-9ff2-972a785cb40f","ticket_name":"SimpleTicket","ticket_price":"0.1","betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool","contract_address":"0x1234567890abcdef1234567890abcdef12345678"}'`
       ```
       获取彩票列表
       ```bash
@@ -199,23 +199,23 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/issues \
                -H "Content-Type: application/json" \
-                -d '{"issue_id":"IS001","lottery_id":"L001","issue_number":"20250327","sale_end_time":"2025-03-28T12:00:00Z","draw_time":"2025-03-27T12:00:00Z","prize_pool":"100"}'
+                -d '{"lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z"}'
       ```
      
       获取根据彩票ID获取最近的发行信息
       ```bash
-         `curl -X GET http://localhost:8080/lottery/issues/latest/L001
+         `curl -X GET http://localhost:8080/lottery/issues/latest/a0ccdbef-0f74-4096-b69e-012e882a7f65
       ```
 
       购买彩票 (BuyTicket)
       ```bash
          `curl -X POST http://localhost:8080/lottery/tickets \
                -H "Content-Type: application/json" \
-               -d '{"ticket_id":"TK001","issue_id":"IS001","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","bet_content":"6,11,16","purchase_amount":"0.1"}'
+               -d '{"ticket_id":"TK001","issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","bet_content":"6,11,16","purchase_amount":"0.1"}'
       ```
       获取用户购买的彩票列表 (GetUserTickets)
       ```bash
-         `curl -X GET http://localhost:8080/lottery/tickets/user/0xabcdef1234567890abcdef1234567890abcdef12
+         `curl -X GET http://localhost:8080/lottery/tickets/customer/0xabcdef1234567890abcdef1234567890abcdef12
       ```
       开奖
       ```bash

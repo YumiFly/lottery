@@ -6,50 +6,10 @@ import (
 	"backend/services"
 	"backend/utils"
 	"net/http"
-	"strings"
-	"unicode/utf8"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 )
-
-// cleanString 清洗字符串，确保只包含有效的 UTF-8 字符
-func cleanString(s string) string {
-	if !utf8.ValidString(s) {
-		// 如果字符串包含无效的 UTF-8 字符，移除非 UTF-8 字符
-		var builder strings.Builder
-		for _, r := range s {
-			if utf8.ValidRune(r) {
-				builder.WriteRune(r)
-			}
-		}
-		return builder.String()
-	}
-	return s
-}
-
-// CreateLotteryType 创建彩票类型
-// 该方法处理创建彩票类型的 HTTP 请求，验证输入并调用服务层方法。
-func CreateLotteryType(c *gin.Context) {
-	var lotteryType models.LotteryType
-	if err := c.ShouldBindJSON(&lotteryType); err != nil {
-		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
-		return
-	}
-
-	lotteryType.TypeID = uuid.NewString() // 生成新的 UUID 作为彩票类型的 ID
-	// 清洗字符串字段，确保只包含有效的 UTF-8 字符
-	lotteryType.TypeID = cleanString(lotteryType.TypeID)
-	lotteryType.TypeName = cleanString(lotteryType.TypeName)
-	lotteryType.Description = cleanString(lotteryType.Description)
-
-	if err := services.CreateLotteryType(&lotteryType); err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create lottery type", err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery type created successfully", lotteryType))
-}
 
 // CreateLottery 创建彩票
 // 该方法处理创建彩票的 HTTP 请求，验证输入并调用服务层方法。
@@ -60,6 +20,7 @@ func CreateLottery(c *gin.Context) {
 		return
 	}
 
+	lottery.LotteryID = uuid.NewString() // 生成新的 UUID 作为彩票的 ID
 	// 清洗字符串字段
 	lottery.LotteryID = cleanString(lottery.LotteryID)
 	lottery.TypeID = cleanString(lottery.TypeID)
@@ -86,12 +47,13 @@ func CreateIssue(c *gin.Context) {
 		return
 	}
 
+	issue.IssueID = uuid.NewString() // 生成新的 UUID 作为彩票期号的 ID
+
 	// 清洗字符串字段
 	issue.IssueID = cleanString(issue.IssueID)
 	issue.LotteryID = cleanString(issue.LotteryID)
 	issue.IssueNumber = cleanString(issue.IssueNumber)
 	issue.PrizePool = cleanString(issue.PrizePool)
-	issue.DrawStatus = cleanString(issue.DrawStatus)
 	issue.WinningNumbers = cleanString(issue.WinningNumbers)
 	issue.RandomSeed = cleanString(issue.RandomSeed)
 	issue.DrawTxHash = cleanString(issue.DrawTxHash)
@@ -102,33 +64,6 @@ func CreateIssue(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, utils.SuccessResponse("Issue created successfully", issue))
-}
-
-// PurchaseTicket 购买彩票
-// 该方法处理购买彩票的 HTTP 请求，验证输入并调用服务层方法。
-func PurchaseTicket(c *gin.Context) {
-	var ticket models.LotteryTicket
-	if err := c.ShouldBindJSON(&ticket); err != nil {
-		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
-		return
-	}
-
-	// 清洗字符串字段
-	ticket.TicketID = cleanString(ticket.TicketID)
-	ticket.IssueID = cleanString(ticket.IssueID)
-	ticket.BuyerAddress = cleanString(ticket.BuyerAddress)
-	ticket.BetContent = cleanString(ticket.BetContent)
-	ticket.PurchaseAmount = cleanString(ticket.PurchaseAmount)
-	ticket.TransactionHash = cleanString(ticket.TransactionHash)
-	ticket.ClaimStatus = cleanString(ticket.ClaimStatus)
-	ticket.ClaimTxHash = cleanString(ticket.ClaimTxHash)
-
-	if err := services.PurchaseTicket(&ticket); err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to purchase ticket", err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, utils.SuccessResponse("Ticket purchased successfully", ticket))
 }
 
 // DrawLottery 开奖
@@ -158,16 +93,7 @@ func DrawLottery(c *gin.Context) {
 	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery draw initiated", nil))
 }
 
-func GetAllLotteryTypes(c *gin.Context) {
-	lotteryTypes, err := services.GetAllLotteryTypes()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get lottery types", err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery types retrieved successfully", lotteryTypes))
-}
-
+// GetLotteries 获取所有彩票
 func GetAllLottery(c *gin.Context) {
 	lotteries, err := services.GetAllLotteries()
 	if err != nil {
@@ -178,6 +104,7 @@ func GetAllLottery(c *gin.Context) {
 	c.JSON(http.StatusOK, utils.SuccessResponse("Lotteries retrieved successfully", lotteries))
 }
 
+// GetLotteryByID 根据ID获取彩票
 func GetLotteryByType(c *gin.Context) {
 	lotteryType := c.Query("typeID")
 	if lotteryType == "" {
@@ -194,6 +121,7 @@ func GetLotteryByType(c *gin.Context) {
 	c.JSON(http.StatusOK, utils.SuccessResponse("Lottery retrieved successfully", lottery))
 }
 
+// GetLatestIssueByLotteryID 获取最新期号
 func GetLatestIssueByLotteryID(c *gin.Context) {
 	lotteryID := c.Param("lottery_id")
 	if lotteryID == "" {
@@ -220,22 +148,7 @@ func GetExpiringIssues(c *gin.Context) {
 	c.JSON(http.StatusOK, utils.SuccessResponse("Expiring issues retrieved successfully", issues))
 }
 
-func GetPurchasedTicketsByCustomerAddress(c *gin.Context) {
-	customerAddress := c.Param("customer_address")
-	if customerAddress == "" {
-		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Customer address is required", nil))
-		return
-	}
-
-	tickets, err := services.GetPurchasedTicketsByCustomerAddress(customerAddress)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get purchased tickets", err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, utils.SuccessResponse("Purchased tickets retrieved successfully", tickets))
-}
-
+// GetDrawnLotteryByIssueID 根据期号ID获取开奖结果
 func GetDrawnLotteryByIssueID(c *gin.Context) {
 	issueID := c.Param("issue_id")
 	if issueID == "" {

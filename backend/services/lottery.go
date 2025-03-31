@@ -55,9 +55,6 @@ func CreateIssue(issue *models.LotteryIssue) error {
 	if err := db.DB.Where("issue_number = ?", issue.IssueNumber).First(&existingIssue).Error; err == nil {
 		return errors.New("issue number already exists")
 	}
-
-	// 设置默认值
-	issue.DrawStatus = "Pending"
 	issue.CreatedAt = time.Now()
 	issue.UpdatedAt = time.Now()
 
@@ -77,9 +74,6 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 	if time.Now().After(issue.SaleEndTime) {
 		return errors.New("sale has ended")
 	}
-
-	//设置开奖状态
-	ticket.ClaimStatus = "Unclaimed"
 	// 记录购买时间
 	ticket.PurchaseTime = time.Now()
 	ticket.CreatedAt = time.Now()
@@ -96,11 +90,7 @@ func DrawLottery(issueID string) error {
 	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
 		return errors.New("issue not found")
 	}
-
-	// 检查是否已开奖
-	if issue.DrawStatus != "Pending" {
-		return errors.New("lottery already drawn or cancelled")
-	}
+	//查询链上合约获取开奖状态
 
 	// 检查是否到达开奖时间
 	if time.Now().Before(issue.DrawTime) {
@@ -126,8 +116,6 @@ func DrawLottery(issueID string) error {
 		// 将随机数结果转换为字符串
 		winningNumbers := fmt.Sprintf("%d,%d,%d", results[0], results[1], results[2])
 
-		// 更新期号状态
-		issue.DrawStatus = "Drawn"
 		issue.WinningNumbers = winningNumbers
 		issue.RandomSeed = fmt.Sprintf("RequestID: %d", requestID)
 
@@ -152,17 +140,9 @@ func DrawLottery(issueID string) error {
 		}
 		// 根据中奖号码计算中奖者
 		for _, ticket := range tickets {
-			// 这里简化处理，实际中需要比较投注内容和中奖号码
-			if ticket.BetContent == winningNumbers {
-				ticket.ClaimStatus = "Claimed"
-			} else {
-				ticket.ClaimStatus = "Unclaimed"
-			}
 			if err := db.DB.Save(&ticket).Error; err != nil {
 				fmt.Printf("Failed to update ticket: %v", err)
 			}
-			//将中奖者地址和中奖号码发送给前端
-			fmt.Printf("Ticket %s is %s\n", ticket.TicketID, ticket.ClaimStatus)
 
 		}
 
@@ -227,9 +207,6 @@ func GetDrawnLotteryByIssueID(issueID string) (*models.LotteryIssue, error) {
 	var issue models.LotteryIssue
 	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
 		return nil, err
-	}
-	if issue.DrawStatus != "Drawn" {
-		return nil, errors.New("issue not drawn")
 	}
 	return &issue, nil
 }

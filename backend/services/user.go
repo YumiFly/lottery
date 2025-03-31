@@ -145,9 +145,6 @@ func VerifyCustomer(verification *models.KYCVerificationHistory) error {
 		if err := db.DB.Model(&customer).Where("customer_address = ?", customer.CustomerAddress).Updates(updates).Error; err != nil {
 			return err
 		}
-
-		//TODO 调用链上KYC的相关函数，更新KYC状态
-		updateKycStatusOnChain()
 	} else if verification.VerifyStatus != "Rejected" {
 		// 如果 verify_status 既不是 Approved 也不是 Rejected，返回错误
 		return errors.New("invalid verify_status, must be 'Approved' or 'Rejected'")
@@ -155,7 +152,4 @@ func VerifyCustomer(verification *models.KYCVerificationHistory) error {
 
 	// Rejected 状态下无需更新 Customer 表，仅插入验证记录
 	return nil
-}
-func updateKycStatusOnChain() {
-
 }
