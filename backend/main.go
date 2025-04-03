@@ -23,6 +23,7 @@ func main() {
 	db.InitDB()
 	utils.InitLogger()
 	utils.InitCache()
+	utils.InitS3Client() // 初始化 S3 客户端
 
 	blockchain.InitClient() // 初始化区块链连接
 	if blockchain.Client == nil || blockchain.Auth == nil {
