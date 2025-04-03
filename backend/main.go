@@ -25,8 +25,9 @@ func main() {
 	utils.InitCache()
 
 	blockchain.InitClient() // 初始化区块链连接
-	//kyc.InitKYC()         // 初始化 KYC 合约,目前只有管理员可以添加用户，后续可以添加用户注册功能
-
+	if blockchain.Client == nil || blockchain.Auth == nil {
+		utils.Logger.Fatal("Failed to connect to blockchain")
+	}
 	r := gin.Default()
 	routes.SetupRoutes(r)
 

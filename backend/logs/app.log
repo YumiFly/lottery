@@ -147,3 +147,178 @@
 {"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-03-31T15:48:48+08:00"}
 {"duration":"1.851295125s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-03-31T15:48:48+08:00"}
 {"duration":"14.667µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/customer/upload-photo","status":404,"time":"2025-03-31T17:49:39+08:00"}
+{"duration":"1.666µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/customers/upload-photo","status":404,"time":"2025-03-31T17:59:41+08:00"}
+{"duration":"2.364875ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/customers/upload-photo","status":200,"time":"2025-03-31T18:01:02+08:00"}
+{"duration":"5.571417ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":403,"time":"2025-04-01T14:50:48+08:00"}
+{"duration":"6.740418833s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T14:52:12+08:00"}
+{"duration":"3.974953791s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T14:53:17+08:00"}
+{"duration":"2.414875s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T14:53:54+08:00"}
+{"duration":"1.332665375s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T14:54:37+08:00"}
+{"duration":"929.687ms","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T14:55:45+08:00"}
+{"duration":"1.264433125s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T14:55:51+08:00"}
+{"duration":"967.109084ms","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T15:33:42+08:00"}
+{"duration":"3.060959542s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T15:43:23+08:00"}
+{"duration":"1.466537541s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T15:43:24+08:00"}
+{"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-04-01T15:43:26+08:00"}
+{"duration":"1.685052875s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-04-01T15:43:26+08:00"}
+{"duration":"1.37492625s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T15:47:21+08:00"}
+{"duration":"1.515462916s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T15:47:23+08:00"}
+{"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-04-01T15:47:24+08:00"}
+{"duration":"1.102046291s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-04-01T15:47:24+08:00"}
+{"duration":"1.223519s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T15:47:34+08:00"}
+{"duration":"2.244365958s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T15:47:36+08:00"}
+{"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-04-01T15:47:38+08:00"}
+{"duration":"1.340043792s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-04-01T15:47:38+08:00"}
+{"duration":"1.428909875s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-01T15:49:05+08:00"}
+{"duration":"1.059640167s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-01T15:49:06+08:00"}
+{"level":"warning","msg":"Prize pool is empty for issue_id: c5b8edda-6d38-4b85-ac3f-9e5ba84d5848, setting to 0","time":"2025-04-01T15:49:07+08:00"}
+{"duration":"1.059307958s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-04-01T15:49:07+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce36gas_price1007962356","time":"2025-04-03T10:23:37+08:00"}
+{"duration":"493.084µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/types","status":403,"time":"2025-04-03T10:24:25+08:00"}
+{"level":"info","msg":"Fetching all lottery types","time":"2025-04-03T10:25:18+08:00"}
+{"level":"info","msg":"Fetched lottery typescount5","time":"2025-04-03T10:25:22+08:00"}
+{"duration":"4.050488875s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/types","status":200,"time":"2025-04-03T10:25:22+08:00"}
+{"duration":"4.444087125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/customers","status":201,"time":"2025-04-03T10:31:58+08:00"}
+{"level":"info","msg":"Login request received","time":"2025-04-03T10:32:09+08:00","wallet_address":"0xAdminAddress123"}
+{"customer_address":"0xAdminAddress123","level":"info","msg":"Login successful","time":"2025-04-03T10:32:14+08:00"}
+{"duration":"4.844402958s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/login","status":200,"time":"2025-04-03T10:32:14+08:00"}
+{"duration":"138µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/auth/verify","status":403,"time":"2025-04-03T10:33:30+08:00"}
+{"duration":"65.708µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/auth/verify","status":403,"time":"2025-04-03T10:33:45+08:00"}
+{"level":"info","msg":"Login request received","time":"2025-04-03T10:34:11+08:00","wallet_address":"0xAdminAddress123"}
+{"customer_address":"0xAdminAddress123","level":"info","msg":"Login successful","time":"2025-04-03T10:34:12+08:00"}
+{"duration":"1.793207333s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/login","status":200,"time":"2025-04-03T10:34:12+08:00"}
+{"duration":"45.875µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/auth/verify","status":403,"time":"2025-04-03T10:34:35+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce36gas_price1007962356","time":"2025-04-03T10:38:17+08:00"}
+{"level":"info","msg":"VerifyCustomer'customer from database , {0x70997970C51812dc3A010C7d01b50e0d17dc79C8 false  0001-01-01 08:05:43 +0805 LMT 2025-04-03 10:31:54.244903 +0800 CST 0 2025-03-24 20:00:00 +0800 CST 2025-04-03 10:31:55.740096 +0800 CST 2025-04-03 10:31:55.740096 +0800 CST {  0001-01-01 00:00:00 +0000 UTC        0001-01-01 00:00:00 +0000 UTC    0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC} [] {0    0001-01-01 00:00:00 +0000 UTC 0001-01-01 00:00:00 +0000 UTC []}}","time":"2025-04-03T10:38:26+08:00"}
+{"duration":"6.790980125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/auth/verify","status":200,"time":"2025-04-03T10:38:29+08:00"}
+{"duration":"117.375µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":400,"time":"2025-04-03T10:42:47+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id8941841c-02e6-4a94-a874-cf98e18d48dctype_id1","time":"2025-04-03T10:43:15+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T10:43:43+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T10:43:44+08:00"}
+{"level":"warning","msg":"Nonce rolled backnonce36","time":"2025-04-03T10:43:44+08:00"}
+{"duration":"29.080176042s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T10:43:44+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce37gas_price1006986968gas_limit300000","time":"2025-04-03T10:48:18+08:00"}
+{"level":"info","msg":"Creating lotterylottery_ida08417fd-347c-401e-969a-24f527cc6de0type_id1","time":"2025-04-03T10:48:24+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T10:48:28+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorNonce too low. Expected nonce to be 38 but got 37. Note that transactions can't be queued when automining.","time":"2025-04-03T10:48:28+08:00"}
+{"level":"warning","msg":"Nonce rolled backnonce37","time":"2025-04-03T10:48:28+08:00"}
+{"duration":"4.179689416s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T10:48:28+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce38gas_price1006265396gas_limit300000","time":"2025-04-03T14:17:52+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id27d82d05-497a-485c-a9d2-793ba9b48beatype_id1","time":"2025-04-03T14:18:00+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T14:18:02+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:18:03+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce39gas_price1005497885gas_limit300000","time":"2025-04-03T14:26:07+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idb2f69a52-7aed-45e3-8e9d-a9c79911db17type_id1","time":"2025-04-03T14:26:11+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T14:26:14+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:26:15+08:00"}
+{"duration":"3.914123583s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:26:15+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce40gas_price1004824395gas_limit300000","time":"2025-04-03T14:30:39+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idb6693adc-c62e-4579-8cac-e77c256e29datype_id1","time":"2025-04-03T14:30:46+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:30:49+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:30:49+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T14:30:51+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorNonce too low. Expected nonce to be 41 but got 40. Note that transactions can't be queued when automining.","time":"2025-04-03T14:30:52+08:00"}
+{"duration":"5.8258475s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:30:52+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce41gas_price1004326161gas_limit300000","time":"2025-04-03T14:33:25+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id98d14150-331b-4b61-9e46-e315faa6f3b0type_id1","time":"2025-04-03T14:33:31+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:33:36+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:33:36+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-03T14:33:37+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorNonce too low. Expected nonce to be 42 but got 41. Note that transactions can't be queued when automining.","time":"2025-04-03T14:33:38+08:00"}
+{"duration":"6.8141685s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:33:38+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce42gas_price1003879381gas_limit300000","time":"2025-04-03T14:37:55+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idc7244108-f6f3-47ed-92fa-6e578c1e478btype_id1","time":"2025-04-03T14:37:58+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:38:00+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:38:00+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce42","time":"2025-04-03T14:38:03+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorNonce too low. Expected nonce to be 43 but got 42. Note that transactions can't be queued when automining.","time":"2025-04-03T14:38:04+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:38:04+08:00"}
+{"duration":"5.69937025s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:38:04+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce0gas_price1875000000gas_limit300000","time":"2025-04-03T14:40:40+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id85d26dc6-8d26-4ded-a592-76ae41489d1ftype_id1","time":"2025-04-03T14:40:46+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:40:48+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:40:48+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce0","time":"2025-04-03T14:40:50+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorNonce too low. Expected nonce to be 1 but got 0. Note that transactions can't be queued when automining.","time":"2025-04-03T14:40:51+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:40:51+08:00"}
+{"duration":"4.487431583s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:40:51+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce1gas_price1784635178gas_limit300000","time":"2025-04-03T14:44:07+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id6584186e-f9de-404f-9168-7f8aed457bc6type_id1","time":"2025-04-03T14:44:42+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:44:47+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:44:47+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce_before1","time":"2025-04-03T14:44:49+08:00"}
+{"level":"info","msg":"Nonce refreshed before deploymentnonce2","time":"2025-04-03T14:44:50+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:44:50+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:44:50+08:00"}
+{"duration":"8.044110208s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:44:50+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce3gas_price1617411370gas_limit300000","time":"2025-04-03T14:46:02+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id84c87b92-513f-4f15-8bd5-3b9ac0fd77fctype_id1","time":"2025-04-03T14:46:07+08:00"}
+{"level":"error","msg":"Failed to sync nonce from blockchainerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-03T14:46:07+08:00"}
+{"duration":"46.812042ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:46:07+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id7aa86255-c637-47e8-b237-0b966e7af581type_id1","time":"2025-04-03T14:46:27+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:46:32+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:46:32+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce_before3","time":"2025-04-03T14:46:36+08:00"}
+{"level":"info","msg":"Nonce refreshed before deploymentnonce4","time":"2025-04-03T14:46:36+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:46:37+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:46:37+08:00"}
+{"duration":"9.907850541s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:46:37+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce5gas_price1485826802gas_limit2000000","time":"2025-04-03T14:49:48+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id5d4ac9a1-b589-4ab0-8ec5-492e3239bf37type_id1","time":"2025-04-03T14:50:01+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:50:04+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:50:04+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce_before5","time":"2025-04-03T14:50:06+08:00"}
+{"level":"info","msg":"Nonce refreshed before deploymentnonce6","time":"2025-04-03T14:50:07+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:50:08+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:50:08+08:00"}
+{"duration":"7.834157125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:50:08+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce7gas_price1382285934gas_limit5000000","time":"2025-04-03T14:50:36+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce7gas_price1382285934gas_limit5000000","time":"2025-04-03T14:51:45+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idcbe57dca-41af-4fca-8044-d94f7e6ab764type_id1","time":"2025-04-03T14:52:57+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T14:53:01+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T14:53:01+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce_before7","time":"2025-04-03T14:53:02+08:00"}
+{"level":"info","msg":"Nonce refreshed before deploymentnonce8","time":"2025-04-03T14:53:03+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T14:53:04+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T14:53:04+08:00"}
+{"duration":"6.228175584s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T14:53:04+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce0gas_price1875000000gas_limit5000000","time":"2025-04-03T15:03:59+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id83780f58-2f36-48f1-96f5-328e131f3553type_id1","time":"2025-04-03T15:06:07+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T15:06:11+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T15:06:11+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce1gas_limit300000","time":"2025-04-03T15:06:14+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T15:06:14+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T15:06:14+08:00"}
+{"duration":"7.2512295s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T15:06:14+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce2gas_price1688517369gas_limit5000000","time":"2025-04-03T15:07:40+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id3f2dd144-ca9b-4d37-accf-f5aa7e8ede4ftype_id1","time":"2025-04-03T15:07:47+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T15:07:55+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T15:07:55+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce3gas_limit300000","time":"2025-04-03T15:07:58+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T15:07:59+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T15:07:59+08:00"}
+{"duration":"11.5150825s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T15:07:59+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce4gas_price1541778477gas_limit50000000","time":"2025-04-03T15:09:01+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id1d52e858-9d63-4cd5-8877-34be9e748073type_id1","time":"2025-04-03T15:09:12+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T15:09:15+08:00"}
+{"level":"info","msg":"Estimated gas limitgas_limit300000","time":"2025-04-03T15:09:15+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce5gas_limit300000","time":"2025-04-03T15:09:18+08:00"}
+{"level":"error","msg":"Failed to deploy LotteryManager contracterrorTransaction ran out of gas","time":"2025-04-03T15:09:19+08:00"}
+{"level":"warning","msg":"Transaction failed, not rolling back nonce due to autominingtx_hash0x0000000000000000000000000000000000000000000000000000000000000000","time":"2025-04-03T15:09:19+08:00"}
+{"duration":"7.494995875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T15:09:19+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce6gas_price1426313019gas_limit50000000","time":"2025-04-03T15:14:19+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idf25bbd16-5065-4b94-8349-cb0d9d8621cetype_id1","time":"2025-04-03T15:15:13+08:00"}
+{"level":"warning","msg":"Failed to estimate gas limit with EstimateGas, using defaulterrorContract creation without any data provided","time":"2025-04-03T15:15:16+08:00"}
+{"level":"info","msg":"Gas estimation resultgas_limit0error\u003cnil\u003e","time":"2025-04-03T15:15:18+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce7gas_limit5000000","time":"2025-04-03T15:15:21+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0xbb2f0ccd38029e854759fc92ca46b6e513844c3bd17fedb4e0363e83d2b7b6b3gas_used2607110","time":"2025-04-03T15:15:22+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_idf25bbd16-5065-4b94-8349-cb0d9d8621cecontract_address0xa513E6E4b8f2a923D98304ec87F64353C4D5C853","time":"2025-04-03T15:15:28+08:00"}
+{"duration":"14.592516708s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T15:15:28+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce8gas_price1342805704gas_limit50000000","time":"2025-04-03T16:15:26+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id2d7a1882-2eff-4569-acdd-18fbb18ec360type_id1","time":"2025-04-03T16:15:38+08:00"}
+{"level":"info","msg":"Gas estimation succeededestimated_gas0","time":"2025-04-03T16:15:41+08:00"}
+{"level":"warning","msg":"Gas estimation returned 0, using defaultgas_limit5000000","time":"2025-04-03T16:15:41+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce9gas_limit5000000","time":"2025-04-03T16:15:43+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x1ba815b6df1de382372707557fff171439192a0f6a1f142ccae7e04b89db134egas_used2607110","time":"2025-04-03T16:15:44+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_id2d7a1882-2eff-4569-acdd-18fbb18ec360contract_address0x8A791620dd6260079BF849Dc5567aDC3F2FdC318","time":"2025-04-03T16:15:46+08:00"}
+{"duration":"7.85979275s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T16:15:46+08:00"}

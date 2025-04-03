@@ -174,7 +174,7 @@ func CreateCustomer(c *gin.Context) {
 func VerifyCustomer(c *gin.Context) {
 	// 检查权限（确保调用者是 lottery_admin）
 	role, exists := c.Get("role")
-	if !exists || role != "lottery_admin" {
+	if !exists || role != "admin" {
 		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
 		return
 	}

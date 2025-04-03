@@ -4,6 +4,7 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 )
@@ -22,14 +23,13 @@ type AppConfigStruct struct {
 	JWTSecret   string
 
 	//blockchain配置
-	EthereumNodeURL    string // 以太坊节点 URL（例如 Infura）
-	AdminPrivateKey    string // 管理员私钥（用于调用 verifyKYC）
-	KYCContractAddress string // KYC 合约地址
+	EthereumNodeURL string // 以太坊节点 URL（例如 Infura）
+	AdminPrivateKey string // 管理员私钥（用于调用 verifyKYC）
 
-	LotteryContractAddress string // Lottery 合约地址
+	RolloutContractAddress string // Rollout 合约地址
+	TokenContractAddress   string // Token 合约地址
 
-	RolloutContractAddress  string // Rollout 合约地址
-	CallbackContractAddress string // Callback 合约地址
+	BlockchainSyncInterval int // 区块链同步间隔（以秒为单位）
 }
 
 var AppConfig AppConfigStruct
@@ -56,6 +56,10 @@ func LoadConfig() {
 			log.Fatalf("Missing required environment variable: %s", envVar)
 		}
 	}
+	syncInterval, err := strconv.Atoi(os.Getenv("BLOCKCHAIN_SYNC_INTERVAL"))
+	if err != nil {
+		log.Fatalf("Invalid BLOCKCHAIN_SYNC_INTERVAL value: %v", err)
+	}
 
 	AppConfig = AppConfigStruct{
 		DBHost:      os.Getenv("DB_HOST"),
@@ -67,11 +71,11 @@ func LoadConfig() {
 		DB_TIMEZONE: os.Getenv("DB_TIMEZONE"),
 		JWTSecret:   os.Getenv("JWT_SECRET"),
 
-		EthereumNodeURL:    os.Getenv("ETHEREUM_NODE_URL"),
-		AdminPrivateKey:    os.Getenv("ADMIN_PRIVATE_KEY"),
-		KYCContractAddress: os.Getenv("KYC_CONTRACT_ADDRESS"),
+		EthereumNodeURL: os.Getenv("ETHEREUM_NODE_URL"),
+		AdminPrivateKey: os.Getenv("ADMIN_PRIVATE_KEY"),
 
-		RolloutContractAddress:  os.Getenv("ROLLOUT_CONTRACT_ADDRESS"),
-		CallbackContractAddress: os.Getenv("CALLBACK_CONTRACT_ADDRESS"),
+		RolloutContractAddress: os.Getenv("ROLLOUT_CONTRACT_ADDRESS"),
+		TokenContractAddress:   os.Getenv("TOKEN_CONTRACT_ADDRESS"),
+		BlockchainSyncInterval: syncInterval, // 默认为10秒
 	}
 }

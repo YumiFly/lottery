@@ -15,11 +15,11 @@ import (
 // 该方法处理创建彩票的 HTTP 请求，验证输入并调用服务层方法。
 func CreateLottery(c *gin.Context) {
 	// 检查权限（确保调用者是 lottery_admin）
-	role, exists := c.Get("role")
-	if !exists || (role != "lottery_admin" && role != "admin") {
-		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
-		return
-	}
+	// role, exists := c.Get("role")
+	// if !exists || (role != "lottery_admin" && role != "admin") {
+	// 	c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+	// 	return
+	// }
 
 	var lottery models.Lottery
 	if err := c.ShouldBindJSON(&lottery); err != nil {
@@ -28,14 +28,6 @@ func CreateLottery(c *gin.Context) {
 	}
 
 	lottery.LotteryID = uuid.NewString() // 生成新的 UUID 作为彩票的 ID
-	// 清洗字符串字段
-	lottery.LotteryID = cleanString(lottery.LotteryID)
-	lottery.TypeID = cleanString(lottery.TypeID)
-	lottery.TicketName = cleanString(lottery.TicketName)
-	lottery.TicketPrice = cleanString(lottery.TicketPrice)
-	lottery.BettingRules = cleanString(lottery.BettingRules)
-	lottery.PrizeStructure = cleanString(lottery.PrizeStructure)
-	lottery.ContractAddress = cleanString(lottery.ContractAddress)
 
 	if err := services.CreateLottery(&lottery); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create lottery", err.Error()))
@@ -61,15 +53,6 @@ func CreateIssue(c *gin.Context) {
 
 	issue.IssueID = uuid.NewString() // 生成新的 UUID 作为彩票期号的 ID
 
-	// 清洗字符串字段
-	issue.IssueID = cleanString(issue.IssueID)
-	issue.LotteryID = cleanString(issue.LotteryID)
-	issue.IssueNumber = cleanString(issue.IssueNumber)
-	issue.PrizePool = cleanString(issue.PrizePool)
-	issue.WinningNumbers = cleanString(issue.WinningNumbers)
-	issue.RandomSeed = cleanString(issue.RandomSeed)
-	issue.DrawTxHash = cleanString(issue.DrawTxHash)
-
 	if err := services.CreateIssue(&issue); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create issue", err.Error()))
 		return
@@ -93,9 +76,6 @@ func DrawLottery(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Issue ID is required", nil))
 		return
 	}
-
-	// 清洗 issueID
-	issueID = cleanString(issueID)
 
 	if err := services.DrawLottery(issueID); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to draw lottery", err.Error()))
@@ -177,7 +157,6 @@ func GetExpiringIssues(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get expiring issues", err.Error()))
 		return
 	}
-
 	c.JSON(http.StatusOK, utils.SuccessResponse("Expiring issues retrieved successfully", issues))
 }
 

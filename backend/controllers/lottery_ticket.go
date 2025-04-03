@@ -22,15 +22,6 @@ func PurchaseTicket(c *gin.Context) {
 
 	ticket.TicketID = uuid.NewString() // 生成新的 UUID 作为彩票的 ID
 
-	// 清洗字符串字段
-	ticket.TicketID = cleanString(ticket.TicketID)
-	ticket.IssueID = cleanString(ticket.IssueID)
-	ticket.BuyerAddress = cleanString(ticket.BuyerAddress)
-	ticket.BetContent = cleanString(ticket.BetContent)
-	ticket.PurchaseAmount = cleanString(ticket.PurchaseAmount)
-	ticket.TransactionHash = cleanString(ticket.TransactionHash)
-	ticket.ClaimTxHash = cleanString(ticket.ClaimTxHash)
-
 	if err := services.PurchaseTicket(&ticket); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to purchase ticket", err.Error()))
 		return
