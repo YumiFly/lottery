@@ -91,26 +91,40 @@ func UploadPhoto(c *gin.Context) {
 		return
 	}
 
-	// 创建存储路径（uploads/目录）
-	uploadDir := "uploads"
-	if err := os.MkdirAll(uploadDir, os.ModePerm); err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create upload directory", err.Error()))
-		return
+	// 检查是否配置了S3
+	var fileURL string
+	if utils.S3Client != nil {
+		// 使用S3存储
+		url, err := utils.UploadFileToS3(file, "photos")
+		if err != nil {
+			utils.Logger.WithField("error", err.Error()).Error("Failed to upload file to S3")
+			c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to upload file to S3", err.Error()))
+			return
+		}
+		fileURL = url
+	} else {
+		// 使用本地存储作为备选
+		// 创建存储路径（uploads/目录）
+		uploadDir := "uploads"
+		if err := os.MkdirAll(uploadDir, os.ModePerm); err != nil {
+			c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create upload directory", err.Error()))
+			return
+		}
+
+		// 生成唯一的文件名（使用时间戳和原始文件名）
+		filename := fmt.Sprintf("%d_%s", time.Now().UnixNano(), file.Filename)
+		filePath := filepath.Join(uploadDir, filename)
+
+		// 保存文件到指定路径
+		if err := c.SaveUploadedFile(file, filePath); err != nil {
+			c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to save photo", err.Error()))
+			return
+		}
+
+		// 构造文件访问地址（假设服务端运行在 localhost:8080）
+		// 实际部署时，应使用真实的域名或 CDN 地址
+		fileURL = fmt.Sprintf("/%s", filePath)
 	}
-
-	// 生成唯一的文件名（使用时间戳和原始文件名）
-	filename := fmt.Sprintf("%d_%s", time.Now().UnixNano(), file.Filename)
-	filePath := filepath.Join(uploadDir, filename)
-
-	// 保存文件到指定路径
-	if err := c.SaveUploadedFile(file, filePath); err != nil {
-		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to save photo", err.Error()))
-		return
-	}
-
-	// 构造文件访问地址（假设服务端运行在 localhost:8080）
-	// 实际部署时，应使用真实的域名或 CDN 地址
-	fileURL := fmt.Sprintf("/%s", filePath)
 
 	// 返回成功响应
 	c.JSON(http.StatusOK, utils.SuccessResponse("Photo uploaded successfully", map[string]string{

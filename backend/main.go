@@ -23,6 +23,7 @@ func main() {
 	db.InitDB()
 	utils.InitLogger()
 	utils.InitCache()
+	utils.InitS3Client() // 初始化 S3 客户端
 
 	blockchain.InitClient() // 初始化区块链连接
 	//kyc.InitKYC()         // 初始化 KYC 合约,目前只有管理员可以添加用户，后续可以添加用户注册功能
