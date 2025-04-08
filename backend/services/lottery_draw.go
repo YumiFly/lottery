@@ -2,6 +2,7 @@ package services
 
 import (
 	"backend/blockchain"
+	blockLottery "backend/blockchain/lottery"
 	"backend/db"
 	"backend/models"
 	"backend/utils"
@@ -19,32 +20,6 @@ import (
 func DrawLottery(issueID string) error {
 	utils.Logger.Info("Drawing lottery", "issue_id", issueID)
 
-	// Gas 估算函数
-	estimateGas := func(opts *bind.TransactOpts) error {
-		var issue models.LotteryIssue
-		if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
-			return err // 如果查询失败，返回错误
-		}
-
-		var lottery models.Lottery
-		if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
-			return err
-		}
-
-		contract, err := connectLotteryContract(lottery.ContractAddress)
-		if err != nil {
-			return err
-		}
-
-		// 估算 TransState 的 Gas
-		_, err = contract.TransState(opts, uint8(2))
-		if err != nil {
-			return err
-		}
-		return nil
-	}
-
-	// 执行交易的函数
 	executeTx := func() (common.Hash, error) {
 		var issue models.LotteryIssue
 		if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
@@ -60,19 +35,25 @@ func DrawLottery(issueID string) error {
 
 		contract, err := connectLotteryContract(lottery.ContractAddress)
 		if err != nil {
-			return common.Hash{}, err
+			return common.Hash{}, utils.NewServiceError("failed to connect to lottery contract", err)
 		}
 
+		// 检查当前状态并设置为 Rollout (状态 2)
 		currentState, err := contract.GetState(nil)
 		if err != nil {
 			utils.Logger.Error("Failed to get contract state", "error", err)
 			return common.Hash{}, utils.NewServiceError("failed to get contract state", err)
 		}
+		utils.Logger.Info("Current contract state", "state", currentState) // 添加日志记录
+		var txHash common.Hash
 		if currentState != 2 {
 			tx, err := contract.TransState(blockchain.Auth, uint8(2))
 			if err != nil {
 				utils.Logger.Error("Failed to set state to Rollout", "error", err)
-				return tx.Hash(), utils.NewServiceError("failed to set state to Rollout", err)
+				if tx != nil {
+					return tx.Hash(), utils.NewServiceError("failed to set state to Rollout", err)
+				}
+				return common.Hash{}, utils.NewServiceError("failed to set state to Rollout", err)
 			}
 			receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
 			if err != nil {
@@ -83,29 +64,32 @@ func DrawLottery(issueID string) error {
 				utils.Logger.Error("Transaction failed", "tx_hash", tx.Hash().Hex(), "status", receipt.Status)
 				return tx.Hash(), utils.NewServiceError("transaction failed", nil)
 			}
+			txHash = tx.Hash()
+			utils.Logger.Info("State set to Rollout", "tx_hash", txHash.Hex())
+
+			// 获取初始 nonce
+			nonce, err := blockchain.BlockchainMgr.GetNextNonce(context.Background())
+			if err != nil {
+				return common.Hash{}, utils.NewServiceError("failed to get next nonce", err)
+			}
+			blockchain.Auth.Nonce = big.NewInt(int64(nonce))
 		}
 
-		if time.Now().Before(issue.DrawTime) {
-			utils.Logger.Warn("Draw time not reached", "issue_id", issueID)
-			return common.Hash{}, utils.NewServiceError("draw time not reached", nil)
-		}
-
-		// 为第二次交易准备新的 Nonce 和 Gas
-		if _, err := blockchain.BlockchainMgr.GetNextNonce(context.Background()); err != nil {
-			utils.Logger.Error("Failed to get next nonce for rollout", "error", err)
-			return common.Hash{}, utils.NewServiceError("failed to get next nonce for rollout", err)
-		}
-		if _, err := blockchain.BlockchainMgr.GetCurrentGasPrice(context.Background()); err != nil {
-			utils.Logger.Error("Failed to get gas price for rollout", "error", err)
-			return common.Hash{}, utils.NewServiceError("failed to get gas price for rollout", err)
-		}
-
-		results := []*big.Int{big.NewInt(1), big.NewInt(2), big.NewInt(3)}
-		tx, err := contract.RolloutCallback(blockchain.Auth, results)
+		rolloutContract, err := connectRolloutContract(lottery.RolloutContractAddress)
 		if err != nil {
-			utils.Logger.Error("Failed to call rolloutCallback", "error", err)
-			return tx.Hash(), utils.NewServiceError("failed to call rolloutCallback", err)
+			return common.Hash{}, utils.NewServiceError("failed to connect to rollout contract", err)
 		}
+
+		tx, err := rolloutContract.RolloutCall(blockchain.Auth, common.HexToAddress(lottery.ContractAddress))
+		if err != nil {
+			utils.Logger.Error("Failed to call rolloutCall", "error", err)
+			if tx != nil {
+				utils.Logger.Info("RolloutCall tx hash", "tx_hash", tx.Hash().Hex())
+				return tx.Hash(), utils.NewServiceError("failed to call rolloutCall", err)
+			}
+			return common.Hash{}, utils.NewServiceError("failed to call rolloutCall", err)
+		}
+		utils.Logger.Info("RolloutCall transaction submitted", "tx_hash", tx.Hash().Hex(), "nonce", blockchain.Auth.Nonce)
 
 		receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
 		if err != nil {
@@ -116,7 +100,67 @@ func DrawLottery(issueID string) error {
 			utils.Logger.Error("Rollout transaction failed", "tx_hash", tx.Hash().Hex(), "status", receipt.Status)
 			return tx.Hash(), utils.NewServiceError(fmt.Sprintf("rollout transaction failed with status: %d", receipt.Status), nil)
 		}
+		utils.Logger.Info("RolloutCall transaction confirmed", "tx_hash", tx.Hash().Hex(), "gas_used", receipt.GasUsed)
+		startBlock := receipt.BlockNumber
 
+		// 检查交易日志
+		for _, log := range receipt.Logs {
+			utils.Logger.Info("Transaction log", "topics", log.Topics, "data", log.Data)
+		}
+
+		// 检查 DiceRolled 事件
+		filterer, err := blockLottery.NewSimpleRolloutFilterer(common.HexToAddress(lottery.RolloutContractAddress), blockchain.Client)
+		if err != nil {
+			return common.Hash{}, utils.NewServiceError("failed to create filterer", err)
+		}
+		diceRolledOpts := &bind.FilterOpts{
+			Start:   startBlock.Uint64(),
+			Context: context.Background(),
+		}
+		diceRolledIter, err := filterer.FilterDiceRolled(diceRolledOpts, nil, nil)
+		if err != nil {
+			return common.Hash{}, utils.NewServiceError("failed to filter dice rolled event", err)
+		}
+		for diceRolledIter.Next() {
+			utils.Logger.Info("DiceRolled event captured", "request_id", diceRolledIter.Event.RequestId, "epoch", diceRolledIter.Event.Epoch)
+		}
+		diceRolledIter.Close()
+
+		// 等待 DiceLanded 事件
+		timeout := time.After(300 * time.Second)
+		var results []*big.Int
+		elapsed := 0 * time.Second
+		for {
+			select {
+			case <-timeout:
+				utils.Logger.Error("Timeout waiting for DiceLanded event", "issue_id", issueID, "elapsed", elapsed)
+				return tx.Hash(), utils.NewServiceError("timeout waiting for dice landed event", nil)
+			default:
+				opts := &bind.FilterOpts{
+					Start:   startBlock.Uint64(),
+					Context: context.Background(),
+				}
+				iter, err := filterer.FilterDiceLanded(opts, nil, nil)
+				if err != nil {
+					return common.Hash{}, utils.NewServiceError("failed to filter dice landed event", err)
+				}
+				for iter.Next() {
+					results = iter.Event.Results // 确保 iter.Event.Results 被正确解析为 []*big.Int
+					utils.Logger.Info("DiceLanded event captured", "results", results)
+				}
+				iter.Close()
+
+				if len(results) > 0 {
+					goto processResults
+				}
+				time.Sleep(1 * time.Second)
+				elapsed += 1 * time.Second
+				utils.Logger.Debug("Waiting for DiceLanded event", "elapsed", elapsed)
+			}
+		}
+
+	processResults:
+		// 更新期号信息
 		issue.WinningNumbers = fmt.Sprintf("%d,%d,%d", results[0], results[1], results[2])
 		issue.DrawTxHash = tx.Hash().Hex()
 		issue.UpdatedAt = time.Now()
@@ -125,6 +169,7 @@ func DrawLottery(issueID string) error {
 			return common.Hash{}, utils.NewServiceError("failed to update issue", err)
 		}
 
+		// 检查中奖者
 		var tickets []models.LotteryTicket
 		if err := db.DB.Where("issue_id = ?", issueID).Find(&tickets).Error; err != nil {
 			utils.Logger.Error("Failed to get tickets", "error", err)
@@ -155,7 +200,8 @@ func DrawLottery(issueID string) error {
 		return tx.Hash(), nil
 	}
 
-	return blockchain.WithBlockchain(context.Background(), estimateGas, executeTx)
+	data := []byte{}
+	return blockchain.WithBlockchain(context.Background(), data, executeTx)
 }
 
 // GetDrawnLotteryByIssueID 根据期号ID获取已开奖的彩票信息

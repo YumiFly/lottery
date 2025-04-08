@@ -43,6 +43,7 @@ var LotteryManagerABI = LotteryManagerMetaData.ABI
 // Deprecated: Use LotteryManagerMetaData.Bin instead.
 var LotteryManagerBin = LotteryManagerMetaData.Bin
 
+
 // DeployLotteryManager deploys a new Ethereum contract, binding an instance of LotteryManager to it.
 func DeployLotteryManager(auth *bind.TransactOpts, backend bind.ContractBackend, _admin common.Address, _owner common.Address, _rolloutContract common.Address, _name string, supply *big.Int, _price *big.Int, _tokenContract common.Address) (common.Address, *types.Transaction, *LotteryManager, error) {
 	parsed, err := LotteryManagerMetaData.GetAbi()

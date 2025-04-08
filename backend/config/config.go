@@ -29,10 +29,36 @@ type AppConfigStruct struct {
 	RolloutContractAddress string // Rollout 合约地址
 	TokenContractAddress   string // Token 合约地址
 
-	BlockchainSyncInterval int // 区块链同步间隔（以秒为单位）
+	BlockchainSyncInterval int
+	MaxBlockchainRetries   int
+	GasLimitIncreaseFactor float64
 }
 
 var AppConfig AppConfigStruct
+
+func getEnvInt(key string, defaultValue int) int {
+	valueStr := os.Getenv(key)
+	if valueStr == "" {
+		return defaultValue
+	}
+	value, err := strconv.Atoi(valueStr)
+	if err != nil {
+		return defaultValue
+	}
+	return value
+}
+
+func getEnvFloat(key string, defaultValue float64) float64 {
+	valueStr := os.Getenv(key)
+	if valueStr == "" {
+		return defaultValue
+	}
+	value, err := strconv.ParseFloat(valueStr, 64)
+	if err != nil {
+		return defaultValue
+	}
+	return value
+}
 
 // LoadConfig 加载配置
 func LoadConfig() {
@@ -56,10 +82,6 @@ func LoadConfig() {
 			log.Fatalf("Missing required environment variable: %s", envVar)
 		}
 	}
-	syncInterval, err := strconv.Atoi(os.Getenv("BLOCKCHAIN_SYNC_INTERVAL"))
-	if err != nil {
-		log.Fatalf("Invalid BLOCKCHAIN_SYNC_INTERVAL value: %v", err)
-	}
 
 	AppConfig = AppConfigStruct{
 		DBHost:      os.Getenv("DB_HOST"),
@@ -76,6 +98,8 @@ func LoadConfig() {
 
 		RolloutContractAddress: os.Getenv("ROLLOUT_CONTRACT_ADDRESS"),
 		TokenContractAddress:   os.Getenv("TOKEN_CONTRACT_ADDRESS"),
-		BlockchainSyncInterval: syncInterval, // 默认为10秒
+		BlockchainSyncInterval: getEnvInt("BLOCKCHAIN_SYNC_INTERVAL", 60),
+		MaxBlockchainRetries:   getEnvInt("MAX_BLOCKCHAIN_RETRIES", 3),
+		GasLimitIncreaseFactor: getEnvFloat("GAS_LIMIT_INCREASE_FACTOR", 1.5),
 	}
 }

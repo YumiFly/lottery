@@ -322,3 +322,796 @@
 {"level":"info","msg":"Transaction submitted successfullytx_hash0x1ba815b6df1de382372707557fff171439192a0f6a1f142ccae7e04b89db134egas_used2607110","time":"2025-04-03T16:15:44+08:00"}
 {"level":"info","msg":"Lottery created successfullylottery_id2d7a1882-2eff-4569-acdd-18fbb18ec360contract_address0x8A791620dd6260079BF849Dc5567aDC3F2FdC318","time":"2025-04-03T16:15:46+08:00"}
 {"duration":"7.85979275s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T16:15:46+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce10size10","time":"2025-04-03T17:01:09+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce10gas_price1275656022gas_limit5000000","time":"2025-04-03T17:01:09+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idbc8d0326-aebb-426b-a47b-9d5cadfdfa8ctype_id1","time":"2025-04-03T17:02:10+08:00"}
+{"level":"warning","msg":"Failed to estimate gaserrorContract creation without any data provided","time":"2025-04-03T17:02:12+08:00"}
+{"duration":"1.715421875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":500,"time":"2025-04-03T17:02:12+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce10size10","time":"2025-04-03T17:39:26+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce10gas_price1275656022gas_limit5000000","time":"2025-04-03T17:39:26+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idd2da8edd-6883-47b5-a728-269e69f31c46type_id1","time":"2025-04-03T17:40:32+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T17:40:33+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce10gas_limit5000000","time":"2025-04-03T17:40:34+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x203207e06a445f4ae7264d67f6571ce44426b389f96f504a34a24e0fe0c4b679gas_used2607110","time":"2025-04-03T17:40:36+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_idd2da8edd-6883-47b5-a728-269e69f31c46contract_address0x610178dA211FEF7D417bC0e6FeD39F05609AD788","time":"2025-04-03T17:40:39+08:00"}
+{"duration":"6.940477916s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T17:40:39+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce11size10","time":"2025-04-03T17:41:00+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce11gas_price1247187900gas_limit5000000","time":"2025-04-03T17:41:00+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7type_id1","time":"2025-04-03T17:41:34+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T17:41:35+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce11gas_limit5000000","time":"2025-04-03T17:41:36+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0xafd597b7d0ce93215dbbc7f9e360691686bc542aff48ce02cab4f69b9caa29c0gas_used2607110","time":"2025-04-03T17:41:38+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7contract_address0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e","time":"2025-04-03T17:41:42+08:00"}
+{"duration":"7.983193s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T17:41:42+08:00"}
+{"duration":"55.375µs","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":403,"time":"2025-04-03T17:44:35+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce12size10","time":"2025-04-03T17:45:33+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce12gas_price1221659797gas_limit5000000","time":"2025-04-03T17:45:33+08:00"}
+{"level":"info","msg":"Creating issueissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6lottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-03T17:45:42+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T17:45:42+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-03T17:45:51+08:00"}
+{"duration":"8.75504725s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-03T17:45:51+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-03T17:49:54+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T17:49:54+08:00"}
+{"level":"error","msg":"Failed to record beterrorError: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-03T17:49:57+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Error: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-03T17:49:57+08:00"}
+{"duration":"3.379768833s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-03T17:49:57+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce14size10","time":"2025-04-03T18:05:51+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce14gas_price1169830165gas_limit5000000","time":"2025-04-03T18:05:51+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-03T18:05:58+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T18:05:58+08:00"}
+{"level":"error","msg":"Failed to record beterrorNonce too low. Expected nonce to be 15 but got 14. Note that transactions can't be queued when automining.","time":"2025-04-03T18:06:03+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Nonce too low. Expected nonce to be 15 but got 14. Note that transactions can't be queued when automining.","time":"2025-04-03T18:06:03+08:00"}
+{"duration":"4.831484292s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-03T18:06:03+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce15size10","time":"2025-04-03T18:07:19+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce15gas_price1148631925gas_limit5000000","time":"2025-04-03T18:07:19+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-03T18:07:45+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-03T18:07:46+08:00"}
+{"level":"error","msg":"Failed to record beterrorNonce too low. Expected nonce to be 16 but got 15. Note that transactions can't be queued when automining.","time":"2025-04-03T18:07:50+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Nonce too low. Expected nonce to be 16 but got 15. Note that transactions can't be queued when automining.","time":"2025-04-03T18:07:50+08:00"}
+{"duration":"5.038254084s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-03T18:07:50+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:16:24+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:16:24+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T09:16:36+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:16:38+08:00"}
+{"level":"warning","msg":"Sale has endedissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:16:40+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorsale has ended","time":"2025-04-07T09:16:40+08:00"}
+{"duration":"3.331218625s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T09:16:40+08:00"}
+{"level":"info","msg":"Creating issueissue_id24529b95-41a3-41fe-a637-1b883dfe63b2lottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-07T09:17:47+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:17:48+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorNonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:17:53+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Nonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:17:53+08:00"}
+{"duration":"6.321636583s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T09:17:53+08:00"}
+{"level":"info","msg":"Fetching latest issuelottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-07T09:28:35+08:00"}
+{"level":"info","msg":"Fetched latest issueissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:28:37+08:00"}
+{"duration":"1.718070458s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/issues/latest/061f94ff-c360-47c3-b1a4-fa8c3d1415a7","status":200,"time":"2025-04-07T09:28:37+08:00"}
+{"level":"info","msg":"Login request received","time":"2025-04-07T09:29:56+08:00","wallet_address":"0xAdminAddress123"}
+{"customer_address":"0xAdminAddress123","level":"info","msg":"Login successful","time":"2025-04-07T09:30:03+08:00"}
+{"duration":"7.366299167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/login","status":200,"time":"2025-04-07T09:30:03+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:30:22+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:30:22+08:00"}
+{"level":"info","msg":"Login request received","time":"2025-04-07T09:30:58+08:00","wallet_address":"0xAdminAddress123"}
+{"customer_address":"0xAdminAddress123","level":"info","msg":"Login successful","time":"2025-04-07T09:31:03+08:00"}
+{"duration":"5.374406584s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/login","status":200,"time":"2025-04-07T09:31:03+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:31:46+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:31:46+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T09:31:52+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T09:31:52+08:00"}
+{"duration":"5.906971708s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:31:52+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:35:42+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:35:42+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:35:47+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:35:47+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorNonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:35:55+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Nonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:35:55+08:00"}
+{"duration":"7.982045166s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:35:55+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:37:44+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:37:44+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:37:57+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:37:58+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorNonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:38:02+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Nonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:38:02+08:00"}
+{"duration":"5.05998225s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:38:02+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:42:05+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:42:05+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:42:10+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:42:11+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorNonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:42:18+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Nonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:42:18+08:00"}
+{"duration":"7.401837292s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:42:18+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:44:31+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:44:31+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:44:38+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:44:39+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorNonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:44:45+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Nonce too high. Expected nonce to be 16 but got 17. Note that transactions can't be queued when automining.","time":"2025-04-07T09:44:45+08:00"}
+{"duration":"6.650548209s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:44:45+08:00"}
+{"level":"info","msg":"Nonce pool initializedstart_nonce16size10","time":"2025-04-07T09:47:45+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:47:45+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:47:51+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:47:52+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get next nonce: failed to get current nonce: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T09:47:57+08:00"}
+{"duration":"6.224654042s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:47:57+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:48:07+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:48:10+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorNonce too high. Expected nonce to be 16 but got 18. Note that transactions can't be queued when automining.","time":"2025-04-07T09:48:14+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Nonce too high. Expected nonce to be 16 but got 18. Note that transactions can't be queued when automining.","time":"2025-04-07T09:48:14+08:00"}
+{"duration":"7.175326625s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:48:14+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce16gas_price1130079654gas_limit5000000","time":"2025-04-07T09:52:18+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T09:52:23+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T09:52:23+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0xf148a4a649b65203e0e29a75bdaa1c88bf80e1665e6511b45af78c7991e22874","time":"2025-04-07T09:52:31+08:00"}
+{"level":"error","msg":"Failed to call rolloutCallbackerrorError: VM Exception while processing transaction: reverted with reason string 'Only rollout contract can call this function'","time":"2025-04-07T09:52:31+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to call rolloutCallback: Error: VM Exception while processing transaction: reverted with reason string 'Only rollout contract can call this function'","time":"2025-04-07T09:52:31+08:00"}
+{"duration":"8.424935417s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T09:52:31+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce18gas_price1099644709gas_limit5000000","time":"2025-04-07T10:12:26+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T10:13:16+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:13:17+08:00"}
+{"level":"error","msg":"Failed to call rolloutCallerrorNonce too high. Expected nonce to be 18 but got 19. Note that transactions can't be queued when automining.","time":"2025-04-07T10:13:21+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to call rolloutCall: Nonce too high. Expected nonce to be 18 but got 19. Note that transactions can't be queued when automining.","time":"2025-04-07T10:13:21+08:00"}
+{"duration":"5.78203925s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T10:13:21+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce18gas_price1099644709gas_limit5000000","time":"2025-04-07T10:16:08+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T10:16:17+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:16:18+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce19gas_price1087206917gas_limit5000000","time":"2025-04-07T10:20:25+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T10:20:29+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:20:30+08:00"}
+{"level":"error","msg":"No DiceLanded event capturedissue_id40f48470-07e7-4c42-ba17-996ceffe9ef6","time":"2025-04-07T10:20:36+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorno dice landed event captured","time":"2025-04-07T10:20:36+08:00"}
+{"duration":"6.690774292s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T10:20:36+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce20gas_price1076321628gas_limit5000000","time":"2025-04-07T10:25:04+08:00"}
+{"level":"info","msg":"Creating issueissue_idfdd877c6-5c88-4487-8457-ca5fc16c8513lottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-07T10:26:33+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:26:35+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:26:39+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:26:39+08:00"}
+{"duration":"6.07911825s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T10:26:39+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce21gas_price1066798385gas_limit5000000","time":"2025-04-07T10:33:08+08:00"}
+{"level":"info","msg":"Creating issueissue_id931efc22-b895-4aa9-80d3-96a66d5ceae4lottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-07T10:33:16+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:33:17+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T10:33:22+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:33:23+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:33:23+08:00"}
+{"duration":"7.269163666s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T10:33:23+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce22gas_price1058463431gas_limit5000000","time":"2025-04-07T10:37:03+08:00"}
+{"level":"info","msg":"Creating issueissue_id1a22b99d-37c7-4154-884f-5d0eb8372874lottery_id061f94ff-c360-47c3-b1a4-fa8c3d1415a7","time":"2025-04-07T10:37:08+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:37:10+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T10:37:13+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorError: Transaction reverted without a reason string","time":"2025-04-07T10:37:14+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Error: Transaction reverted without a reason string","time":"2025-04-07T10:37:14+08:00"}
+{"duration":"5.82139275s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T10:37:14+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1type_id1","time":"2025-04-07T10:43:15+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T10:43:17+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce23gas_limit5000000","time":"2025-04-07T10:43:18+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0xd13c2b668d20fdb6d136a37b0c8e9c1b9446f80bc1fc5b18ea2cc4c1f69456ddgas_used2607110","time":"2025-04-07T10:43:20+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1contract_address0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44","time":"2025-04-07T10:43:24+08:00"}
+{"duration":"8.410965042s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-07T10:43:24+08:00"}
+{"level":"info","msg":"Creating issueissue_id7cca4fe3-7478-47e3-a9f6-8a20c715cc98lottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1","time":"2025-04-07T10:44:04+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3910665","time":"2025-04-07T10:44:05+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T10:44:07+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:44:08+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:44:08+08:00"}
+{"duration":"4.151246167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T10:44:08+08:00"}
+{"level":"info","msg":"Fetching all lotteries","time":"2025-04-07T10:45:41+08:00"}
+{"level":"info","msg":"Fetched lotteriescount4","time":"2025-04-07T10:45:43+08:00"}
+{"duration":"1.953734917s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-07T10:45:43+08:00"}
+{"level":"info","msg":"Creating issueissue_ideb05c91a-e071-486c-9b4d-064854b10fd1lottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1","time":"2025-04-07T10:46:20+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3910665","time":"2025-04-07T10:46:22+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T10:46:27+08:00"}
+{"level":"error","msg":"Failed to set state to DistributeerrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:46:28+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Distribute: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T10:46:28+08:00"}
+{"duration":"8.194577666s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T10:46:28+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce26gas_price1035149582gas_limit5000000","time":"2025-04-07T11:01:09+08:00"}
+{"level":"info","msg":"Creating issueissue_id0976006b-dff3-426d-969e-98da9e66b241lottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1","time":"2025-04-07T11:01:32+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T11:01:33+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T11:01:38+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T11:01:42+08:00"}
+{"duration":"10.245914875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-07T11:01:42+08:00"}
+{"level":"info","msg":"Fetching latest issuelottery_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T11:04:03+08:00"}
+{"level":"warning","msg":"No issue found for lotterylottery_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T11:04:07+08:00"}
+{"duration":"3.276265125s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/issues/latest/0976006b-dff3-426d-969e-98da9e66b241","status":500,"time":"2025-04-07T11:04:07+08:00"}
+{"level":"info","msg":"Fetching latest issuelottery_idaa1c1fc9-3316-4d65-876b-5b83390097f1","time":"2025-04-07T11:04:32+08:00"}
+{"level":"info","msg":"Fetched latest issueissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T11:04:35+08:00"}
+{"duration":"2.991701583s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/issues/latest/aa1c1fc9-3316-4d65-876b-5b83390097f1","status":200,"time":"2025-04-07T11:04:35+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T11:05:11+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T11:05:13+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get next nonce: failed to get current nonce: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T11:05:17+08:00"}
+{"duration":"6.300688s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T11:05:17+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T11:05:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T11:05:35+08:00"}
+{"level":"info","msg":"Token approval successfultx_hash0x3829a538b8460ed8124e827637ddf5b25b3fe738b83825af3a4872a65e55c84d","time":"2025-04-07T11:05:43+08:00"}
+{"level":"error","msg":"Failed to record beterrorError: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-07T11:05:43+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Error: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-07T11:05:43+08:00"}
+{"duration":"13.73891375s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T11:05:43+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce29gas_price1023569228gas_limit5000000","time":"2025-04-07T11:14:24+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T11:15:19+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T11:15:20+08:00"}
+{"level":"error","msg":"Failed to record beterrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T11:15:25+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T11:15:25+08:00"}
+{"duration":"6.270987416s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T11:15:25+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T11:15:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T11:15:32+08:00"}
+{"level":"error","msg":"Failed to record beterrorError: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-07T11:15:36+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to record bet: Error: VM Exception while processing transaction: reverted with reason string 'Only token can call this function'","time":"2025-04-07T11:15:36+08:00"}
+{"duration":"5.889774625s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T11:15:36+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce30gas_price1020628539gas_limit5000000","time":"2025-04-07T13:04:49+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T13:04:54+08:00"}
+{"duration":"226.588042ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T13:04:54+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T13:04:58+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:05:01+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x38e05ebe0bcfc4f0d038964c967c3f315f1987ca591802e6fbf80cc2809ea4f6","time":"2025-04-07T13:05:07+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id6b2ab31d-8663-4e2b-b7f6-8f44a957c344","time":"2025-04-07T13:05:14+08:00"}
+{"duration":"16.232199709s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T13:05:14+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T13:05:43+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:05:45+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x1eed3e51d062feea0c0b5f6a9936f8c714bc23f27a24e94b48a88befa2789ca3","time":"2025-04-07T13:05:55+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idc68b3fbc-5ada-407d-af1b-ab927fba260e","time":"2025-04-07T13:06:01+08:00"}
+{"duration":"17.724012958s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T13:06:01+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T13:06:12+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:06:14+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:06:19+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:06:19+08:00"}
+{"duration":"6.550318959s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T13:06:19+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T13:06:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:06:32+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xda3ef5ddc56c3506c070ca1b6faaa2255872e45e33e882b13ece0d7c35e6c2d1","time":"2025-04-07T13:06:35+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id64c7bee2-b53b-453f-a2e6-625c32cd4b5d","time":"2025-04-07T13:06:42+08:00"}
+{"duration":"12.367620667s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T13:06:42+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc","time":"2025-04-07T13:16:29+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:16:30+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x4e5792e9445ebc23bdd222abf46b65ec7c3365c3e825edbaef5d0bb45353add1","time":"2025-04-07T13:16:39+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_ida4e38a3e-6e87-4146-8eae-96f369d37373","time":"2025-04-07T13:16:46+08:00"}
+{"duration":"17.265185083s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T13:16:46+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id0976006b-dff3-426d-969e-98da9e66b241buyer0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc","time":"2025-04-07T13:17:02+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:17:04+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x70bc594a01a960494bbdf77fd994bb49c64ad7d227bfe63ee33f34886aebcbc0","time":"2025-04-07T13:17:08+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_ida4acac69-be07-4ccc-a293-9f3297d173a8","time":"2025-04-07T13:17:13+08:00"}
+{"duration":"10.646709542s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T13:17:13+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce35gas_price1010591791gas_limit5000000","time":"2025-04-07T13:19:05+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:19:48+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:19:50+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:19:55+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:19:55+08:00"}
+{"duration":"7.306286167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:19:55+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:20:02+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:20:04+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0x538a03944173e5b7dcf7796dc68c1ed8a0560e17e28eaa8f18c9cc7a033dcfdb","time":"2025-04-07T13:20:09+08:00"}
+{"level":"error","msg":"No DiceLanded event capturedissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:20:12+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorno dice landed event captured","time":"2025-04-07T13:20:12+08:00"}
+{"duration":"9.656376083s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:20:12+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce37gas_price1008113358gas_limit5000000","time":"2025-04-07T13:24:52+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:25:01+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:25:03+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:25:09+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:25:09+08:00"}
+{"duration":"7.578417959s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:25:09+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:25:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:25:32+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:26:09+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T13:26:09+08:00"}
+{"duration":"38.887579291s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:26:09+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce38gas_price1007100638gas_limit5000000","time":"2025-04-07T13:34:35+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:34:41+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:34:44+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:34:49+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T13:34:49+08:00"}
+{"duration":"7.352308833s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:34:49+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:34:54+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:34:55+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:37:00+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T13:37:00+08:00"}
+{"duration":"2m6.853511792s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:37:00+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce39gas_price1006214327gas_limit5000000","time":"2025-04-07T13:40:27+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:40:31+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T13:40:31+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_id0976006b-dff3-426d-969e-98da9e66b241","time":"2025-04-07T13:44:09+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T13:44:09+08:00"}
+{"duration":"3m37.875415291s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T13:44:09+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce44gas_price1003309810gas_limit5000000","time":"2025-04-07T14:25:12+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id6d6fc6b0-ec16-43c1-ade4-5fc045bb357atype_id1","time":"2025-04-07T14:25:57+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:25:58+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce44gas_limit5000000","time":"2025-04-07T14:26:00+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x9cce81b97bcb6ed1069c814220dd1adc90ca557cbe06d235fbb4ac89cba6b688gas_used2607110","time":"2025-04-07T14:26:01+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_id6d6fc6b0-ec16-43c1-ade4-5fc045bb357acontract_address0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf","time":"2025-04-07T14:26:04+08:00"}
+{"duration":"7.286776541s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-07T14:26:04+08:00"}
+{"level":"info","msg":"Creating issueissue_id8a93a63a-0a81-4a02-b82c-cc003ffd3791lottery_id6d6fc6b0-ec16-43c1-ade4-5fc045bb357a","time":"2025-04-07T14:28:36+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3910665","time":"2025-04-07T14:28:38+08:00"}
+{"level":"warning","msg":"Issue number already existsissue_number20250408","time":"2025-04-07T14:28:41+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorissue number already exists","time":"2025-04-07T14:28:41+08:00"}
+{"duration":"4.80419125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T14:28:41+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce45gas_price1002967993gas_limit5000000","time":"2025-04-07T14:29:55+08:00"}
+{"level":"info","msg":"Creating issueissue_idce9c6fa5-8ddc-49a7-80fe-72ebda60a284lottery_id6d6fc6b0-ec16-43c1-ade4-5fc045bb357a","time":"2025-04-07T14:30:00+08:00"}
+{"duration":"4.222291ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T14:30:00+08:00"}
+{"level":"info","msg":"Creating issueissue_ida4c8d30c-7cba-4390-b1fa-c2998ce2f12alottery_id6d6fc6b0-ec16-43c1-ade4-5fc045bb357a","time":"2025-04-07T14:30:05+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:30:07+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T14:30:11+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_ida4c8d30c-7cba-4390-b1fa-c2998ce2f12a","time":"2025-04-07T14:30:14+08:00"}
+{"duration":"8.887956125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-07T14:30:14+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_ida4c8d30c-7cba-4390-b1fa-c2998ce2f12abuyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T14:31:12+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:31:14+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with reason string 'All tokens have been sold out.'","time":"2025-04-07T14:31:17+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with reason string 'All tokens have been sold out.'","time":"2025-04-07T14:31:17+08:00"}
+{"duration":"5.122122875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T14:31:17+08:00"}
+{"level":"info","msg":"Creating lotterylottery_iddf4f86b6-e551-4566-a180-e181e679cd86type_id1","time":"2025-04-07T14:36:19+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:36:20+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x70997970C51812dc3A010C7d01b50e0d17dc79C8nonce47gas_limit5000000","time":"2025-04-07T14:36:21+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0xdaa098a15fba1fc26435a5e759436795adea18bddd23a1b83004cf12233b7a8dgas_used2646922","time":"2025-04-07T14:36:23+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_iddf4f86b6-e551-4566-a180-e181e679cd86contract_address0x36C02dA8a0983159322a80FFE9F24b1acfF8B570","time":"2025-04-07T14:36:25+08:00"}
+{"duration":"6.393367584s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-07T14:36:25+08:00"}
+{"level":"info","msg":"Creating issueissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dlottery_iddf4f86b6-e551-4566-a180-e181e679cd86","time":"2025-04-07T14:36:50+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:36:52+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T14:36:54+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T14:36:56+08:00"}
+{"duration":"6.318398208s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-07T14:36:56+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idad2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T14:37:38+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:37:39+08:00"}
+{"level":"warning","msg":"Issue not foundissue_idad2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T14:37:41+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorissue not found: record not found","time":"2025-04-07T14:37:41+08:00"}
+{"duration":"2.651461917s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T14:37:41+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idad2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T14:37:49+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:37:51+08:00"}
+{"level":"warning","msg":"Issue not foundissue_idad2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T14:37:52+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorissue not found: record not found","time":"2025-04-07T14:37:52+08:00"}
+{"duration":"3.109345541s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T14:37:52+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T14:38:29+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:38:31+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xbab28302ef62ab4dd13dc5b5982d124034ba8a5966d7d24fc8c5aaef7edbfe26","time":"2025-04-07T14:38:33+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id39382f6d-84c8-4b28-a85d-0bb6506978b5","time":"2025-04-07T14:38:38+08:00"}
+{"duration":"8.576004s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:38:38+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65","time":"2025-04-07T14:38:51+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:38:53+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x26383799bc6a852eee5c1bafd6d22b65d9dbd47f0fc882a5392721943eebcc20","time":"2025-04-07T14:38:56+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id98f60f3c-9112-4dca-a780-5648997b42e7","time":"2025-04-07T14:39:00+08:00"}
+{"duration":"9.5874945s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:39:00+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x976EA74026E726554dB657fA54763abd0C3a0aa9","time":"2025-04-07T14:39:38+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:39:39+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xc2e95869aa60553441717c5dff8ffe5745a873a9df749a0e14dc2d21122db728","time":"2025-04-07T14:39:42+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id3785c482-c8e7-4698-a821-71e4c779d9a6","time":"2025-04-07T14:39:46+08:00"}
+{"duration":"8.311858s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:39:46+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x976EA74026E726554dB657fA54763abd0C3a0aa9","time":"2025-04-07T14:40:00+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:40:02+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xc34b984e099b6fddb2b661914e71f74c698ac276e7e02dd9efdc24f302c31bf4","time":"2025-04-07T14:40:05+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id78de3051-5db3-4a4d-9b1c-65b6eabb853e","time":"2025-04-07T14:40:10+08:00"}
+{"duration":"9.871796292s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:40:10+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:40:37+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:40:39+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xe57b5a9b479d03d2bd95cabbbd98d5d41f7594a05769dad729c3d5424c33b06a","time":"2025-04-07T14:40:44+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id17fb34f0-6925-4b3d-b45a-b9a006944860","time":"2025-04-07T14:40:49+08:00"}
+{"duration":"11.367745084s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:40:49+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:41:06+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:41:08+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xc9a8b1e9ecde3df4964aa7dc776971fb3c63793ba800d763e443241031425f1f","time":"2025-04-07T14:41:12+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_iddd95244b-24ff-4182-a9f3-b3b18823625c","time":"2025-04-07T14:41:16+08:00"}
+{"duration":"9.682288458s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:41:16+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:41:39+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:41:41+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xd744e7ae289cd4b8eb4a568b8a4f2cbef47f565f2339a50da0a2935e1a8bef75","time":"2025-04-07T14:41:43+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id36fdec85-b6e3-4546-85f9-7bb14a281f58","time":"2025-04-07T14:41:47+08:00"}
+{"duration":"8.017545375s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:41:47+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:42:03+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-07T14:42:04+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xf013166c79e06e2bad674b9dd5bfd067ebe59a85641d0c0330dd2c92c6a127d9","time":"2025-04-07T14:42:06+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id856417d4-8f78-43c3-aad2-1de1d145191d","time":"2025-04-07T14:42:10+08:00"}
+{"duration":"7.831250167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:42:10+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce57gas_price1000625053gas_limit5000000","time":"2025-04-07T14:50:19+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:50:35+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:50:38+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T14:50:42+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T14:50:42+08:00"}
+{"duration":"6.9419815s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T14:50:42+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:51:04+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:51:06+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T14:51:10+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T14:51:10+08:00"}
+{"duration":"6.654284s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T14:51:10+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1dbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T14:51:21+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:51:23+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xf638da78f9b075c608bf7253ff0068fecf1e5f999089e6453f3b4faec5b3cba9","time":"2025-04-07T14:51:28+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id9d30d2bf-d1bd-4dae-a1ac-0f90c6d030f2","time":"2025-04-07T14:51:35+08:00"}
+{"duration":"14.14768925s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T14:51:35+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T14:54:41+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T14:54:44+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0xb1e5b09b80e2914b01f799ccc993f9338062144d8f55ba75f5c99d8db8330f65","time":"2025-04-07T14:54:48+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T14:56:51+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T14:56:51+08:00"}
+{"duration":"2m9.357939125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T14:56:51+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce62gas_price1000323404gas_limit5000000","time":"2025-04-07T15:00:13+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:00:21+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:00:22+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:00:27+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:00:27+08:00"}
+{"duration":"6.084799334s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:00:27+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:00:32+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:00:35+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:03:41+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T15:03:41+08:00"}
+{"duration":"3m9.271467208s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:03:41+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:07:59+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:08:02+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:11:06+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T15:11:06+08:00"}
+{"duration":"3m7.098333208s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:11:06+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce64gas_price1000247998gas_limit5000000","time":"2025-04-07T15:19:52+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:19:58+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:19:59+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:20:04+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:20:04+08:00"}
+{"duration":"5.894560542s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:20:04+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:20:09+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:20:13+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:23:49+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T15:23:49+08:00"}
+{"duration":"3m39.5143315s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:23:49+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce65gas_price1000217170gas_limit5000000","time":"2025-04-07T15:28:28+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:28:40+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:28:42+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:32:20+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errortimeout waiting for dice landed event","time":"2025-04-07T15:32:20+08:00"}
+{"duration":"3m39.2477565s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:32:20+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce66gas_price1000190174gas_limit5000000","time":"2025-04-07T15:37:12+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:37:19+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:37:20+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:37:25+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:37:25+08:00"}
+{"duration":"6.436585167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:37:25+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:37:43+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:37:44+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0xffccb4fe88b7ae53da8bddc99fdf7fbcc683f22646b127d1bdc8443f3116a985nonce66","time":"2025-04-07T15:37:47+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0xffccb4fe88b7ae53da8bddc99fdf7fbcc683f22646b127d1bdc8443f3116a985gas_used82775","time":"2025-04-07T15:37:48+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id6epoch6","time":"2025-04-07T15:37:48+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1delapsed3m5s","time":"2025-04-07T15:42:49+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0xffccb4fe88b7ae53da8bddc99fdf7fbcc683f22646b127d1bdc8443f3116a985errortimeout waiting for dice landed event","time":"2025-04-07T15:42:49+08:00"}
+{"duration":"5m5.72083575s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:42:49+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce67gas_price1000166534gas_limit5000000","time":"2025-04-07T15:46:25+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce67gas_price1000166534gas_limit5000000","time":"2025-04-07T15:47:49+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:47:59+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:48:01+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:48:06+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T15:48:06+08:00"}
+{"duration":"7.27809225s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:48:06+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T15:48:10+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T15:48:11+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x074f3b67dea21fd1c9c56374df66d10ba42b079610b5341824eb4a57ed898b25nonce67","time":"2025-04-07T15:48:13+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x074f3b67dea21fd1c9c56374df66d10ba42b079610b5341824eb4a57ed898b25gas_used82775","time":"2025-04-07T15:48:14+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T15:48:14+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x0000000000000000000000000000000000000000000000000000000000000007 0x0000000000000000000000000000000000000000000000000000000000000007]data[]","time":"2025-04-07T15:48:14+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id7epoch7","time":"2025-04-07T15:48:14+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1delapsed5m41s","time":"2025-04-07T15:58:15+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x074f3b67dea21fd1c9c56374df66d10ba42b079610b5341824eb4a57ed898b25errortimeout waiting for dice landed event","time":"2025-04-07T15:58:15+08:00"}
+{"duration":"10m5.419075s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T15:58:15+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce68gas_price1000145833gas_limit5000000","time":"2025-04-07T16:08:17+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:08:26+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:08:28+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0xb5131ec4b9e4eae0c44ec41ca3e2165034d11fb2bc0e6673e9ea4d132671c3f3nonce68","time":"2025-04-07T16:08:32+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0xb5131ec4b9e4eae0c44ec41ca3e2165034d11fb2bc0e6673e9ea4d132671c3f3gas_used82775","time":"2025-04-07T16:08:33+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 8 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:08:33+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x0000000000000000000000000000000000000000000000000000000000000008 0x0000000000000000000000000000000000000000000000000000000000000008]data[]","time":"2025-04-07T16:08:33+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id8epoch8","time":"2025-04-07T16:08:34+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce69gas_price1000127705gas_limit5000000","time":"2025-04-07T16:16:40+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:16:48+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:16:49+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x8ec2d920d491c3271b78c6b85160556da24bdbee220e1996414abab3c2ebcd62nonce69","time":"2025-04-07T16:16:55+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x8ec2d920d491c3271b78c6b85160556da24bdbee220e1996414abab3c2ebcd62gas_used82775","time":"2025-04-07T16:16:55+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:16:55+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x0000000000000000000000000000000000000000000000000000000000000009 0x0000000000000000000000000000000000000000000000000000000000000009]data[]","time":"2025-04-07T16:16:55+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id9epoch9","time":"2025-04-07T16:16:56+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce71gas_price1000098302gas_limit5000000","time":"2025-04-07T16:19:12+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:19:18+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:19:20+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:19:26+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:19:26+08:00"}
+{"duration":"7.638713041s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:19:26+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce72gas_price1000086037gas_limit5000000","time":"2025-04-07T16:20:56+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:21:02+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:21:03+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:21:08+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:21:08+08:00"}
+{"duration":"6.158375875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:21:08+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:21:13+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:21:14+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:21:17+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:21:17+08:00"}
+{"duration":"4.5763205s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:21:17+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce73gas_price1000075302gas_limit5000000","time":"2025-04-07T16:23:30+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:23:35+08:00"}
+{"duration":"527.400333ms","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:23:36+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idd2fb7dd9-b0af-4e2e-a80c-b687bc675b1d","time":"2025-04-07T16:23:43+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:23:46+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T16:23:55+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:23:56+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-07T16:23:56+08:00"}
+{"duration":"13.225548084s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:23:56+08:00"}
+{"level":"info","msg":"Creating issueissue_id758cc3c7-673e-4d38-a9cf-0f7a1e07fe16lottery_iddf4f86b6-e551-4566-a180-e181e679cd86","time":"2025-04-07T16:25:33+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:25:35+08:00"}
+{"level":"error","msg":"Failed to get contract stateerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:25:41+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to get contract state: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:25:41+08:00"}
+{"duration":"7.868330917s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-07T16:25:41+08:00"}
+{"level":"info","msg":"Creating issueissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eelottery_iddf4f86b6-e551-4566-a180-e181e679cd86","time":"2025-04-07T16:25:51+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:25:53+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-07T16:25:57+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:26:04+08:00"}
+{"duration":"13.574179125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-07T16:26:04+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T16:26:35+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:26:37+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x7d3e2b9846b729dbe9b919a10281b41457fe7469c0c9a9163aeac4fc7431e35e","time":"2025-04-07T16:26:42+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id1608229c-df7e-45ea-818e-64029d56ad4e","time":"2025-04-07T16:26:50+08:00"}
+{"duration":"15.188216084s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T16:26:50+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-07T16:27:02+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:27:05+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x64311593deb0c1e33b4fa0e4d2d2e932ad25d50fd956c6e9a7533812fa753d73","time":"2025-04-07T16:27:10+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idf619e796-30a5-4548-ab3b-74d1c2ba9b0f","time":"2025-04-07T16:27:15+08:00"}
+{"duration":"13.032211125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T16:27:15+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xa0Ee7A142d267C1f36714E4a8F75612F20a79720","time":"2025-04-07T16:27:55+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:27:57+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xb6a1ba049b9246ffaa400e5a5f09833a64ab886e9bbadc9418b77c33e0f082e9","time":"2025-04-07T16:28:03+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id5d97f5c1-c3b0-4ac7-82a2-6b4323782f34","time":"2025-04-07T16:28:09+08:00"}
+{"duration":"13.677014917s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T16:28:09+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xa0Ee7A142d267C1f36714E4a8F75612F20a79720","time":"2025-04-07T16:29:01+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:29:03+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:29:06+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:29:06+08:00"}
+{"duration":"4.96766275s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T16:29:06+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xa0Ee7A142d267C1f36714E4a8F75612F20a79720","time":"2025-04-07T16:29:18+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:29:19+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x26b307b6525563e9a77e698c2b53f3bc178facc801aa0f9c8482429a7a72af57","time":"2025-04-07T16:29:23+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id5e666255-2477-4a5c-9f64-6e0223901d0d","time":"2025-04-07T16:29:27+08:00"}
+{"duration":"8.535786542s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T16:29:27+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xBcd4042DE499D14e55001CcbB24a551F3b954096","time":"2025-04-07T16:30:33+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:30:36+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:30:39+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:30:39+08:00"}
+{"duration":"5.259853458s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T16:30:39+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xBcd4042DE499D14e55001CcbB24a551F3b954096","time":"2025-04-07T16:30:49+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:30:50+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:30:53+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-07T16:30:53+08:00"}
+{"duration":"4.524320875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-07T16:30:53+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eebuyer0xBcd4042DE499D14e55001CcbB24a551F3b954096","time":"2025-04-07T16:30:59+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:31:00+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xfb27d1b1853d57cc672bd24f3c6afe8a73d8850e77c099e461837597d9cebc8e","time":"2025-04-07T16:31:03+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idac82e1d1-36d7-4075-ab29-5c2cc3fab05d","time":"2025-04-07T16:31:09+08:00"}
+{"duration":"9.466930375s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-07T16:31:09+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:31:47+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:31:48+08:00"}
+{"level":"info","msg":"Current contract statestate1","time":"2025-04-07T16:31:50+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0x84f2bc7c010c2c3eca1894b51ea998e94ae0b6eec8d9e43a9f556e31817fe745","time":"2025-04-07T16:31:51+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x9135e8b509ebf1f5c1b1144cde2f0e1673849580bd5ae09a33f1ca33c677a998nonce84","time":"2025-04-07T16:31:52+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x9135e8b509ebf1f5c1b1144cde2f0e1673849580bd5ae09a33f1ca33c677a998gas_used81540","time":"2025-04-07T16:31:53+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:31:53+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000a 0x000000000000000000000000000000000000000000000000000000000000000a]data[]","time":"2025-04-07T16:31:53+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id10epoch10","time":"2025-04-07T16:31:54+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to filter dice landed event: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:36:41+08:00"}
+{"duration":"4m54.20021525s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:36:41+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:36:59+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:37:01+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T16:37:02+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x31a931c53b54585bb534fe717664269cdfa3b56a496b4bb46b15edd1a1bd58d6nonce85","time":"2025-04-07T16:37:03+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x31a931c53b54585bb534fe717664269cdfa3b56a496b4bb46b15edd1a1bd58d6gas_used82775","time":"2025-04-07T16:37:03+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 11 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:37:03+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000b 0x000000000000000000000000000000000000000000000000000000000000000b]data[]","time":"2025-04-07T16:37:03+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id11epoch11","time":"2025-04-07T16:37:04+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eeelapsed3m8s","time":"2025-04-07T16:42:04+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x31a931c53b54585bb534fe717664269cdfa3b56a496b4bb46b15edd1a1bd58d6errortimeout waiting for dice landed event","time":"2025-04-07T16:42:04+08:00"}
+{"duration":"5m5.418314584s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:42:04+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:43:26+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:43:28+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T16:43:30+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0xfd300aac342f49f305c0dd6f19302acaec113fbf3070fa7914422e3481d08c8fnonce86","time":"2025-04-07T16:43:31+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0xfd300aac342f49f305c0dd6f19302acaec113fbf3070fa7914422e3481d08c8fgas_used82775","time":"2025-04-07T16:43:32+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 12 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:43:32+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000c 0x000000000000000000000000000000000000000000000000000000000000000c]data[]","time":"2025-04-07T16:43:32+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id12epoch12","time":"2025-04-07T16:43:32+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_idaa798d02-4e2c-493d-b765-e8d096e4f6eeelapsed3m8s","time":"2025-04-07T16:48:33+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0xfd300aac342f49f305c0dd6f19302acaec113fbf3070fa7914422e3481d08c8ferrortimeout waiting for dice landed event","time":"2025-04-07T16:48:33+08:00"}
+{"duration":"5m6.755012292s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:48:33+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce87gas_price1000011888gas_limit5000000","time":"2025-04-07T16:49:31+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:50:10+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:50:12+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T16:50:15+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x460f21046ae92d06987de58316e2836a2bc7484926943d98a1261b062da7de61nonce87","time":"2025-04-07T16:50:16+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x460f21046ae92d06987de58316e2836a2bc7484926943d98a1261b062da7de61gas_used82775","time":"2025-04-07T16:50:16+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 13 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:50:16+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000d 0x000000000000000000000000000000000000000000000000000000000000000d]data[]","time":"2025-04-07T16:50:16+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id13epoch13","time":"2025-04-07T16:50:17+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:55:44+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to filter dice landed event: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-07T16:56:00+08:00"}
+{"duration":"16.636664041s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:56:00+08:00"}
+{"duration":"5m50.017024958s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-07T16:56:00+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce88gas_price1000010411gas_limit5000000","time":"2025-04-07T16:56:24+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-07T16:56:52+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-07T16:56:55+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-07T16:56:59+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x80c09d93d2f99527f19a7f16d65cb3375bd4b1440b21d2f463e993f135da2c4anonce88","time":"2025-04-07T16:57:00+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x80c09d93d2f99527f19a7f16d65cb3375bd4b1440b21d2f463e993f135da2c4agas_used82775","time":"2025-04-07T16:57:01+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 14 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-07T16:57:01+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000e 0x000000000000000000000000000000000000000000000000000000000000000e]data[]","time":"2025-04-07T16:57:01+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id14epoch14","time":"2025-04-07T16:57:02+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce90gas_price1000008005gas_limit5000000","time":"2025-04-07T18:01:54+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce90gas_price1000008005gas_limit5000000","time":"2025-04-08T09:05:40+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_idaa798d02-4e2c-493d-b765-e8d096e4f6ee","time":"2025-04-08T09:05:52+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T09:05:56+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-08T09:07:09+08:00"}
+{"level":"error","msg":"Failed to set state to RollouterrorError: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-08T09:07:09+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to set state to Rollout: Error: VM Exception while processing transaction: reverted with reason string 'Invalid state transition'","time":"2025-04-08T09:07:09+08:00"}
+{"duration":"1m17.537867916s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-08T09:07:09+08:00"}
+{"level":"info","msg":"Creating issueissue_ide93d682f-8620-4657-8487-26eea67dc29flottery_iddf4f86b6-e551-4566-a180-e181e679cd86","time":"2025-04-08T09:08:42+08:00"}
+{"level":"error","msg":"Failed to sync gas priceerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T09:09:21+08:00"}
+{"duration":"39.157959875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":500,"time":"2025-04-08T09:09:21+08:00"}
+{"level":"info","msg":"Creating issueissue_idc8700c66-677a-48f5-8ab7-46c9522bddfblottery_iddf4f86b6-e551-4566-a180-e181e679cd86","time":"2025-04-08T09:09:45+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T09:09:55+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-08T09:10:44+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_idc8700c66-677a-48f5-8ab7-46c9522bddfb","time":"2025-04-08T09:17:52+08:00"}
+{"duration":"8m7.251297125s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-08T09:17:52+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce92gas_price1000006134gas_limit5000000","time":"2025-04-08T10:06:12+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idc8700c66-677a-48f5-8ab7-46c9522bddfbbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-08T10:07:18+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T10:07:25+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xe6e02779358a3477076a404c39543de94f6a831fa18d5a9eaeb06dcd4640d0ea","time":"2025-04-08T10:08:10+08:00"}
+{"level":"error","msg":"Failed to save ticket to databaseerrorread tcp 198.18.0.1:57790-\u003e159.13.40.88:32773: read: connection reset by peer; conn closed","time":"2025-04-08T10:13:10+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to save ticket to database: read tcp 198.18.0.1:57790-\u003e159.13.40.88:32773: read: connection reset by peer; conn closed","time":"2025-04-08T10:13:10+08:00"}
+{"duration":"5m52.140636334s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T10:13:10+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idc8700c66-677a-48f5-8ab7-46c9522bddfbbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-08T10:13:45+08:00"}
+{"level":"error","msg":"Failed to sync gas priceerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T10:14:17+08:00"}
+{"duration":"32.376015959s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T10:14:17+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idc8700c66-677a-48f5-8ab7-46c9522bddfbbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-08T10:14:30+08:00"}
+{"level":"error","msg":"Failed to sync gas priceerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T10:15:00+08:00"}
+{"duration":"29.892593792s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T10:15:00+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_idc8700c66-677a-48f5-8ab7-46c9522bddfbbuyer0x14dC79964da2C08b23698B3D3cc7Ca32193d9955","time":"2025-04-08T10:15:42+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T10:15:45+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x3a8ee3d4ae2b23b46560efa0e34321e85bc8b18aa292fd717dedd73a5dfc9f42","time":"2025-04-08T10:16:00+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idfc32e03b-fff0-48a6-b4a1-4f80d76ecf43","time":"2025-04-08T10:16:10+08:00"}
+{"duration":"27.648427792s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T10:16:10+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce0gas_price1875000000gas_limit5000000","time":"2025-04-08T11:15:01+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id3a66f887-1744-4f2e-a206-a8693e69ca83type_id1","time":"2025-04-08T11:16:57+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T11:16:57+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199nonce0gas_limit5000000","time":"2025-04-08T11:16:58+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x27b240be48de94a28cfcd29df98d2ed1262539177e280d62ab2c3806ebc638c7gas_used2646922","time":"2025-04-08T11:16:58+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_id3a66f887-1744-4f2e-a206-a8693e69ca83contract_address0x5FbDB2315678afecb367f032d93F642f64180aa3","time":"2025-04-08T11:17:07+08:00"}
+{"duration":"10.497393s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-08T11:17:07+08:00"}
+{"level":"info","msg":"Creating issueissue_ida495d18b-aeb6-41b1-8883-9e263afd5216lottery_id3a66f887-1744-4f2e-a206-a8693e69ca83","time":"2025-04-08T11:18:17+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T11:18:17+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-08T11:18:23+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T11:18:29+08:00"}
+{"duration":"12.060251875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-08T11:18:29+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_ida495d18b-aeb6-41b1-8883-9e263afd5216buyer0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-08T11:19:11+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T11:19:11+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x3322213dab851c45a5c6078b662db7b3f51e2b9a56bdd682b666bdb561796c69","time":"2025-04-08T11:19:28+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id75b2dbbc-c9c0-4922-b3eb-b5af423e9ab7","time":"2025-04-08T11:19:44+08:00"}
+{"duration":"32.10817175s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T11:19:44+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_ida495d18b-aeb6-41b1-8883-9e263afd5216buyer0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-08T11:19:53+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T11:19:53+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xa2402d559450295f87775567a16f2396e5847694933fe63adad0f3d5cdb2951f","time":"2025-04-08T11:19:59+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_ide9c36e0c-2a7f-45f9-add6-0bcf6bb046ad","time":"2025-04-08T11:20:13+08:00"}
+{"duration":"19.552506875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T11:20:13+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_ida495d18b-aeb6-41b1-8883-9e263afd5216buyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T11:20:20+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T11:20:20+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x3100340fd48c539b58295c7cdbb216a7ee3b5bbf8d9e3a7ae822e70602f8dd1f","time":"2025-04-08T11:20:25+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idedc425a8-ee8d-4efd-b1cb-9c2fe1b73dc8","time":"2025-04-08T11:20:45+08:00"}
+{"duration":"25.393252s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T11:20:45+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_ida495d18b-aeb6-41b1-8883-9e263afd5216buyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T11:21:04+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T11:21:04+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xb8237b96e369d8a70a197ae5db9211a78cf701c5d70cd5cec79e07776927d5c9","time":"2025-04-08T11:21:14+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id2e71561d-15dd-4b0e-b67c-49b7800e2f92","time":"2025-04-08T11:21:28+08:00"}
+{"duration":"23.747578s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T11:21:28+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T12:52:42+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T12:52:42+08:00"}
+{"level":"info","msg":"Current contract statestate1","time":"2025-04-08T12:52:46+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0x996d9160c67c49b6d17131164227f848f65f7cac206051c743ef70bb426a8942","time":"2025-04-08T12:52:46+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x2ec22dee6ff22b4722c4549f2d8f0a9995bf188f015458b2fb57c8ac6749d0c7nonce7","time":"2025-04-08T12:52:46+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x2ec22dee6ff22b4722c4549f2d8f0a9995bf188f015458b2fb57c8ac6749d0c7gas_used21432","time":"2025-04-08T12:52:46+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_ida495d18b-aeb6-41b1-8883-9e263afd5216elapsed4m59s","time":"2025-04-08T12:57:46+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x2ec22dee6ff22b4722c4549f2d8f0a9995bf188f015458b2fb57c8ac6749d0c7errortimeout waiting for dice landed event","time":"2025-04-08T12:57:46+08:00"}
+{"duration":"5m4.139724667s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-08T12:57:46+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce8gas_price1308791295gas_limit5000000","time":"2025-04-08T12:58:20+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T13:00:39+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T13:00:39+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-08T13:00:42+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x1c0de279d79d6378329a9949fc6588b6540d2106fa246333947cb1fd4e559066nonce8","time":"2025-04-08T13:00:42+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x1c0de279d79d6378329a9949fc6588b6540d2106fa246333947cb1fd4e559066gas_used21432","time":"2025-04-08T13:00:42+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T13:04:00+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T13:04:00+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-08T13:04:02+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0xd436859c56324c764f6aebc1ff1f21960d5affdd67cd163dcd28aaa95e9ca1denonce9","time":"2025-04-08T13:04:02+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0xd436859c56324c764f6aebc1ff1f21960d5affdd67cd163dcd28aaa95e9ca1degas_used21432","time":"2025-04-08T13:04:02+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce10gas_price1236514859gas_limit5000000","time":"2025-04-08T13:05:34+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T13:05:40+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T13:05:40+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-08T13:05:43+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x237240758303615e881230515fd21ad9eedb0166c4bcb0068275cfac8e96efa7nonce10","time":"2025-04-08T13:05:43+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x237240758303615e881230515fd21ad9eedb0166c4bcb0068275cfac8e96efa7gas_used21432","time":"2025-04-08T13:05:43+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_ida495d18b-aeb6-41b1-8883-9e263afd5216elapsed4m59s","time":"2025-04-08T13:10:44+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x237240758303615e881230515fd21ad9eedb0166c4bcb0068275cfac8e96efa7errortimeout waiting for dice landed event","time":"2025-04-08T13:10:44+08:00"}
+{"duration":"5m3.356794375s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-08T13:10:44+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce11gas_price1206992744gas_limit5000000","time":"2025-04-08T14:08:34+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_ida495d18b-aeb6-41b1-8883-9e263afd5216","time":"2025-04-08T14:09:36+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T14:09:36+08:00"}
+{"level":"info","msg":"Current contract statestate2","time":"2025-04-08T14:09:39+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0xaeeb448ff044f2f692c02ffa056f360620312f9508666a44d0fce864a8b06459nonce11","time":"2025-04-08T14:09:39+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0xaeeb448ff044f2f692c02ffa056f360620312f9508666a44d0fce864a8b06459gas_used21432","time":"2025-04-08T14:09:39+08:00"}
+{"level":"error","msg":"Timeout waiting for DiceLanded eventissue_ida495d18b-aeb6-41b1-8883-9e263afd5216elapsed4m59s","time":"2025-04-08T14:14:40+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0xaeeb448ff044f2f692c02ffa056f360620312f9508666a44d0fce864a8b06459errortimeout waiting for dice landed event","time":"2025-04-08T14:14:40+08:00"}
+{"duration":"5m3.547719875s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/draw","status":500,"time":"2025-04-08T14:14:40+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce0gas_price1875000000gas_limit5000000","time":"2025-04-08T15:09:32+08:00"}
+{"level":"info","msg":"Creating lotterylottery_idf4cb331d-6b0b-4ee7-805a-b6190af90221type_id1","time":"2025-04-08T15:10:13+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T15:10:13+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199nonce0gas_limit5000000","time":"2025-04-08T15:10:15+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x27b240be48de94a28cfcd29df98d2ed1262539177e280d62ab2c3806ebc638c7gas_used2646922","time":"2025-04-08T15:10:15+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_idf4cb331d-6b0b-4ee7-805a-b6190af90221contract_address0x5FbDB2315678afecb367f032d93F642f64180aa3","time":"2025-04-08T15:10:18+08:00"}
+{"duration":"5.7079985s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-08T15:10:18+08:00"}
+{"level":"info","msg":"Creating issueissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00blottery_idf4cb331d-6b0b-4ee7-805a-b6190af90221","time":"2025-04-08T15:11:05+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:11:05+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-08T15:11:08+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00b","time":"2025-04-08T15:11:12+08:00"}
+{"duration":"7.037817834s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-08T15:11:12+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00bbuyer0x90F79bf6EB2c4f870365E785982E1f101E93b906","time":"2025-04-08T15:12:21+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:12:21+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x0756a671903c0ad146bae1749e1d54da426423386455ae2cbbc6bed4990ca3da","time":"2025-04-08T15:12:27+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id85829a41-74f2-4d3a-8729-b9c8b49fefd2","time":"2025-04-08T15:12:37+08:00"}
+{"duration":"15.247552375s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:12:37+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00bbuyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T15:12:42+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:12:42+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xa339a049f77837403f3994c017f9a319329f8a2f8e69025683484195aafae7af","time":"2025-04-08T15:12:45+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id6bf1939a-896b-4f89-aa68-6e5b778d3326","time":"2025-04-08T15:12:50+08:00"}
+{"duration":"7.935857708s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:12:50+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00bbuyer0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-08T15:12:58+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:12:58+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x657113d298ab1a9ee2422e9ed5fdeeb22048e005286790daea1e300a318a6520","time":"2025-04-08T15:13:01+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idda841130-a7c3-40d1-a08c-dd9f6bf819e6","time":"2025-04-08T15:13:07+08:00"}
+{"duration":"8.812537084s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:13:07+08:00"}
+{"level":"info","msg":"Fetching all pools","time":"2025-04-08T15:13:19+08:00"}
+{"level":"info","msg":"Fetched total poolstotal112","time":"2025-04-08T15:13:21+08:00"}
+{"duration":"1.9921685s","ip":"::1","level":"info","method":"GET","msg":"Request processed","path":"/lottery/pools","status":200,"time":"2025-04-08T15:13:21+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id7f1b90d4-ffbe-445e-b46d-e10858e3b00b","time":"2025-04-08T15:16:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:16:30+08:00"}
+{"level":"info","msg":"Current contract statestate1","time":"2025-04-08T15:16:33+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0x9b4545394eeb0124060b8f958666406523a5a3d848f12a3f642f1c88ec5b270a","time":"2025-04-08T15:16:33+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x4f266b6df56cf9588a69e4b3833f9c2b2228dc9fc860cbb32f1ac2eec38b96a5nonce6","time":"2025-04-08T15:16:33+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x4f266b6df56cf9588a69e4b3833f9c2b2228dc9fc860cbb32f1ac2eec38b96a5gas_used21432","time":"2025-04-08T15:16:33+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce94gas_price1000004714gas_limit5000000","time":"2025-04-08T15:18:37+08:00"}
+{"level":"info","msg":"Creating lotterylottery_id3e4ea146-ca83-4dff-83ac-601f3548218etype_id1","time":"2025-04-08T15:21:34+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit5000000","time":"2025-04-08T15:21:35+08:00"}
+{"level":"info","msg":"Deploying LotteryManager contractadmin0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266owner0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266nonce94gas_limit5000000","time":"2025-04-08T15:21:39+08:00"}
+{"level":"info","msg":"Transaction submitted successfullytx_hash0x4c98d235b3e0d5bc6d1c2f04a0efa123c0c83be4aaa61394efc5e87eced77974gas_used2646922","time":"2025-04-08T15:21:40+08:00"}
+{"level":"info","msg":"Lottery created successfullylottery_id3e4ea146-ca83-4dff-83ac-601f3548218econtract_address0x86A2EE8FAf9A840F7a2c64CA3d51209F9A02081D","time":"2025-04-08T15:21:44+08:00"}
+{"duration":"10.263258917s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-08T15:21:44+08:00"}
+{"level":"info","msg":"Creating issueissue_id24f8445c-d831-4447-a2b8-e37eff8437c3lottery_id3e4ea146-ca83-4dff-83ac-601f3548218e","time":"2025-04-08T15:22:11+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:22:13+08:00"}
+{"level":"info","msg":"Current contract statestate0","time":"2025-04-08T15:22:18+08:00"}
+{"level":"info","msg":"Issue created successfullyissue_id24f8445c-d831-4447-a2b8-e37eff8437c3","time":"2025-04-08T15:22:25+08:00"}
+{"duration":"13.888011833s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/issues","status":200,"time":"2025-04-08T15:22:25+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x70997970C51812dc3A010C7d01b50e0d17dc79C8","time":"2025-04-08T15:23:19+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:23:21+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0x26f4cfd335c1530922cfebe98685ed432c9bf65fdc93e1b43e4f8645b7da3337","time":"2025-04-08T15:23:26+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id57043959-d9c3-436b-a4db-cf436c531cff","time":"2025-04-08T15:23:33+08:00"}
+{"duration":"14.015561791s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:23:33+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T15:23:43+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:23:46+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T15:23:51+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T15:23:51+08:00"}
+{"duration":"7.635656916s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T15:23:51+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T15:23:54+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:23:56+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorPost \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T15:24:01+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Post \"http://159.13.40.88:8545/\": EOF","time":"2025-04-08T15:24:01+08:00"}
+{"duration":"6.988530917s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T15:24:01+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","time":"2025-04-08T15:24:04+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:24:05+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xbf47e72cf141109468651b7bb64b275f641dda1e129612505ee814f4297f6b02","time":"2025-04-08T15:24:09+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_id49a2a41f-93ac-4c23-9078-23c3a6e09c9a","time":"2025-04-08T15:24:14+08:00"}
+{"duration":"10.771629625s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:24:14+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x90F79bf6EB2c4f870365E785982E1f101E93b906","time":"2025-04-08T15:24:17+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:24:19+08:00"}
+{"level":"error","msg":"Failed to buy ticketerrorError: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-08T15:24:23+08:00"}
+{"level":"error","msg":"Transaction failedtx_hash0x0000000000000000000000000000000000000000000000000000000000000000errorfailed to buy ticket: Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation overflowed outside of an unchecked block)","time":"2025-04-08T15:24:23+08:00"}
+{"duration":"5.619708834s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":500,"time":"2025-04-08T15:24:23+08:00"}
+{"level":"info","msg":"Purchasing ticketissue_id24f8445c-d831-4447-a2b8-e37eff8437c3buyer0x90F79bf6EB2c4f870365E785982E1f101E93b906","time":"2025-04-08T15:24:30+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:24:32+08:00"}
+{"level":"info","msg":"Ticket purchased successfullytx_hash0xe29373cab4a3fef3ff64f86002f7006f6bd3b27d41a328af500fd68d0b62a446","time":"2025-04-08T15:24:35+08:00"}
+{"level":"info","msg":"Ticket purchased successfullyticket_idcc946e46-e25f-44f5-9cc2-687e685e1b11","time":"2025-04-08T15:24:41+08:00"}
+{"duration":"10.955742167s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/tickets","status":200,"time":"2025-04-08T15:24:41+08:00"}
+{"level":"info","msg":"Drawing lotteryissue_id24f8445c-d831-4447-a2b8-e37eff8437c3","time":"2025-04-08T15:26:46+08:00"}
+{"level":"info","msg":"Assigned gas limit from history or defaultgas_limit3970383","time":"2025-04-08T15:26:47+08:00"}
+{"level":"info","msg":"Current contract statestate1","time":"2025-04-08T15:26:50+08:00"}
+{"level":"info","msg":"State set to Rollouttx_hash0x828dfbe9754317d963712b0144f213db30a85c00a47e0c5eb7b6c790ad001799","time":"2025-04-08T15:26:52+08:00"}
+{"level":"info","msg":"RolloutCall transaction submittedtx_hash0x2e9025e7d5750bf693ac6eee5b5b567829d09c2f22cf4a92fbf01220e3db9ad6nonce101","time":"2025-04-08T15:26:53+08:00"}
+{"level":"info","msg":"RolloutCall transaction confirmedtx_hash0x2e9025e7d5750bf693ac6eee5b5b567829d09c2f22cf4a92fbf01220e3db9ad6gas_used84340","time":"2025-04-08T15:26:54+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xaf3c81de4b70b01b31f8facb5ee988d4217788ff467575b0360343b8b65af8ad]data[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 14 128 29 132 250 151 181 7 81 219 242 80 54 208 103 220 241 136 88 191 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 111 120 125 116 202 234 16 178 179 87 121 13 91 82 71 194 246 61 29 145 87 42 152 70 247 128 96 110 77 149 54 119 174 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 156 64 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]","time":"2025-04-08T15:26:54+08:00"}
+{"level":"info","msg":"Transaction logtopics[0xc8aa159ba2f8c0865ab5ea1cdb5b70ce807eebfc517029c8668458d69a4059da 0x000000000000000000000000000000000000000000000000000000000000000f 0x000000000000000000000000000000000000000000000000000000000000000f]data[]","time":"2025-04-08T15:26:54+08:00"}
+{"level":"info","msg":"DiceRolled event capturedrequest_id15epoch15","time":"2025-04-08T15:26:55+08:00"}
