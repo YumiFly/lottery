@@ -29,13 +29,25 @@ A RESTful API for KYC user data management built with Go 1.23.2, Gin, and Postgr
       DB_SSLMODE=disable
       DB_TIMEZONE=Asia/Shanghai
    ```
+
 4. Initiate the database:
    ```bash
    chmod +x init_kyc_db.sh
    ./init_kyc_db.sh
    ```
 
-5. Run the API server:
+5. Configure S3 in config/config.go.
+   Default use local storage, if you want to use S3, you need to configure it.
+   Create a .env file in the root directory with the following content
+   ```bash
+      S3_ENDPOINT=<your-s3-endpoint>
+      S3_ACCESS_KEY=<your-s3-access-key>
+      S3_SECRET_KEY=<your-s3-secret-key>
+      S3_REGION=<your-s3-region>
+      S3_BUCKET_NAME=<your-s3-bucket-name>
+   ```
+
+6. Run the API server:
    ```bash
    go run main.go
    ```
