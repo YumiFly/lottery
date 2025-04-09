@@ -167,6 +167,16 @@ TODO:
                         }'`
          {"message":"Verification successful","code":200,"data":null}%
       ```
+      用户上传文件：
+      ```bash
+         `curl -X POST http://localhost:8080/customers/upload-photo \
+               -H "Content-Type: multipart/form-data" \
+               -F "idPhoto=@/path/to/your/image.jpg"`
+      ```
+      1. 将 /path/to/your/image.jpg 替换为您本地实际的图片文件路径，例如 ~/Pictures/test.jpg
+      2. 确保使用的是支持的图片格式（.jpg、.jpeg 或 .png）
+      3. 确保图片大小不超过 5MB
+
       获取用户列表 
       ```bash
          `curl -X GET http://localhost:8080/customers
