@@ -30,6 +30,13 @@ type AppConfigStruct struct {
 	TokenContractAddress   string // Token 合约地址
 
 	BlockchainSyncInterval int // 区块链同步间隔（以秒为单位）
+
+	// S3 配置
+	Endpoint   string // S3 端点
+	BucketName string // S3 存储桶名称
+	Region     string // S3 区域
+	AccessKey  string // S3 访问密钥
+	SecretKey  string // S3 秘密密钥
 }
 
 var AppConfig AppConfigStruct
@@ -77,5 +84,12 @@ func LoadConfig() {
 		RolloutContractAddress: os.Getenv("ROLLOUT_CONTRACT_ADDRESS"),
 		TokenContractAddress:   os.Getenv("TOKEN_CONTRACT_ADDRESS"),
 		BlockchainSyncInterval: syncInterval, // 默认为10秒
+
+		// S3 配置
+		Endpoint:   os.Getenv("S3_ENDPOINT"),
+		BucketName: os.Getenv("S3_BUCKET_NAME"),
+		Region:     os.Getenv("S3_REGION"),
+		AccessKey:  os.Getenv("S3_ACCESS_KEY"),
+		SecretKey:  os.Getenv("S3_SECRET_KEY"),
 	}
 }
