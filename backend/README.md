@@ -271,6 +271,8 @@ TODO:
 
    --需要提供一个获取彩票剩余量的合约接口
    curl -X POST http://127.0.0.1:8888/setContractAddress -H "Content-Type: application/json" -d '{"address": "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E","timeout":-1}'
+
+   curl -X POST http://159.13.40.88:58008/setContractAddress -H "Content-Type: application/json" -d '{"address": "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49","timeout":-1}'
   
 
 
