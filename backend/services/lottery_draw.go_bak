@@ -1,0 +1,259 @@
+package services
+
+import (
+	"backend/blockchain"
+	lotteryBlockchain "backend/blockchain/lottery"
+	"backend/db"
+	"backend/models"
+	"backend/utils"
+	"context"
+	"fmt"
+	"math/big"
+	"time"
+
+	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/google/uuid"
+)
+
+// DrawLotteryAsync 异步开奖
+func DrawLotteryAsync(issueID string) error {
+	utils.Logger.Info("Starting asynchronous lottery draw", "issue_id", issueID)
+
+	go func() {
+		if err := drawLotteryLogic(issueID); err != nil {
+			utils.Logger.Error("Failed to complete async lottery draw", "issue_id", issueID, "error", err)
+		}
+	}()
+
+	return nil
+}
+
+func drawLotteryLogic(issueID string) error {
+	// Query issue information
+	var issue models.LotteryIssue
+	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
+		utils.Logger.Warn("Lottery issue not found", "issue_id", issueID)
+		return utils.NewServiceError("lottery issue not found", err)
+	}
+
+	// Query lottery information
+	var lottery models.Lottery
+	if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
+		utils.Logger.Warn("Lottery not found", "lottery_id", issue.LotteryID)
+		return utils.NewServiceError("lottery not found", err)
+	}
+
+	// Connect to LotteryManager contract
+	contract, err := lotteryBlockchain.NewLotteryManager(common.HexToAddress(lottery.ContractAddress), blockchain.Client)
+	if err != nil {
+		return utils.NewServiceError("failed to connect to lottery contract", err)
+	}
+
+	// Get current contract state
+	state, err := contract.GetState(nil)
+	if err != nil {
+		return utils.NewServiceError("failed to get contract state", err)
+	}
+	utils.Logger.Info("Current contract state", "state", state)
+
+	// Get initial nonce
+	nonce, err := blockchain.BlockchainMgr.GetNextNonce(context.Background())
+	if err != nil {
+		return utils.NewServiceError("failed to get next nonce", err)
+	}
+	blockchain.Auth.Nonce = big.NewInt(int64(nonce))
+
+	// Set state to Rollout if needed
+	if state != uint8(models.ContractStateRollout) {
+		utils.Logger.Info("Contract state is not Rollout, setting to Rollout")
+		tx, err := contract.TransState(blockchain.Auth, uint8(models.ContractStateRollout))
+		if err != nil {
+			return utils.NewServiceError("failed to set state to Rollout", err)
+		}
+		receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
+		if err != nil || receipt.Status != 1 {
+			return utils.NewServiceError("failed to set state to Rollout", err)
+		}
+		newNonce := blockchain.BlockchainMgr.GetNextNonceForFunc(nonce)
+		blockchain.Auth.Nonce = big.NewInt(int64(newNonce))
+	}
+
+	// Subscribe to LotteryResults event
+	resultsChan := make(chan []*big.Int)
+	errChan := make(chan error)
+	go func() {
+		results, err := listenForLotteryResults(lottery.ContractAddress)
+		if err != nil {
+			errChan <- utils.NewServiceError("failed to listen for LotteryResults event", err)
+			return
+		}
+		resultsChan <- results
+	}()
+
+	// Call rolloutCall
+	rolloutContract, err := lotteryBlockchain.NewSimpleRollout(common.HexToAddress(lottery.RolloutContractAddress), blockchain.Client)
+	if err != nil {
+		return utils.NewServiceError("failed to initialize Rollout contract", err)
+	}
+	utils.Logger.Info("Calling rolloutCall", "rollout_contract", lottery.RolloutContractAddress, "lottery_manager", lottery.ContractAddress)
+	tx, err := rolloutContract.RolloutCall(blockchain.Auth, common.HexToAddress(lottery.ContractAddress))
+	if err != nil {
+		return utils.NewServiceError("failed to call rolloutCall", err)
+	}
+	receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
+	if err != nil || receipt.Status != 1 {
+		return utils.NewServiceError("failed to call rolloutCall", err)
+	}
+	utils.Logger.Info("rolloutCall transaction confirmed", "tx_hash", tx.Hash().Hex(), "block_number", receipt.BlockNumber)
+
+	// Verify contract state after draw
+	state, err = contract.GetState(nil)
+	if err != nil {
+		return utils.NewServiceError("failed to get contract state after draw", err)
+	}
+	if state != uint8(models.ContractStateReady) {
+		return utils.NewServiceError(fmt.Sprintf("contract state not set to Ready after draw, current state: %d", state), nil)
+	}
+	utils.Logger.Info("Contract state verified after draw", "state", state)
+
+	// Wait for results from subscription
+	select {
+	case results := <-resultsChan:
+		err := processLotteryResults(issueID, results, tx.Hash())
+		if err == nil {
+			utils.Logger.Info("Lottery draw completed successfully", "issue_id", issueID, "tx_hash", tx.Hash().Hex())
+		}
+		return err
+	case err := <-errChan:
+		return err
+	case <-time.After(60 * time.Second):
+		return utils.NewServiceError("timeout waiting for LotteryResults event", nil)
+	}
+}
+
+func listenForLotteryResults(contractAddr string) ([]*big.Int, error) {
+	contract, err := lotteryBlockchain.NewLotteryManager(common.HexToAddress(contractAddr), blockchain.Client)
+	if err != nil {
+		return nil, fmt.Errorf("failed to initialize lottery contract: %v", err)
+	}
+
+	logs := make(chan *lotteryBlockchain.LotteryManagerLotteryResults)
+	opts := &bind.WatchOpts{Context: context.Background()}
+	timeout := time.After(60 * time.Second)
+
+	for attempt := 1; attempt <= 3; attempt++ {
+		utils.Logger.Info("Starting to subscribe to LotteryResults event", "attempt", attempt, "contract", contractAddr)
+		sub, err := contract.WatchLotteryResults(opts, logs)
+		if err != nil {
+			utils.Logger.Warn("Failed to subscribe, retrying", "attempt", attempt, "error", err)
+			if attempt == 3 {
+				return nil, fmt.Errorf("failed to subscribe to LotteryResults event: %v", err)
+			}
+			time.Sleep(time.Second * time.Duration(attempt))
+			continue
+		}
+
+		utils.Logger.Info("Successfully subscribed, waiting for event", "attempt", attempt)
+		select {
+		case event := <-logs:
+			sub.Unsubscribe()
+			if len(event.Results) != 3 {
+				return nil, fmt.Errorf("expected 3 results, got %d", len(event.Results))
+			}
+			utils.Logger.Info("Received LotteryResults event", "results", event.Results, "epoch", event.Epoch, "timestamp", event.Timestamp)
+			return event.Results, nil
+		case err := <-sub.Err():
+			sub.Unsubscribe()
+			utils.Logger.Warn("Subscription error, retrying", "attempt", attempt, "error", err)
+			if err == nil {
+				continue
+			}
+			if attempt == 3 {
+				return nil, fmt.Errorf("subscription error: %v", err)
+			}
+		case <-timeout:
+			sub.Unsubscribe()
+			utils.Logger.Warn("Timeout waiting for LotteryResults event", "attempt", attempt)
+			if attempt == 3 {
+				return nil, fmt.Errorf("timeout waiting for LotteryResults event")
+			}
+		}
+	}
+	return nil, fmt.Errorf("failed to subscribe, exceeded retry attempts")
+}
+
+func processLotteryResults(issueID string, results []*big.Int, txHash common.Hash) error {
+	var issue models.LotteryIssue
+	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
+		utils.Logger.Error("Failed to find issue", "error", err)
+		return utils.NewServiceError("failed to find issue", err)
+	}
+
+	// Update issue information
+	issue.WinningNumbers = fmt.Sprintf("%d,%d,%d", results[0], results[1], results[2])
+	issue.DrawTxHash = txHash.Hex()
+	issue.UpdatedAt = time.Now()
+	if err := db.DB.Save(&issue).Error; err != nil {
+		utils.Logger.Error("Failed to update issue", "error", err)
+		return utils.NewServiceError("failed to update issue", err)
+	}
+	utils.Logger.Info("Issue updated successfully", "issue_id", issueID, "winning_numbers", issue.WinningNumbers)
+
+	// Query winners
+	winners, err := getWinnersFromChain(issueID, results)
+	if err != nil {
+		return utils.NewServiceError("failed to get winners from chain", err)
+	}
+
+	// Save winners to database
+	for _, winner := range winners {
+		if err := db.DB.Create(&winner).Error; err != nil {
+			utils.Logger.Error("Failed to save winner", "ticket_id", winner.TicketID, "error", err)
+			return utils.NewServiceError("failed to save winner", err)
+		}
+	}
+	utils.Logger.Info("Winners saved successfully", "issue_id", issueID, "winner_count", len(winners))
+
+	return nil
+}
+
+func getWinnersFromChain(issueID string, results []*big.Int) ([]models.Winner, error) {
+	var tickets []models.LotteryTicket
+	if err := db.DB.Where("issue_id = ?", issueID).Find(&tickets).Error; err != nil {
+		return nil, err
+	}
+
+	var winners []models.Winner
+	for _, ticket := range tickets {
+		ticketNumbers := parseBetContent(ticket.BetContent)
+		if len(ticketNumbers) == 3 && ticketNumbers[0].Cmp(results[0]) == 0 &&
+			ticketNumbers[1].Cmp(results[1]) == 0 && ticketNumbers[2].Cmp(results[2]) == 0 {
+			winner := models.Winner{
+				WinnerID:    uuid.NewString(),
+				IssueID:     issueID,
+				TicketID:    ticket.TicketID,
+				Address:     ticket.BuyerAddress,
+				PrizeLevel:  "First Prize",
+				PrizeAmount: ticket.PurchaseAmount,
+				CreatedAt:   time.Now(),
+				UpdatedAt:   time.Now(),
+			}
+			winners = append(winners, winner)
+		}
+	}
+
+	return winners, nil
+}
+
+// GetDrawnLotteryByIssueID retrieves drawn lottery information by issue ID
+func GetDrawnLotteryByIssueID(issueID string) (*models.LotteryIssue, error) {
+	utils.Logger.Info("Fetching drawn lottery", "issue_id", issueID)
+	var issue models.LotteryIssue
+	if err := db.DB.Where("issue_id = ?", issueID).First(&issue).Error; err != nil {
+		utils.Logger.Warn("Drawn lottery not found", "issue_id", issueID)
+		return nil, utils.NewServiceError("drawn lottery not found", err)
+	}
+	utils.Logger.Info("Successfully fetched drawn lottery", "issue_id", issueID)
+	return &issue, nil
+}

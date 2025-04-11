@@ -38,6 +38,7 @@ type LotteryIssue struct {
 	IssueNumber    string    `gorm:"size:50;not null" json:"issue_number"`
 	SaleEndTime    time.Time `gorm:"type:timestamptz;not null" json:"sale_end_time"`
 	DrawTime       time.Time `gorm:"type:timestamptz;not null" json:"draw_time"`
+	Status         string    `gorm:"size:100;not null" json:"status"`
 	PrizePool      float64   `gorm:"type:numeric;not null" json:"prize_pool"`
 	WinningNumbers string    `gorm:"size:100" json:"winning_numbers"`
 	RandomSeed     string    `gorm:"size:100" json:"random_seed"`

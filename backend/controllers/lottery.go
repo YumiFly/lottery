@@ -2,6 +2,8 @@
 package controllers
 
 import (
+	"backend/blockchain"
+	"backend/db"
 	"backend/models"
 	"backend/services"
 	"backend/utils"
@@ -52,6 +54,7 @@ func CreateIssue(c *gin.Context) {
 	}
 
 	issue.IssueID = uuid.NewString() // 生成新的 UUID 作为彩票期号的 ID
+	issue.Status = models.IssueStatusPending
 
 	if err := services.CreateIssue(&issue); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create issue", err.Error()))
@@ -77,7 +80,9 @@ func DrawLottery(c *gin.Context) {
 		return
 	}
 
-	if err := services.DrawLottery(issueID); err != nil {
+	service := services.NewLotteryService(blockchain.Client, blockchain.Auth, db.DB)
+
+	if err := service.DrawLotteryAsync(issueID); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to draw lottery", err.Error()))
 		return
 	}
