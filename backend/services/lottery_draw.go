@@ -371,6 +371,7 @@ func (s *LotteryService) recordLotteryResults(issueID string, results []*big.Int
 	issue.WinningNumbers = fmt.Sprintf("%d,%d,%d", results[0], results[1], results[2])
 	issue.DrawTxHash = txHash.Hex()
 	issue.Status = models.IssueStatusDrawn
+	issue.DrawTime = time.Now()
 	issue.UpdatedAt = time.Now()
 	if err := tx.Save(&issue).Error; err != nil {
 		utils.Logger.Error("Failed to update issue", "issue_id", issueID, "error", err)

@@ -179,3 +179,12 @@ func GetDrawnLotteryByIssueID(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, utils.SuccessResponse("Drawn lottery retrieved successfully", drawnLottery))
 }
+
+// GetLatestDrawnLottery 获取最新开奖结果
+func GetLatestDrawnLottery(c *gin.Context) {
+	drawnLottery, err := services.GetLatestDrawnLottery()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get latest drawn lottery", err.Error()))
+	}
+	c.JSON(http.StatusOK, utils.SuccessResponse("Latest drawn lottery retrieved successfully", drawnLottery))
+}

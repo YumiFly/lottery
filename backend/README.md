@@ -263,7 +263,10 @@ TODO:
       ```bash
          `curl -X GET "http://localhost:8080/lottery/draw?issue_id=IS001"
       ```
-      
+      获取最近开奖结果以及彩票信息
+      ```bash
+         `curl -X GET "http://localhost:8080/lottery/draw/latest"
+      ```
 
    - 角色权限检查
    - Token 黑名单功能

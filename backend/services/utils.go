@@ -64,6 +64,18 @@ func parseBetContentV2bigIntSlice(content string) []*big.Int {
 	return parseBetContent(content)
 }
 
+func RemoveDuplicateString(strSlice []string) []string {
+	allKeys := make(map[string]bool)
+	list := []string{}
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
+}
+
 // GetAllPools 获取所有奖池总额
 func GetAllPools() (int64, error) {
 	utils.Logger.Info("Fetching all pools")
