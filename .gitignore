@@ -8,3 +8,7 @@ artifacts/
 .deps/
 .states/
 go.sum
+backend/logs
+backend/.env
+backend/uploads/*
+
