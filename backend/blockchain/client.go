@@ -13,8 +13,10 @@ import (
 	"backend/config"
 	"backend/utils"
 
+	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
 )
@@ -28,17 +30,19 @@ var Auth *bind.TransactOpts
 // blockchainManager 管理 Nonce、Gas 价格和 Gas 限制的结构体
 type blockchainManager struct {
 	mu               sync.Mutex    // 保护并发访问
-	currentNonce     uint64        // 当前本地 Nonce
-	lastNonceSync    time.Time     // 上次 Nonce 同步时间
 	currentGas       *big.Int      // 当前 Gas 价格
 	lastGasSync      time.Time     // 上次 Gas 价格同步时间
+	gasHistory       []uint64      // Gas 使用历史，用于自适应管理
 	currentGasLimit  uint64        // 当前 Gas 限制
 	lastGasLimitSync time.Time     // 上次 Gas 限制同步时间
 	syncInterval     time.Duration // 同步间隔，从配置读取
+	nonceMutex       sync.Mutex    // 保护 Nonce 获取的互斥锁
 }
 
 // BlockchainMgr 全局区块链管理器
-var BlockchainMgr = &blockchainManager{}
+var BlockchainMgr = &blockchainManager{
+	gasHistory: make([]uint64, 0, 10), // 初始化 Gas 历史，最大保留 10 次记录
+}
 
 // InitClient 初始化区块链客户端
 func InitClient() {
@@ -86,20 +90,56 @@ func InitClient() {
 		log.Fatalf("Failed to create transactor: %v", err)
 	}
 	auth.Value = big.NewInt(0)
-	auth.GasLimit = uint64(50000000)
+	auth.GasLimit = uint64(5000000) // 初始 GasLimit 设置为 500 万
 
 	Client = client
 	Auth = auth
-	BlockchainMgr.currentNonce = nonce
 	BlockchainMgr.currentGas = gasPrice
 	BlockchainMgr.currentGasLimit = auth.GasLimit
-	BlockchainMgr.lastNonceSync = time.Now()
 	BlockchainMgr.lastGasSync = time.Now()
 	BlockchainMgr.lastGasLimitSync = time.Now()
 	BlockchainMgr.syncInterval = time.Duration(config.AppConfig.BlockchainSyncInterval) * time.Second
 
+	// 初始化 Nonce 池
+	//BlockchainMgr.initNoncePool(nonce)
+
 	utils.Logger.Info("Blockchain client initialized", "nonce", nonce, "gas_price", gasPrice.String(), "gas_limit", auth.GasLimit)
 }
+
+// initNoncePool 初始化 Nonce 池
+// initNoncePool 初始化 Nonce 池
+// func (bm *blockchainManager) initNoncePool(startNonce uint64) {
+// 	bm.mu.Lock()
+// 	defer bm.mu.Unlock()
+// 	bm.noncePool = make([]uint64, 0, 10) // 初始化 Nonce 池为切片
+// 	for i := 0; i < cap(bm.noncePool); i++ {
+// 		bm.noncePool = append(bm.noncePool, startNonce+uint64(i))
+// 	}
+// 	utils.Logger.Info("Nonce pool initialized", "start_nonce", startNonce, "size", cap(bm.noncePool))
+// }
+
+// // refillNoncePool 重新填充 Nonce 池
+// // refillNoncePool 重新填充 Nonce 池
+// func (bm *blockchainManager) refillNoncePool(ctx context.Context) error {
+// 	bm.mu.Lock()
+// 	defer bm.mu.Unlock()
+
+// 	nonce, err := Client.PendingNonceAt(ctx, Auth.From)
+// 	if err != nil {
+// 		utils.Logger.Error("Failed to refill nonce pool", "error", err)
+// 		return fmt.Errorf("failed to refill nonce pool: %v", err)
+// 	}
+
+// 	// 保留已使用的 Nonce，并仅添加新的 Nonce
+// 	newNonce := nonce + uint64(cap(bm.noncePool))
+// 	bm.noncePool = make([]uint64, 0, 10) // 初始化 Nonce 池为切片
+// 	for i := 0; i < cap(bm.noncePool); i++ {
+// 		bm.noncePool = append(bm.noncePool, newNonce+uint64(i))
+// 	}
+
+// 	utils.Logger.Debug("Nonce pool refilled", "start_nonce", nonce, "size", cap(bm.noncePool))
+// 	return nil
+// }
 
 // EnsureInitialized 检查区块链客户端和授权是否初始化
 func EnsureInitialized() error {
@@ -110,47 +150,29 @@ func EnsureInitialized() error {
 	return nil
 }
 
-// syncNonceWithBlockchain 从区块链同步 Nonce
-func (bm *blockchainManager) syncNonceWithBlockchain(ctx context.Context) error {
-	nonce, err := Client.PendingNonceAt(ctx, Auth.From)
-	if err != nil {
-		utils.Logger.Error("Failed to sync nonce from blockchain", "error", err)
-		return fmt.Errorf("failed to sync nonce from blockchain: %v", err)
-	}
-	if nonce > bm.currentNonce {
-		bm.currentNonce = nonce
-	}
-	bm.lastNonceSync = time.Now()
-	utils.Logger.Debug("Synced nonce from blockchain", "nonce", nonce)
-	return nil
-}
-
-// syncGasPriceWithBlockchain 从区块链同步 Gas 价格
-func (bm *blockchainManager) syncGasPriceWithBlockchain(ctx context.Context) error {
-	gasPrice, err := Client.SuggestGasPrice(ctx)
-	if err != nil {
-		utils.Logger.Error("Failed to sync gas price from blockchain", "error", err)
-		return fmt.Errorf("failed to sync gas price from blockchain: %v", err)
-	}
-	bm.currentGas = gasPrice
-	bm.lastGasSync = time.Now()
-	utils.Logger.Debug("Synced gas price from blockchain", "gas_price", gasPrice.String())
-	return nil
-}
-
-// GetNextNonce 获取下一个可用 Nonce，每次都与区块链同步
+// GetNextNonce 获取下一个可用 Nonce，从池中取用
+// GetNextNonce 获取下一个可用 Nonce，从池中取用// GetNextNonce 获取下一个可用 Nonce，从池中取用
+// GetNextNonce 获取下一个可用 Nonce，每次实时获取
 func (bm *blockchainManager) GetNextNonce(ctx context.Context) (uint64, error) {
+	bm.nonceMutex.Lock()         // 获取 Nonce 锁
+	defer bm.nonceMutex.Unlock() // 释放 Nonce 锁
+
+	// 每次实时获取最新的 Nonce
+	currentNonce, err := Client.PendingNonceAt(ctx, Auth.From)
+	if err != nil {
+		return 0, fmt.Errorf("failed to get current nonce: %v", err)
+	}
+
+	return currentNonce, nil
+}
+
+// GetNextNonceForFunc 获取函数内部的下一个可用 Nonce
+func (bm *blockchainManager) GetNextNonceForFunc(funcNonce uint64) uint64 {
 	bm.mu.Lock()
 	defer bm.mu.Unlock()
 
-	nonce, err := Client.PendingNonceAt(ctx, Auth.From)
-	if err != nil {
-		utils.Logger.Error("Failed to sync nonce from blockchain", "error", err)
-		return 0, fmt.Errorf("failed to sync nonce from blockchain: %v", err)
-	}
-	Auth.Nonce = big.NewInt(int64(nonce))
-	utils.Logger.Debug("Assigned next nonce", "nonce", nonce, "from_address", Auth.From.Hex())
-	return nonce, nil
+	funcNonce++
+	return funcNonce
 }
 
 // GetCurrentGasPrice 获取当前 Gas 价格，并在需要时同步
@@ -159,9 +181,14 @@ func (bm *blockchainManager) GetCurrentGasPrice(ctx context.Context) (*big.Int, 
 	defer bm.mu.Unlock()
 
 	if time.Since(bm.lastGasSync) >= bm.syncInterval {
-		if err := bm.syncGasPriceWithBlockchain(ctx); err != nil {
-			return nil, err
+		gasPrice, err := Client.SuggestGasPrice(ctx)
+		if err != nil {
+			utils.Logger.Error("Failed to sync gas price", "error", err)
+			return nil, fmt.Errorf("failed to sync gas price: %v", err)
 		}
+		bm.currentGas = gasPrice
+		bm.lastGasSync = time.Now()
+		utils.Logger.Debug("Synced gas price from blockchain", "gas_price", gasPrice.String())
 	}
 
 	Auth.GasPrice = bm.currentGas
@@ -169,61 +196,107 @@ func (bm *blockchainManager) GetCurrentGasPrice(ctx context.Context) (*big.Int, 
 	return bm.currentGas, nil
 }
 
-// GetCurrentGasLimit 获取当前 Gas 限制，动态调整需要结合具体交易
-func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, call func(*bind.TransactOpts) error) (uint64, error) {
+// UpdateGasHistory 更新 Gas 使用历史
+func (bm *blockchainManager) UpdateGasHistory(receipt *types.Receipt) {
+	bm.mu.Lock()
+	defer bm.mu.Unlock()
+	bm.gasHistory = append(bm.gasHistory, receipt.GasUsed)
+	if len(bm.gasHistory) > 10 {
+		bm.gasHistory = bm.gasHistory[1:] // 保留最近 10 次记录
+	}
+	utils.Logger.Debug("Updated gas history", "gas_used", receipt.GasUsed, "history_size", len(bm.gasHistory))
+}
+
+// GetCurrentGasLimit 自适应 Gas 管理
+func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, data []byte) (uint64, error) {
 	bm.mu.Lock()
 	defer bm.mu.Unlock()
 
-	// 如果提供了 call 函数，仍然支持现有逻辑
-	if call != nil {
-		opts := *Auth
-		opts.GasLimit = 0
-		if err := call(&opts); err != nil {
-			utils.Logger.Warn("Failed to estimate gas limit with call, using default", "error", err)
-			bm.currentGasLimit = 5000000 // 默认值 500 万
-		} else if opts.GasLimit > 0 {
-			estimatedGas := opts.GasLimit * 15 / 10
-			if estimatedGas < 1000000 {
-				estimatedGas = 1000000
-			}
-			bm.currentGasLimit = estimatedGas
-			utils.Logger.Info("Estimated gas limit from call", "gas_limit", bm.currentGasLimit)
-		} else {
-			bm.currentGasLimit = 5000000 // 如果 call 未更新 GasLimit，使用默认值
-			utils.Logger.Warn("Gas estimation returned 0, using default", "gas_limit", bm.currentGasLimit)
+	// 如果提供了交易数据，使用 EstimateGas
+	if len(data) > 0 {
+		msg := ethereum.CallMsg{
+			From:     Auth.From,
+			GasPrice: Auth.GasPrice,
+			Data:     data,
 		}
-	} else {
-		// 如果没有提供 call，使用默认值
-		bm.currentGasLimit = 5000000
-		utils.Logger.Info("No gas estimation provided, using default", "gas_limit", bm.currentGasLimit)
+		gasLimit, err := Client.EstimateGas(ctx, msg)
+		if err != nil {
+			utils.Logger.Warn("Failed to estimate gas", "error", err)
+			return 0, fmt.Errorf("failed to estimate gas: %v", err) // 返回错误
+		}
+		bm.currentGasLimit = uint64(float64(gasLimit) * config.AppConfig.GasLimitIncreaseFactor) // 使用配置项
+		if bm.currentGasLimit < 1000000 {
+			bm.currentGasLimit = 1000000
+		}
+		bm.lastGasLimitSync = time.Now()
+		utils.Logger.Info("Estimated gas limit from blockchain", "gas_limit", bm.currentGasLimit)
+		Auth.GasLimit = bm.currentGasLimit
+		return bm.currentGasLimit, nil
 	}
 
-	Auth.GasLimit = bm.currentGasLimit
+	// 如果没有数据或估算失败，根据历史记录计算
+	if len(bm.gasHistory) == 0 {
+		bm.currentGasLimit = 5000000 // 默认值
+	} else {
+		var avgGas uint64
+		for _, gas := range bm.gasHistory {
+			avgGas += gas
+		}
+		avgGas /= uint64(len(bm.gasHistory))
+		bm.currentGasLimit = uint64(float64(avgGas) * config.AppConfig.GasLimitIncreaseFactor) // 使用配置项
+		if bm.currentGasLimit < 1000000 {
+			bm.currentGasLimit = 1000000
+		}
+	}
+
 	bm.lastGasLimitSync = time.Now()
-	utils.Logger.Debug("Assigned current gas limit", "gas_limit", bm.currentGasLimit)
+	Auth.GasLimit = bm.currentGasLimit
+	utils.Logger.Info("Assigned gas limit from history or default", "gas_limit", bm.currentGasLimit)
 	return bm.currentGasLimit, nil
 }
 
-// WithBlockchain 封装区块链操作
-func WithBlockchain(ctx context.Context, estimateGas func(*bind.TransactOpts) error, fn func() (common.Hash, error)) error {
+// WithBlockchain 封装区块链操作，包含错误重试机制
+// WithBlockchain 封装区块链操作，包含错误重试机制
+func WithBlockchain(ctx context.Context, data []byte, fn func() (common.Hash, error)) error {
 	if err := EnsureInitialized(); err != nil {
 		return utils.NewServiceError("initialization check failed", err)
 	}
 
-	if _, err := BlockchainMgr.GetNextNonce(ctx); err != nil {
-		return utils.NewServiceError("failed to get next nonce", err)
-	}
-	if _, err := BlockchainMgr.GetCurrentGasPrice(ctx); err != nil {
-		return utils.NewServiceError("failed to get current gas price", err)
-	}
-	if _, err := BlockchainMgr.GetCurrentGasLimit(ctx, estimateGas); err != nil {
-		return utils.NewServiceError("failed to get current gas limit", err)
-	}
+	var err error
+	for attempt := 0; attempt < config.AppConfig.MaxBlockchainRetries; attempt++ {
+		//实时获取 Nonce 和 Gas 参数
+		nonce, err := BlockchainMgr.GetNextNonce(ctx)
+		if err != nil {
+			return utils.NewServiceError("failed to get next nonce", err)
+		}
+		Auth.Nonce = big.NewInt(int64(nonce))
+		utils.Logger.Debug("Transaction attempt", "attempt", attempt+1, "nonce", nonce)
 
-	txHash, err := fn()
-	if err != nil {
-		utils.Logger.Warn("Transaction failed, not rolling back nonce due to automining", "tx_hash", txHash.Hex())
-		return err
+		if _, err := BlockchainMgr.GetCurrentGasPrice(ctx); err != nil {
+			return utils.NewServiceError("failed to get current gas price", err)
+		}
+		if gasLimit, err := BlockchainMgr.GetCurrentGasLimit(ctx, data); err != nil {
+			return utils.NewServiceError("failed to get current gas limit", err)
+		} else {
+			Auth.GasLimit = gasLimit
+		}
+
+		// 执行交易
+		txHash, err := fn()
+		if err != nil {
+			if strings.Contains(err.Error(), "nonce too low") || strings.Contains(err.Error(), "nonce too high") {
+				//utils.Logger.Warn("Nonce issue, retrying immediately", "attempt", attempt+1, "nonce", nonce)
+				continue // 立即重试
+			}
+			if strings.Contains(err.Error(), "ran out of gas") {
+				utils.Logger.Warn("Transaction ran out of gas, retrying with increased limit", "attempt", attempt+1, "gas_limit", Auth.GasLimit)
+				Auth.GasLimit = uint64(float64(Auth.GasLimit) * config.AppConfig.GasLimitIncreaseFactor)
+				continue
+			}
+			utils.Logger.Error("Transaction failed", "tx_hash", txHash.Hex(), "error", err)
+			return err
+		}
+		return nil
 	}
-	return nil
+	return utils.NewServiceError(fmt.Sprintf("max retries exceeded, last error: %v", err), nil)
 }

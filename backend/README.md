@@ -29,13 +29,25 @@ A RESTful API for KYC user data management built with Go 1.23.2, Gin, and Postgr
       DB_SSLMODE=disable
       DB_TIMEZONE=Asia/Shanghai
    ```
+
 4. Initiate the database:
    ```bash
    chmod +x init_kyc_db.sh
    ./init_kyc_db.sh
    ```
 
-5. Run the API server:
+5. Configure S3 in config/config.go.
+   Default use local storage, if you want to use S3, you need to configure it.
+   Create a .env file in the root directory with the following content
+   ```bash
+      S3_ENDPOINT=<your-s3-endpoint>
+      S3_ACCESS_KEY=<your-s3-access-key>
+      S3_SECRET_KEY=<your-s3-secret-key>
+      S3_REGION=<your-s3-region>
+      S3_BUCKET_NAME=<your-s3-bucket-name>
+   ```
+
+6. Run the API server:
    ```bash
    go run main.go
    ```
@@ -105,8 +117,11 @@ TODO:
    solc --abi sample_rollout.sol -o ../../backend/build
    abigen --abi build/SimpleRollout.abi --pkg blockchain --type SimpleRollout --out blockchain/simple_rollout.go
 
-   solc --abi lottery.sol -o ../../backend/build
-   abigen --abi build/Lottery.abi --pkg blockchain --type Lottery --out blockchain/lottery/lottery.go
+   solc --abi token/LOTToken.sol -o ../../backend/build
+   solc --abi --base-path . --include-path ./node_modules/ ./token/LOTToken.sol -o ./token/build
+   abigen --abi ./token/build/LOTToken.abi --pkg blockchain --type LOTToken  --out ../backend/blockchain/lottery/lottoken.go
+
+
    ```
  测试用例：
    - 用户注册和登录  
@@ -208,10 +223,10 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/lottery \
                -H "Content-Type: application/json" \
-               -d '{"type_id":"1","ticket_name":"刮刮乐","ticket_price":2.0,
+               -d '{"type_id":"1","ticket_name":"乐可可","ticket_price":2.0,"ticket_supply":10,
                "betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool",
-               "registered_addr":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-               "rollout_contract_address":"0xc5a5C42992dECbae36851359345FE25997F5C42d"}'`
+               "registered_addr":"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+               "rollout_contract_address":"0x0E801D84Fa97b50751Dbf25036d067dCf18858bF"}'`
          {"message":"Lottery created successfully","code":200,"data":{"lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","type_id":"3e3ff670-9201-4f17-9ff2-972a785cb40f","ticket_name":"SimpleTicket","ticket_price":"0.1","betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool","registered_addr":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8","contract_address":"0x1234567890abcdef1234567890abcdef12345678","created_at":"2025-03-31T10:21:06.091355+08:00","updated_at":"2025-03-31T10:21:06.091355+08:00"}}% 
       ```
       获取彩票列表
@@ -224,13 +239,13 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/issues \
                -H "Content-Type: application/json" \
-                -d '{"lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z"}'
+                -d '{"lottery_id":"3e4ea146-ca83-4dff-83ac-601f3548218e","issue_number":"20250409","sale_end_time":"2025-04-09T12:00:00Z"}'
          {"message":"Issue created successfully","code":200,"data":{"issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z","draw_time":"0001-01-01T00:00:00Z","prize_pool":"","winning_numbers":"","random_seed":"","draw_tx_hash":"","created_at":"2025-03-31T10:29:20.406934+08:00","updated_at":"2025-03-31T10:29:20.406935+08:00"}}%
       ```
      
       获取根据彩票ID获取最近的发行信息
       ```bash
-         `curl -X GET http://localhost:8080/lottery/issues/latest/a0ccdbef-0f74-4096-b69e-012e882a7f65
+         `curl -X GET http://localhost:8080/lottery/issues/latest/aa1c1fc9-3316-4d65-876b-5b83390097f1
          {"message":"Latest issue retrieved successfully","code":200,"data":{"issue_id":"86db3427-f58d-4047-a280-574852df374f","lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250331","sale_end_time":"2025-03-28T12:00:00Z","draw_time":"2025-03-27T12:00:00Z","prize_pool":"100","winning_numbers":"","random_seed":"","draw_tx_hash":"","created_at":"2025-03-31T10:25:33.964414Z","updated_at":"2025-03-31T10:25:33.964415Z"}}%  
       ```
 
@@ -238,8 +253,15 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/tickets \
                -H "Content-Type: application/json" \
-               -d '{"ticket_id":"TK001","issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","bet_content":"6,11,16","purchase_amount":"0.1"}'
+               -d '{"ticket_id":"TK001","issue_id":"24f8445c-d831-4447-a2b8-e37eff8437c3","buyer_address":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8","bet_content":"6,12,16","purchase_amount":4.0}'
          {"message":"Ticket purchased successfully","code":200,"data":{"ticket_id":"7caf92e5-b6d2-4a81-9753-06843d4113ed","issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","purchase_time":"2025-03-31T10:30:12.724715+08:00","bet_content":"6,11,16","purchase_amount":"0.1","transaction_hash":"","claim_tx_hash":"","created_at":"2025-03-31T10:30:12.724715+08:00","updated_at":"2025-03-31T10:30:12.724716+08:00"}}
+
+      curl -X POST http://localhost:8080/lottery/tickets \
+               -H "Content-Type: application/json" \
+               -d '{"ticket_id":"TK001","issue_id":"24f8445c-d831-4447-a2b8-e37eff8437c3","buyer_address":"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC","bet_content":"6,10,19","purchase_amount":12.0}'
+      curl -X POST http://localhost:8080/lottery/tickets \
+               -H "Content-Type: application/json" \
+               -d '{"ticket_id":"TK001","issue_id":"24f8445c-d831-4447-a2b8-e37eff8437c3","buyer_address":"0x90F79bf6EB2c4f870365E785982E1f101E93b906","bet_content":"2,5,17","purchase_amount":6.0}'
       ```
       获取用户购买的彩票列表 (GetUserTickets)
       ```bash
@@ -255,8 +277,8 @@ TODO:
 
       开奖
       ```bash
-         `curl -X POST "http://localhost:8080/lottery/draw?issue_id=IS001" \
-               -H "Authorization: Bearer <admin_token>"
+         `curl -X POST "http://localhost:8080/lottery/draw?issue_id=24f8445c-d831-4447-a2b8-e37eff8437c3" \
+               -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDQwNzU4NjMsInJvbGUiOiJhZG1pbiJ9.5RG_Ia5bvlDJvNH6cG2UXWbZmuKLYHp8ziFTx7QHKqo"
       ```
       
       获取开奖结果
@@ -269,6 +291,10 @@ TODO:
    - Token 黑名单功能
    - 日志持久化功能
 
+   --需要提供一个获取彩票剩余量的合约接口
+   curl -X POST http://127.0.0.1:8888/setContractAddress -H "Content-Type: application/json" -d '{"address": "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E","timeout":-1}'
+
+   curl -X POST http://159.13.40.88:58008/setContractAddress -H "Content-Type: application/json" -d '{"address": "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49","timeout":-1}'
   
 
 
