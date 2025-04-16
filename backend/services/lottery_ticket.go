@@ -2,6 +2,7 @@ package services
 
 import (
 	"backend/blockchain"
+	"backend/config"
 	"backend/db"
 	"backend/models"
 	"backend/utils"
@@ -14,34 +15,10 @@ import (
 )
 
 // PurchaseTicket 购买彩票
+// PurchaseTicket 购买彩票
 func PurchaseTicket(ticket *models.LotteryTicket) error {
 	utils.Logger.Info("Purchasing ticket", "issue_id", ticket.IssueID, "buyer", ticket.BuyerAddress)
 
-	// Gas 估算函数
-	estimateGas := func(opts *bind.TransactOpts) error {
-		var issue models.LotteryIssue
-		if err := db.DB.Where("issue_id = ?", ticket.IssueID).First(&issue).Error; err != nil {
-			return err
-		}
-
-		var lottery models.Lottery
-		if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
-			return err
-		}
-
-		contract, err := connectLotteryContract(lottery.ContractAddress)
-		if err != nil {
-			return err
-		}
-
-		// 估算 RecordPlaceBet 的 Gas
-		targets := parseBetContentV2bigIntSlice(ticket.BetContent)
-		amount := big.NewInt(1)
-		_, err = contract.RecordPlaceBet(opts, common.HexToAddress(ticket.BuyerAddress), amount, targets)
-		return err
-	}
-
-	// 执行交易的函数
 	executeTx := func() (common.Hash, error) {
 		var issue models.LotteryIssue
 		if err := db.DB.Where("issue_id = ?", ticket.IssueID).First(&issue).Error; err != nil {
@@ -65,16 +42,17 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 			utils.Logger.Error("Invalid ticket price", "price", lottery.TicketPrice)
 			return common.Hash{}, utils.NewServiceError("invalid ticket price in lottery", nil)
 		}
-		amount := big.NewInt(1)
+
+		totalPrice := new(big.Int).SetInt64(int64(ticket.PurchaseAmount)) // 获取总价
+
+		// 计算数量
+		amount := new(big.Int).Div(totalPrice, price)
+
+		// 更新 ticket.PurchaseAmount
 		ticket.PurchaseAmount = float64(new(big.Int).Mul(price, amount).Int64())
 		ticket.PurchaseTime = time.Now()
 		ticket.CreatedAt = time.Now()
 		ticket.UpdatedAt = time.Now()
-
-		contract, err := connectLotteryContract(lottery.ContractAddress)
-		if err != nil {
-			return common.Hash{}, err
-		}
 
 		targets := parseBetContentV2bigIntSlice(ticket.BetContent)
 		if len(targets) != 3 {
@@ -82,10 +60,21 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 			return common.Hash{}, utils.NewServiceError("invalid bet content: must contain exactly 3 numbers", nil)
 		}
 
-		tx, err := contract.RecordPlaceBet(blockchain.Auth, common.HexToAddress(ticket.BuyerAddress), amount, targets)
+		// 获取 LOTToken 合约实例
+		tokenContract, err := connectTokenContract(config.AppConfig.TokenContractAddress)
 		if err != nil {
-			utils.Logger.Error("Failed to record bet", "error", err)
-			return tx.Hash(), utils.NewServiceError("failed to record bet", err)
+			utils.Logger.Error("Failed to connect to LOTToken contract", "error", err)
+			return common.Hash{}, utils.NewServiceError("failed to connect to LOTToken contract", err)
+		}
+
+		// 调用 LOTToken 合约的 buy 函数
+		tx, err := tokenContract.Buy(blockchain.Auth, common.HexToAddress(lottery.ContractAddress), amount, targets)
+		if err != nil {
+			utils.Logger.Error("Failed to buy ticket", "error", err)
+			if tx != nil {
+				return tx.Hash(), utils.NewServiceError("failed to buy ticket", err)
+			}
+			return common.Hash{}, utils.NewServiceError("failed to buy ticket", err)
 		}
 
 		receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
@@ -97,6 +86,8 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 			utils.Logger.Error("Transaction failed", "tx_hash", tx.Hash().Hex(), "status", receipt.Status)
 			return tx.Hash(), utils.NewServiceError("transaction failed with status: "+string(rune(receipt.Status)), nil)
 		}
+
+		utils.Logger.Info("Ticket purchased successfully", "tx_hash", tx.Hash().Hex())
 
 		ticket.TransactionHash = tx.Hash().Hex()
 		issue.PrizePool = issue.PrizePool + ticket.PurchaseAmount
@@ -114,7 +105,9 @@ func PurchaseTicket(ticket *models.LotteryTicket) error {
 		return tx.Hash(), nil
 	}
 
-	return blockchain.WithBlockchain(context.Background(), estimateGas, executeTx)
+	// 使用空的 data 调用 WithBlockchain，Gas 估算依赖内部逻辑
+	data := []byte{}
+	return blockchain.WithBlockchain(context.Background(), data, executeTx)
 }
 
 // GetPurchasedTicketsByCustomerAddress 根据客户地址获取已购彩票

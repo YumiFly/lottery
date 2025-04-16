@@ -1,4 +1,9 @@
 contracts/artifacts/
+contracts/deps/
+node_modules/*
+build/
+dist/
+coverage/
 artifacts/
 .deps/
 .states/
