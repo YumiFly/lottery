@@ -15,7 +15,6 @@ while [ -z "$issue_response" ]; do
   issue_response=$(curl -s -X POST http://localhost:8080/lottery/issues \
                    -H "Content-Type: application/json" \
                    -d "{\"lottery_id\":\"6ef1ecde-a58d-4377-933f-34a93760257e\",\"issue_number\":\"$issue_number\",\"sale_end_time\":\"2025-04-25T12:00:00Z\"}")
-
   # 检查 curl 命令是否成功执行
   if [ $? -ne 0 ]; then
     echo "Error: curl command failed"
