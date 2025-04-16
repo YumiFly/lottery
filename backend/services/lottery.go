@@ -123,3 +123,130 @@ func GetLotteryByTypeID(typeID string) (*models.Lottery, error) {
 	utils.Logger.Info("Fetched lottery", "lottery_id", lottery.LotteryID)
 	return &lottery, nil
 }
+
+type RecentWinnersInfo struct {
+	LotteryID     string  `json:"lottery_id"`
+	TicketName    string  `json:"ticket_name"`
+	IssueID       string  `json:"issue_id"`
+	IssueNumber   string  `json:"issue_number"`
+	WinnerAddr    string  `json:"winner_addr"`
+	WinningNumber string  `json:"winning_number"`
+	WinAmount     float64 `json:"win_amount"`
+	WinDate       string  `json:"win_date"`
+}
+
+// GetRecentWinners 获取最近中奖的人员
+func GetRecentWinners() ([]RecentWinnersInfo, error) {
+	utils.Logger.Info("Fetching recent winners")
+	var recentWinners []RecentWinnersInfo
+	var winRecords []models.Winner
+	if err := db.DB.Order("created_at desc").Limit(3).Find(&winRecords).Error; err != nil {
+		utils.Logger.Error("Failed to fetch recent winners", "error", err)
+		return nil, utils.NewServiceError("failed to fetch recent winners", err)
+	}
+	for _, winRecord := range winRecords {
+		var lotteryIssue models.LotteryIssue
+		if err := db.DB.Where("issue_id = ?", winRecord.IssueID).First(&lotteryIssue).Error; err != nil {
+			utils.Logger.Error("Failed to fetch lottery", "error", err)
+			return nil, utils.NewServiceError("failed to fetch lottery", err)
+		}
+		var lottery models.Lottery
+		if err := db.DB.Where("lottery_id = ?", lotteryIssue.LotteryID).First(&lottery).Error; err != nil {
+			utils.Logger.Error("Failed to fetch lottery", "error", err)
+			return nil, utils.NewServiceError("failed to fetch lottery", err)
+		}
+		var ticket models.LotteryTicket
+		if err := db.DB.Where("ticket_id = ?", winRecord.TicketID).First(&ticket).Error; err != nil {
+			utils.Logger.Error("Failed to fetch ticket", "error", err)
+			return nil, utils.NewServiceError("failed to fetch ticket", err)
+		}
+		recentWinners = append(recentWinners, RecentWinnersInfo{
+			LotteryID:     lotteryIssue.LotteryID,
+			TicketName:    lottery.TicketName,
+			IssueID:       lotteryIssue.IssueID,
+			IssueNumber:   lotteryIssue.IssueNumber,
+			WinnerAddr:    winRecord.Address,
+			WinningNumber: ticket.BetContent,
+			WinAmount:     winRecord.PrizeAmount,
+			WinDate:       winRecord.CreatedAt.Format("2006-01-02 15:04:05"),
+		})
+
+	}
+	utils.Logger.Info("Fetched recent winners", "count", len(winRecords))
+	return recentWinners, nil
+}
+
+type LatestDrawnLottery struct {
+	TypeId         string `json:"type_id"`
+	TypeName       string `json:"type_name"`
+	LotteryID      string `json:"lottery_id"`
+	TicketName     string `json:"ticket_name"`
+	IssueID        string `json:"issue_id"`
+	IssueNumber    string `json:"issue_number"`
+	WinningNumbers string `json:"winning_numbers"`
+	DrawDate       string `json:"draw_date"`
+}
+
+func GetLatestDrawnLottery() (*[]LatestDrawnLottery, error) {
+	utils.Logger.Info("Fetching latest drawn lottery")
+	var LotteryIssues []models.LotteryIssue
+	// 获取最近5支开奖的彩票
+	if err := db.DB.Where("status = ?", models.IssueStatusDrawn).Order("draw_time desc").Limit(5).Find(&LotteryIssues).Error; err != nil {
+		utils.Logger.Error("Failed to fetch latest drawn lottery", "error", err)
+		return nil, utils.NewServiceError("failed to fetch latest drawn lottery", err)
+	}
+	//遍历获取彩票ID
+	var lotteryIds []string
+	for _, issue := range LotteryIssues {
+		lotteryIds = append(lotteryIds, issue.LotteryID)
+	}
+	//去重彩票ID
+	lotteryIds = RemoveDuplicateString(lotteryIds)
+
+	// 根据获取彩票信息
+	var lotteries []models.Lottery
+	if err := db.DB.Where("lottery_id IN (?)", lotteryIds).Find(&lotteries).Error; err != nil {
+		utils.Logger.Error("Failed to fetch latest drawn lottery", "error", err)
+		return nil, utils.NewServiceError("failed to fetch latest drawn lottery", err)
+	}
+
+	var typeIds []string
+	// 遍历彩票Id,获取类型ID
+	for _, lottery := range lotteries {
+		typeIds = append(typeIds, lottery.TypeID)
+	}
+
+	typeIds = RemoveDuplicateString(typeIds)
+
+	// 根据彩票信息获取彩票类型信息
+	var lotteryTypes []models.LotteryType
+	if err := db.DB.Where("type_id IN (?)", typeIds).Find(&lotteryTypes).Error; err != nil {
+		utils.Logger.Error("Failed to fetch latest drawn lottery", "error", err)
+		return nil, utils.NewServiceError("failed to fetch latest drawn lottery", err)
+	}
+
+	var latestDrawnLotteries []LatestDrawnLottery
+	// 遍历彩票期，获取最近开奖的彩票
+	for _, issue := range LotteryIssues {
+		for _, lottery := range lotteries {
+			if issue.LotteryID == lottery.LotteryID {
+				for _, lotteryType := range lotteryTypes {
+					if lottery.TypeID == lotteryType.TypeID {
+						latestDrawnLotteries = append(latestDrawnLotteries, LatestDrawnLottery{
+							TypeId:         lotteryType.TypeID,
+							TypeName:       lotteryType.TypeName,
+							LotteryID:      lottery.LotteryID,
+							TicketName:     lottery.TicketName,
+							IssueID:        issue.IssueID,
+							IssueNumber:    issue.IssueNumber,
+							WinningNumbers: issue.WinningNumbers,
+							DrawDate:       issue.UpdatedAt.Format("2006-01-02 15:04:05"),
+						})
+					}
+				}
+			}
+		}
+	}
+
+	return &latestDrawnLotteries, nil
+}

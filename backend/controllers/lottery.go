@@ -179,3 +179,35 @@ func GetDrawnLotteryByIssueID(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, utils.SuccessResponse("Drawn lottery retrieved successfully", drawnLottery))
 }
+
+// GetLatestDrawnLottery 获取最新开奖结果
+func GetLatestDrawnLottery(c *gin.Context) {
+	drawnLottery, err := services.GetLatestDrawnLottery()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get latest drawn lottery", err.Error()))
+	}
+	c.JSON(http.StatusOK, utils.SuccessResponse("Latest drawn lottery retrieved successfully", drawnLottery))
+}
+
+// getRecentWinners 获取最近中奖者
+func GetRecentWinners(c *gin.Context) {
+	winners, err := services.GetRecentWinners()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get recent winners", err.Error()))
+	}
+	c.JSON(http.StatusOK, utils.SuccessResponse("Recent winners retrieved successfully", winners))
+}
+
+func GetIssueByID(c *gin.Context) {
+	issueID := c.Param("issue_id")
+	if issueID == "" {
+		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Issue ID is required", nil))
+		return
+	}
+
+	issue, err := services.GetIssueByID(issueID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get issue", err.Error()))
+	}
+	c.JSON(http.StatusOK, utils.SuccessResponse("Issue retrieved successfully", issue))
+}

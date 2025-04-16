@@ -9,13 +9,12 @@ REMOTE_PORT="58008"
 JWT_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDQwNzU4NjMsInJvbGUiOiJhZG1pbiJ9.5RG_Ia5bvlDJvNH6cG2UXWbZmuKLYHp8ziFTx7QHKqo"
 
 # 创建彩票期号 (CreateIssue)
-issue_number="20250422"
+issue_number="20250425"
 issue_response=""
 while [ -z "$issue_response" ]; do
   issue_response=$(curl -s -X POST http://localhost:8080/lottery/issues \
                    -H "Content-Type: application/json" \
-                   -d "{\"lottery_id\":\"6ef1ecde-a58d-4377-933f-34a93760257e\",\"issue_number\":\"$issue_number\",\"sale_end_time\":\"2025-04-16T12:00:00Z\"}")
-
+                   -d "{\"lottery_id\":\"6ef1ecde-a58d-4377-933f-34a93760257e\",\"issue_number\":\"$issue_number\",\"sale_end_time\":\"2025-04-25T12:00:00Z\"}")
   # 检查 curl 命令是否成功执行
   if [ $? -ne 0 ]; then
     echo "Error: curl command failed"
