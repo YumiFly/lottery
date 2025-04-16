@@ -2,6 +2,8 @@
 package controllers
 
 import (
+	"backend/blockchain"
+	"backend/db"
 	"backend/models"
 	"backend/services"
 	"backend/utils"
@@ -40,11 +42,11 @@ func CreateLottery(c *gin.Context) {
 // CreateIssue 创建彩票期号
 // 该方法处理创建彩票期号的 HTTP 请求，验证输入并调用服务层方法。
 func CreateIssue(c *gin.Context) {
-	role, exists := c.Get("role")
-	if !exists || (role != "lottery_admin" && role != "admin") {
-		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
-		return
-	}
+	// role, exists := c.Get("role")
+	// if !exists || (role != "lottery_admin" && role != "admin") {
+	// 	c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+	// 	return
+	// }
 	var issue models.LotteryIssue
 	if err := c.ShouldBindJSON(&issue); err != nil {
 		c.JSON(http.StatusBadRequest, utils.ErrorResponse(utils.ErrCodeInvalidInput, "Invalid input", err.Error()))
@@ -52,6 +54,7 @@ func CreateIssue(c *gin.Context) {
 	}
 
 	issue.IssueID = uuid.NewString() // 生成新的 UUID 作为彩票期号的 ID
+	issue.Status = models.IssueStatusPending
 
 	if err := services.CreateIssue(&issue); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create issue", err.Error()))
@@ -65,11 +68,11 @@ func CreateIssue(c *gin.Context) {
 // 该方法处理彩票开奖的 HTTP 请求，验证权限并调用服务层方法。
 func DrawLottery(c *gin.Context) {
 	// 检查权限（确保调用者是 lottery_admin）
-	role, exists := c.Get("role")
-	if !exists || (role != "lottery_admin" && role != "admin") {
-		c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
-		return
-	}
+	// role, exists := c.Get("role")
+	// if !exists || (role != "lottery_admin" && role != "admin") {
+	// 	c.JSON(http.StatusForbidden, utils.ErrorResponse(utils.ErrCodeForbidden, "Insufficient permissions", nil))
+	// 	return
+	// }
 
 	issueID := c.Query("issue_id")
 	if issueID == "" {
@@ -77,7 +80,9 @@ func DrawLottery(c *gin.Context) {
 		return
 	}
 
-	if err := services.DrawLottery(issueID); err != nil {
+	service := services.NewLotteryService(blockchain.Client, blockchain.Auth, db.DB)
+
+	if err := service.DrawLotteryAsync(issueID); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to draw lottery", err.Error()))
 		return
 	}

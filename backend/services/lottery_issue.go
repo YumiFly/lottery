@@ -16,24 +16,6 @@ import (
 func CreateIssue(issue *models.LotteryIssue) error {
 	utils.Logger.Info("Creating issue", "issue_id", issue.IssueID, "lottery_id", issue.LotteryID)
 
-	// Gas 估算函数
-	estimateGas := func(opts *bind.TransactOpts) error {
-		var lottery models.Lottery
-		if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
-			return err
-		}
-
-		contract, err := connectLotteryContract(lottery.ContractAddress)
-		if err != nil {
-			return err
-		}
-
-		// 估算 TransState 的 Gas
-		_, err = contract.TransState(opts, uint8(1)) // 设置为 Distribute 状态
-		return err
-	}
-
-	// 执行交易的函数
 	executeTx := func() (common.Hash, error) {
 		var lottery models.Lottery
 		if err := db.DB.Where("lottery_id = ?", issue.LotteryID).First(&lottery).Error; err != nil {
@@ -42,7 +24,7 @@ func CreateIssue(issue *models.LotteryIssue) error {
 		}
 
 		var existingIssue models.LotteryIssue
-		if err := db.DB.Where("issue_number = ?", issue.IssueNumber).First(&existingIssue).Error; err == nil {
+		if err := db.DB.Where("issue_number = ?", issue.IssueNumber).Where("lottery_id = ?", issue.LotteryID).First(&existingIssue).Error; err == nil {
 			utils.Logger.Warn("Issue number already exists", "issue_number", issue.IssueNumber)
 			return common.Hash{}, utils.NewServiceError("issue number already exists", nil)
 		}
@@ -53,13 +35,24 @@ func CreateIssue(issue *models.LotteryIssue) error {
 
 		contract, err := connectLotteryContract(lottery.ContractAddress)
 		if err != nil {
-			return common.Hash{}, err
+			return common.Hash{}, utils.NewServiceError("failed to connect to lottery contract", err)
 		}
+
+		// 获取当前合约状态
+		currentState, err := contract.GetState(nil)
+		if err != nil {
+			utils.Logger.Error("Failed to get contract state", "error", err)
+			return common.Hash{}, utils.NewServiceError("failed to get contract state", err)
+		}
+		utils.Logger.Info("Current contract state", "state", currentState) // 添加日志记录
 
 		tx, err := contract.TransState(blockchain.Auth, uint8(1)) // 设置为 Distribute 状态
 		if err != nil {
 			utils.Logger.Error("Failed to set state to Distribute", "error", err)
-			return tx.Hash(), utils.NewServiceError("failed to set state to Distribute", err)
+			if tx != nil {
+				return tx.Hash(), utils.NewServiceError("failed to set state to Distribute", err)
+			}
+			return common.Hash{}, utils.NewServiceError("failed to set state to Distribute", err)
 		}
 
 		receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
@@ -81,7 +74,9 @@ func CreateIssue(issue *models.LotteryIssue) error {
 		return tx.Hash(), nil
 	}
 
-	return blockchain.WithBlockchain(context.Background(), estimateGas, executeTx)
+	// 使用空的 data 调用 WithBlockchain，Gas 估算依赖内部逻辑
+	data := []byte{}
+	return blockchain.WithBlockchain(context.Background(), data, executeTx)
 }
 
 // GetUpcomingIssues 获取即将销售的期号

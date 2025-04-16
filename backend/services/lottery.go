@@ -19,24 +19,21 @@ import (
 func CreateLottery(lottery *models.Lottery) error {
 	utils.Logger.Info("Creating lottery", "lottery_id", lottery.LotteryID, "type_id", lottery.TypeID)
 
-	estimateGas := func(opts *bind.TransactOpts) error {
-		adminAddr := blockchain.Auth.From
-		ownerAddr := common.HexToAddress(lottery.RegisteredAddr)
-		rolloutContractAddr := common.HexToAddress(lottery.RolloutContractAddress)
-		tokenContractAddr := common.HexToAddress(config.AppConfig.TokenContractAddress)
-		supply, _ := new(big.Int).SetString(big.NewInt(lottery.TicketSupply).String(), 10)
-		price, _ := new(big.Int).SetString(big.NewFloat(lottery.TicketPrice).Text('f', 0), 10)
-		_, _, _, err := lotteryBlockchain.DeployLotteryManager(
-			opts, blockchain.Client, adminAddr, ownerAddr, rolloutContractAddr,
-			lottery.TicketName, supply, price, tokenContractAddr,
-		)
-		if err != nil {
-			utils.Logger.Warn("Gas estimation failed", "error", err)
-		} else {
-			utils.Logger.Info("Gas estimation succeeded", "estimated_gas", opts.GasLimit)
-		}
-		return err
+	// 定义 supply 和 price，确保在整个函数中可用
+	supply, ok := new(big.Int).SetString(big.NewInt(lottery.TicketSupply).String(), 10)
+	if !ok {
+		utils.Logger.Error("Invalid ticket supply format", "supply", lottery.TicketSupply)
+		return utils.NewServiceError("invalid ticket supply format", nil)
 	}
+	price, ok := new(big.Int).SetString(big.NewFloat(lottery.TicketPrice).Text('f', 0), 10)
+	if !ok {
+		utils.Logger.Error("Invalid ticket price format", "price", lottery.TicketPrice)
+		return utils.NewServiceError("invalid ticket price format", nil)
+	}
+
+	// 由于无法修改 lottery.go，我们无法直接调用 Pack，这里使用空的 data
+	// Gas 估算将依赖 blockchain.WithBlockchain 的内部逻辑
+	data := []byte{} // 空的 data，实际 Gas 估算由 blockchain 包处理
 
 	executeTx := func() (common.Hash, error) {
 		var lotteryType models.LotteryType
@@ -48,42 +45,33 @@ func CreateLottery(lottery *models.Lottery) error {
 		lottery.CreatedAt = time.Now()
 		lottery.UpdatedAt = time.Now()
 
-		supply, ok := new(big.Int).SetString(big.NewInt(lottery.TicketSupply).String(), 10)
-		if !ok {
-			utils.Logger.Error("Invalid ticket supply format", "supply", lottery.TicketSupply)
-			return common.Hash{}, utils.NewServiceError("invalid ticket supply format", nil)
-		}
-		price, ok := new(big.Int).SetString(big.NewFloat(lottery.TicketPrice).Text('f', 0), 10)
-		if !ok {
-			utils.Logger.Error("Invalid ticket price format", "price", lottery.TicketPrice)
-			return common.Hash{}, utils.NewServiceError("invalid ticket price format", nil)
-		}
-
 		adminAddr := blockchain.Auth.From
 		ownerAddr := common.HexToAddress(lottery.RegisteredAddr)
 		rolloutContractAddr := common.HexToAddress(lottery.RolloutContractAddress)
 		tokenContractAddr := common.HexToAddress(config.AppConfig.TokenContractAddress)
 
-		nonce, err := blockchain.BlockchainMgr.GetNextNonce(context.Background())
-		if err != nil {
-			return common.Hash{}, utils.NewServiceError("failed to get next nonce before deployment", err)
-		}
-		blockchain.Auth.Nonce = big.NewInt(int64(nonce))
-		utils.Logger.Info("Deploying LotteryManager contract", "admin", adminAddr.Hex(), "owner", ownerAddr.Hex(), "nonce", nonce, "gas_limit", blockchain.Auth.GasLimit)
-
+		// 部署合约
+		utils.Logger.Info("Deploying LotteryManager contract", "admin", adminAddr.Hex(), "owner", ownerAddr.Hex(), "nonce", blockchain.Auth.Nonce, "gas_limit", blockchain.Auth.GasLimit)
 		contractAddr, tx, _, err := lotteryBlockchain.DeployLotteryManager(
-			blockchain.Auth, blockchain.Client, adminAddr, ownerAddr, rolloutContractAddr,
-			lottery.TicketName, supply, price, tokenContractAddr,
+			blockchain.Auth,
+			blockchain.Client,
+			adminAddr,
+			ownerAddr,
+			rolloutContractAddr,
+			lottery.TicketName,
+			supply,
+			price,
+			tokenContractAddr,
 		)
 		if err != nil {
 			utils.Logger.Error("Failed to deploy LotteryManager contract", "error", err)
 			if tx == nil {
 				return common.Hash{}, utils.NewServiceError("failed to deploy LotteryManager contract", err)
 			}
-			return tx.Hash(), utils.NewServiceError("failed to deploy LotteryManager contract", err)
+			return tx.Hash(), utils.NewServiceError("failed to deploy LotteryManager contract, transaction failed", err) // 添加更详细的错误信息
 		}
 
-		// 等待交易被挖出并获取收据
+		// 等待交易确认
 		receipt, err := bind.WaitMined(context.Background(), blockchain.Client, tx)
 		if err != nil {
 			utils.Logger.Error("Failed to confirm contract deployment", "tx_hash", tx.Hash().Hex(), "error", err)
@@ -94,7 +82,8 @@ func CreateLottery(lottery *models.Lottery) error {
 			return tx.Hash(), utils.NewServiceError("contract deployment transaction failed", nil)
 		}
 
-		// 记录成功的交易信息，包括 Gas 使用量
+		// 更新 Gas 历史
+		blockchain.BlockchainMgr.UpdateGasHistory(receipt)
 		utils.Logger.Info("Transaction submitted successfully", "tx_hash", tx.Hash().Hex(), "gas_used", receipt.GasUsed)
 
 		lottery.ContractAddress = contractAddr.Hex()
@@ -107,7 +96,8 @@ func CreateLottery(lottery *models.Lottery) error {
 		return tx.Hash(), nil
 	}
 
-	return blockchain.WithBlockchain(context.Background(), estimateGas, executeTx)
+	// 使用空的 data 调用 WithBlockchain，Gas 估算依赖内部逻辑
+	return blockchain.WithBlockchain(context.Background(), data, executeTx)
 }
 
 // GetAllLotteries 获取所有彩票

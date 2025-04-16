@@ -184,6 +184,7 @@ CREATE TABLE lottery_issues (
     issue_number VARCHAR(50) NOT NULL,
     sale_end_time TIMESTAMP WITH TIME ZONE NOT NULL,
     draw_time TIMESTAMP WITH TIME ZONE NOT NULL,
+    status VARCHAR(100) NOT NULL,
     prize_pool NUMERIC NOT NULL,
     winning_numbers VARCHAR(100),
     random_seed VARCHAR(100),
