@@ -62,6 +62,14 @@ func SetupRoutes(r *gin.Engine) {
 
 	// 获取开奖信息
 	r.GET("/lottery/draw/:issue_id", controllers.GetDrawnLotteryByIssueID)
+	// 获取期号信息
+	r.GET("/lottery/issues/:issue_id", controllers.GetIssueByID)
+
+	// 获取近期开奖彩票信息和开奖结果
+	r.GET("/lottery/draw/latest", controllers.GetLatestDrawnLottery)
+
+	// 获取近期得奖的用户信息
+	r.GET("/lottery/recent-winners", controllers.GetRecentWinners)
 
 	// 静态文件服务（用于访问 uploads 目录下的文件）
 	r.Static("/uploads", "./uploads")

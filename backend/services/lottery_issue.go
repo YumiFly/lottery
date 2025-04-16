@@ -95,7 +95,7 @@ func GetUpcomingIssues() ([]models.LotteryIssue, error) {
 func GetLatestIssueByLotteryID(lotteryID string) (*models.LotteryIssue, error) {
 	utils.Logger.Info("Fetching latest issue", "lottery_id", lotteryID)
 	var issue models.LotteryIssue
-	if err := db.DB.Where("lottery_id = ?", lotteryID).Order("issue_id desc").First(&issue).Error; err != nil {
+	if err := db.DB.Where("lottery_id = ?", lotteryID).Order("sale_end_time desc").First(&issue).Error; err != nil {
 		utils.Logger.Warn("No issue found for lottery", "lottery_id", lotteryID)
 		return nil, utils.NewServiceError("issue not found", err)
 	}
@@ -114,4 +114,16 @@ func GetExpiringIssues() ([]models.LotteryIssue, error) {
 	}
 	utils.Logger.Info("Fetched expiring issues", "count", len(issues))
 	return issues, nil
+}
+
+// GetIssueByID 根据ID获取期号
+func GetIssueByID(id string) (*models.LotteryIssue, error) {
+	utils.Logger.Info("Fetching issue by ID", "issue_id", id)
+	var issue models.LotteryIssue
+	if err := db.DB.Where("issue_id = ?", id).First(&issue).Error; err != nil {
+		utils.Logger.Error("Failed to fetch issue", "error", err)
+		return nil, utils.NewServiceError("failed to fetch issue", err)
+	}
+	utils.Logger.Info("Fetched issue", "issue_id", issue.IssueID)
+	return &issue, nil
 }

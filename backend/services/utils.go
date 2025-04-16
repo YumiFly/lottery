@@ -13,17 +13,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-// connectRolloutContract 连接到 Rollout 合约
-func connectRolloutContract(contractAddress string) (*lotteryBlockchain.SimpleRollout, error) {
-	contractAddr := common.HexToAddress(contractAddress)
-	contract, err := lotteryBlockchain.NewSimpleRollout(contractAddr, blockchain.Client)
-	if err != nil {
-		utils.Logger.Error("Failed to connect to rollout contract", "address", contractAddress, "error", err)
-		return nil, utils.NewServiceError("failed to connect to rollout contract", err)
-	}
-	return contract, nil
-}
-
 // connectLotteryContract 连接到 LotteryManager 合约
 func connectLotteryContract(contractAddress string) (*lotteryBlockchain.LotteryManager, error) {
 	contractAddr := common.HexToAddress(contractAddress)
@@ -62,6 +51,18 @@ func parseBetContent(content string) []*big.Int {
 // parseBetContentV2bigIntSlice 解析投注内容（重命名版本）
 func parseBetContentV2bigIntSlice(content string) []*big.Int {
 	return parseBetContent(content)
+}
+
+func RemoveDuplicateString(strSlice []string) []string {
+	allKeys := make(map[string]bool)
+	list := []string{}
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }
 
 // GetAllPools 获取所有奖池总额
