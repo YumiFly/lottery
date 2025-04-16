@@ -239,7 +239,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/issues \
                -H "Content-Type: application/json" \
-                -d '{"lottery_id":"6ef1ecde-a58d-4377-933f-34a93760257e","issue_number":"20250429","sale_end_time":"2025-04-29T12:00:00Z"}'
+                -d '{"lottery_id":"3e4ea146-ca83-4dff-83ac-601f3548218e","issue_number":"20250409","sale_end_time":"2025-04-09T12:00:00Z"}'
          {"message":"Issue created successfully","code":200,"data":{"issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z","draw_time":"0001-01-01T00:00:00Z","prize_pool":"","winning_numbers":"","random_seed":"","draw_tx_hash":"","created_at":"2025-03-31T10:29:20.406934+08:00","updated_at":"2025-03-31T10:29:20.406935+08:00"}}%
       ```
      

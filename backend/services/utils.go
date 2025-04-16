@@ -13,6 +13,17 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
+// connectRolloutContract 连接到 Rollout 合约
+func connectRolloutContract(contractAddress string) (*lotteryBlockchain.SimpleRollout, error) {
+	contractAddr := common.HexToAddress(contractAddress)
+	contract, err := lotteryBlockchain.NewSimpleRollout(contractAddr, blockchain.Client)
+	if err != nil {
+		utils.Logger.Error("Failed to connect to rollout contract", "address", contractAddress, "error", err)
+		return nil, utils.NewServiceError("failed to connect to rollout contract", err)
+	}
+	return contract, nil
+}
+
 // connectLotteryContract 连接到 LotteryManager 合约
 func connectLotteryContract(contractAddress string) (*lotteryBlockchain.LotteryManager, error) {
 	contractAddr := common.HexToAddress(contractAddress)
