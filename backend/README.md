@@ -139,7 +139,7 @@ TODO:
       `curl -X POST http://localhost:8080/customers \
                    -H "Content-Type: application/json" \
                    -d '{
-                  "customer_address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                  "customer_address": "0x12C749293E91AC65389a0e547362ECC501AF6C68",
                   "is_verified": false,
                   "verifier_address": "",
                   "verification_time": "0001-01-01T00:00:00Z",
@@ -147,7 +147,7 @@ TODO:
                   "role_id": 0,
                   "assigned_date": "2025-03-24T12:00:00Z",
                   "kyc_data": {
-                     "customer_address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                     "customer_address": "0x12C749293E91AC65389a0e547362ECC501AF6C68",
                      "name": "Alice Smith",
                      "birth_date": "1995-08-20T00:00:00Z",
                      "nationality": "UK",
@@ -171,10 +171,10 @@ TODO:
       ```bash
         ` curl -X POST http://localhost:8080/auth/verify \
                         -H "Content-Type: application/json" \
-                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDM3MzQwNTIsInJvbGUiOiJhZG1pbiJ9.z4UGie8yrJ5_-C-Y7E7ymybfOY04JRQ7IOzWrI3E5l8" \
+                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDQ3NzAxMjUsInJvbGUiOiJhZG1pbiJ9.97k5a1AhD8gzsH8-nMrZJ1A5nIeevSASj39BaXoHNS8" \
                         -d '{
-                           "history_id": 2,
-                           "customer_address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+                           "history_id": 3,
+                           "customer_address": "0x12C749293E91AC65389a0e547362ECC501AF6C67",
                            "verify_status": "Approved",
                            "verifier_address": "0xAdminAddress123",
                            "verification_date": "2025-03-24T12:00:00Z",
@@ -199,7 +199,7 @@ TODO:
       ```
       根据ID获取用户信息 
       ```bash   
-         `curl -X GET http://localhost:8080/customers/0xNewUser789
+         `curl -X GET http://localhost:8080/customers/0x12C749293E91AC65389a0e547362ECC501AF6C67
           {"message":"Customer retrieved successfully","code":200,"data":{"customer_address":"0xNewUser789","is_verified":true,"verifier_address":"0xAdminAddress123","verification_time":"2025-03-24T12:00:00Z","registration_time":"2025-03-24T12:00:00Z","role_id":2,"assigned_date":"2025-03-31T10:09:57.359221Z","kyc_data":{"customer_address":"0xNewUser789","name":"Alice Smith","birth_date":"1995-08-20T00:00:00Z","nationality":"UK","residential_address":"789 Oak St","phone_number":"5551234567","email":"alice@example.com","document_type":"Passport","document_number":"PP123456789","file_path":"/path/to/new_passport_image.jpg","submission_date":"2025-03-24T12:00:00Z","risk_level":"Low","source_of_funds":"Savings","occupation":"Designer"},"kyc_verifications":[{"history_id":2,"customer_address":"0xNewUser789","verify_status":"Approved","verifier_address":"0xAdminAddress123","verification_date":"2025-03-24T12:00:00Z","comments":"KYC verification passed"}],"role":{"role_id":2,"role_name":"normal_user","role_type":"user","description":"Normal user with limited access","menus":[{"role_menu_id":4,"role_id":2,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":5,"role_id":2,"menu_name":"account_management","menu_path":"/account"}]}}}%    
 
       ```
@@ -239,7 +239,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/issues \
                -H "Content-Type: application/json" \
-                -d '{"lottery_id":"3e4ea146-ca83-4dff-83ac-601f3548218e","issue_number":"20250409","sale_end_time":"2025-04-09T12:00:00Z"}'
+                -d '{"lottery_id":"6ef1ecde-a58d-4377-933f-34a93760257e","issue_number":"20250429","sale_end_time":"2025-04-29T12:00:00Z"}'
          {"message":"Issue created successfully","code":200,"data":{"issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z","draw_time":"0001-01-01T00:00:00Z","prize_pool":"","winning_numbers":"","random_seed":"","draw_tx_hash":"","created_at":"2025-03-31T10:29:20.406934+08:00","updated_at":"2025-03-31T10:29:20.406935+08:00"}}%
       ```
      
@@ -295,6 +295,67 @@ TODO:
    curl -X POST http://127.0.0.1:8888/setContractAddress -H "Content-Type: application/json" -d '{"address": "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E","timeout":-1}'
 
    curl -X POST http://159.13.40.88:58008/setContractAddress -H "Content-Type: application/json" -d '{"address": "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49","timeout":-1}'
-  
 
-
+INSERT INTO winners (
+    winner_id,
+    issue_id,
+    ticket_id,
+    address,
+    prize_level,
+    prize_amount,
+    claim_tx_hash,
+    created_at,
+    updated_at
+) VALUES (
+    '1',
+    'e63b55f4-a504-466f-9d0f-a4ea9200870e',
+    '7211b67c-9921-4958-8529-45b7475bbaf0',
+    '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
+    'number 1',
+    20,
+    'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
+    NOW(),
+    NOW()
+);
+INSERT INTO winners (
+    winner_id,
+    issue_id,
+    ticket_id,
+    address,
+    prize_level,
+    prize_amount,
+    claim_tx_hash,
+    created_at,
+    updated_at
+) VALUES (
+    '2',
+    'b001af29-a809-43a8-83c6-1175cea4520a',
+    'e88d389d-fff7-4974-9831-3bcd870b299f',
+    '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
+    'number 1',
+    25,
+    'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
+    NOW(),
+    NOW()
+);
+INSERT INTO winners (
+    winner_id,
+    issue_id,
+    ticket_id,
+    address,
+    prize_level,
+    prize_amount,
+    claim_tx_hash,
+    created_at,
+    updated_at
+) VALUES (
+    '3',
+    'a464ed55-30a3-4d39-a9c1-c1c8b90116b6',
+    '7b7cc04c-ac3c-41eb-9dc7-16466f6c2e01',
+    '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
+    'number 1',
+    8,
+    'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
+    NOW(),
+    NOW()
+);
