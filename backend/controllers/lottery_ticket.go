@@ -22,7 +22,7 @@ func PurchaseTicket(c *gin.Context) {
 
 	ticket.TicketID = uuid.NewString() // 生成新的 UUID 作为彩票的 ID
 
-	if err := services.PurchaseTicket(&ticket); err != nil {
+	if _, err := services.PurchaseTicket(&ticket); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to purchase ticket", err.Error()))
 		return
 	}

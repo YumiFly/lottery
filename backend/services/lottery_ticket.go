@@ -16,7 +16,7 @@ import (
 
 // PurchaseTicket 购买彩票
 // PurchaseTicket 购买彩票
-func PurchaseTicket(ticket *models.LotteryTicket) error {
+func PurchaseTicket(ticket *models.LotteryTicket) (common.Hash, error) {
 	utils.Logger.Info("Purchasing ticket", "issue_id", ticket.IssueID, "buyer", ticket.BuyerAddress)
 
 	executeTx := func() (common.Hash, error) {

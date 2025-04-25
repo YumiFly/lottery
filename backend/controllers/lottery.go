@@ -31,7 +31,7 @@ func CreateLottery(c *gin.Context) {
 
 	lottery.LotteryID = uuid.NewString() // 生成新的 UUID 作为彩票的 ID
 
-	if err := services.CreateLottery(&lottery); err != nil {
+	if _, err := services.CreateLottery(&lottery); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create lottery", err.Error()))
 		return
 	}
@@ -56,7 +56,7 @@ func CreateIssue(c *gin.Context) {
 	issue.IssueID = uuid.NewString() // 生成新的 UUID 作为彩票期号的 ID
 	issue.Status = models.IssueStatusPending
 
-	if err := services.CreateIssue(&issue); err != nil {
+	if _, err := services.CreateIssue(&issue); err != nil {
 		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to create issue", err.Error()))
 		return
 	}

@@ -100,46 +100,8 @@ func InitClient() {
 	BlockchainMgr.lastGasLimitSync = time.Now()
 	BlockchainMgr.syncInterval = time.Duration(config.AppConfig.BlockchainSyncInterval) * time.Second
 
-	// 初始化 Nonce 池
-	//BlockchainMgr.initNoncePool(nonce)
-
 	utils.Logger.Info("Blockchain client initialized", "nonce", nonce, "gas_price", gasPrice.String(), "gas_limit", auth.GasLimit)
 }
-
-// initNoncePool 初始化 Nonce 池
-// initNoncePool 初始化 Nonce 池
-// func (bm *blockchainManager) initNoncePool(startNonce uint64) {
-// 	bm.mu.Lock()
-// 	defer bm.mu.Unlock()
-// 	bm.noncePool = make([]uint64, 0, 10) // 初始化 Nonce 池为切片
-// 	for i := 0; i < cap(bm.noncePool); i++ {
-// 		bm.noncePool = append(bm.noncePool, startNonce+uint64(i))
-// 	}
-// 	utils.Logger.Info("Nonce pool initialized", "start_nonce", startNonce, "size", cap(bm.noncePool))
-// }
-
-// // refillNoncePool 重新填充 Nonce 池
-// // refillNoncePool 重新填充 Nonce 池
-// func (bm *blockchainManager) refillNoncePool(ctx context.Context) error {
-// 	bm.mu.Lock()
-// 	defer bm.mu.Unlock()
-
-// 	nonce, err := Client.PendingNonceAt(ctx, Auth.From)
-// 	if err != nil {
-// 		utils.Logger.Error("Failed to refill nonce pool", "error", err)
-// 		return fmt.Errorf("failed to refill nonce pool: %v", err)
-// 	}
-
-// 	// 保留已使用的 Nonce，并仅添加新的 Nonce
-// 	newNonce := nonce + uint64(cap(bm.noncePool))
-// 	bm.noncePool = make([]uint64, 0, 10) // 初始化 Nonce 池为切片
-// 	for i := 0; i < cap(bm.noncePool); i++ {
-// 		bm.noncePool = append(bm.noncePool, newNonce+uint64(i))
-// 	}
-
-// 	utils.Logger.Debug("Nonce pool refilled", "start_nonce", nonce, "size", cap(bm.noncePool))
-// 	return nil
-// }
 
 // EnsureInitialized 检查区块链客户端和授权是否初始化
 func EnsureInitialized() error {
@@ -150,14 +112,11 @@ func EnsureInitialized() error {
 	return nil
 }
 
-// GetNextNonce 获取下一个可用 Nonce，从池中取用
-// GetNextNonce 获取下一个可用 Nonce，从池中取用// GetNextNonce 获取下一个可用 Nonce，从池中取用
 // GetNextNonce 获取下一个可用 Nonce，每次实时获取
 func (bm *blockchainManager) GetNextNonce(ctx context.Context) (uint64, error) {
-	bm.nonceMutex.Lock()         // 获取 Nonce 锁
-	defer bm.nonceMutex.Unlock() // 释放 Nonce 锁
+	bm.nonceMutex.Lock()
+	defer bm.nonceMutex.Unlock()
 
-	// 每次实时获取最新的 Nonce
 	currentNonce, err := Client.PendingNonceAt(ctx, Auth.From)
 	if err != nil {
 		return 0, fmt.Errorf("failed to get current nonce: %v", err)
@@ -202,7 +161,7 @@ func (bm *blockchainManager) UpdateGasHistory(receipt *types.Receipt) {
 	defer bm.mu.Unlock()
 	bm.gasHistory = append(bm.gasHistory, receipt.GasUsed)
 	if len(bm.gasHistory) > 10 {
-		bm.gasHistory = bm.gasHistory[1:] // 保留最近 10 次记录
+		bm.gasHistory = bm.gasHistory[1:]
 	}
 	utils.Logger.Debug("Updated gas history", "gas_used", receipt.GasUsed, "history_size", len(bm.gasHistory))
 }
@@ -212,7 +171,6 @@ func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, data []byte
 	bm.mu.Lock()
 	defer bm.mu.Unlock()
 
-	// 如果提供了交易数据，使用 EstimateGas
 	if len(data) > 0 {
 		msg := ethereum.CallMsg{
 			From:     Auth.From,
@@ -222,9 +180,9 @@ func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, data []byte
 		gasLimit, err := Client.EstimateGas(ctx, msg)
 		if err != nil {
 			utils.Logger.Warn("Failed to estimate gas", "error", err)
-			return 0, fmt.Errorf("failed to estimate gas: %v", err) // 返回错误
+			return 0, fmt.Errorf("failed to estimate gas: %v", err)
 		}
-		bm.currentGasLimit = uint64(float64(gasLimit) * config.AppConfig.GasLimitIncreaseFactor) // 使用配置项
+		bm.currentGasLimit = uint64(float64(gasLimit) * config.AppConfig.GasLimitIncreaseFactor)
 		if bm.currentGasLimit < 1000000 {
 			bm.currentGasLimit = 1000000
 		}
@@ -234,16 +192,15 @@ func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, data []byte
 		return bm.currentGasLimit, nil
 	}
 
-	// 如果没有数据或估算失败，根据历史记录计算
 	if len(bm.gasHistory) == 0 {
-		bm.currentGasLimit = 5000000 // 默认值
+		bm.currentGasLimit = 5000000
 	} else {
 		var avgGas uint64
 		for _, gas := range bm.gasHistory {
 			avgGas += gas
 		}
 		avgGas /= uint64(len(bm.gasHistory))
-		bm.currentGasLimit = uint64(float64(avgGas) * config.AppConfig.GasLimitIncreaseFactor) // 使用配置项
+		bm.currentGasLimit = uint64(float64(avgGas) * config.AppConfig.GasLimitIncreaseFactor)
 		if bm.currentGasLimit < 1000000 {
 			bm.currentGasLimit = 1000000
 		}
@@ -256,37 +213,37 @@ func (bm *blockchainManager) GetCurrentGasLimit(ctx context.Context, data []byte
 }
 
 // WithBlockchain 封装区块链操作，包含错误重试机制
-// WithBlockchain 封装区块链操作，包含错误重试机制
-func WithBlockchain(ctx context.Context, data []byte, fn func() (common.Hash, error)) error {
+func WithBlockchain(ctx context.Context, data []byte, fn func() (common.Hash, error)) (common.Hash, error) {
 	if err := EnsureInitialized(); err != nil {
-		return utils.NewServiceError("initialization check failed", err)
+		return common.Hash{}, utils.NewServiceError("initialization check failed", err)
 	}
 
-	var err error
+	var lastErr error
+	var txHash common.Hash
 	for attempt := 0; attempt < config.AppConfig.MaxBlockchainRetries; attempt++ {
-		//实时获取 Nonce 和 Gas 参数
+		// 实时获取 Nonce 和 Gas 参数
 		nonce, err := BlockchainMgr.GetNextNonce(ctx)
 		if err != nil {
-			return utils.NewServiceError("failed to get next nonce", err)
+			return common.Hash{}, utils.NewServiceError("failed to get next nonce", err)
 		}
 		Auth.Nonce = big.NewInt(int64(nonce))
 		utils.Logger.Debug("Transaction attempt", "attempt", attempt+1, "nonce", nonce)
 
 		if _, err := BlockchainMgr.GetCurrentGasPrice(ctx); err != nil {
-			return utils.NewServiceError("failed to get current gas price", err)
+			return common.Hash{}, utils.NewServiceError("failed to get current gas price", err)
 		}
 		if gasLimit, err := BlockchainMgr.GetCurrentGasLimit(ctx, data); err != nil {
-			return utils.NewServiceError("failed to get current gas limit", err)
+			return common.Hash{}, utils.NewServiceError("failed to get current gas limit", err)
 		} else {
 			Auth.GasLimit = gasLimit
 		}
 
 		// 执行交易
-		txHash, err := fn()
+		txHash, err = fn()
 		if err != nil {
 			if strings.Contains(err.Error(), "nonce too low") || strings.Contains(err.Error(), "nonce too high") {
-				//utils.Logger.Warn("Nonce issue, retrying immediately", "attempt", attempt+1, "nonce", nonce)
-				continue // 立即重试
+				utils.Logger.Warn("Nonce issue, retrying immediately", "attempt", attempt+1, "nonce", nonce)
+				continue
 			}
 			if strings.Contains(err.Error(), "ran out of gas") {
 				utils.Logger.Warn("Transaction ran out of gas, retrying with increased limit", "attempt", attempt+1, "gas_limit", Auth.GasLimit)
@@ -294,9 +251,10 @@ func WithBlockchain(ctx context.Context, data []byte, fn func() (common.Hash, er
 				continue
 			}
 			utils.Logger.Error("Transaction failed", "tx_hash", txHash.Hex(), "error", err)
-			return err
+			lastErr = err
+			continue
 		}
-		return nil
+		return txHash, nil
 	}
-	return utils.NewServiceError(fmt.Sprintf("max retries exceeded, last error: %v", err), nil)
+	return common.Hash{}, utils.NewServiceError(fmt.Sprintf("max retries exceeded, last error: %v", lastErr), lastErr)
 }
