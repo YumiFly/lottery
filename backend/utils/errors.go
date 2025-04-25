@@ -1,7 +1,11 @@
 // utils/errors.go
 package utils
 
-import "github.com/go-playground/validator/v10"
+import (
+	"net/http"
+
+	"github.com/go-playground/validator/v10"
+)
 
 const (
 	ErrCodeInvalidInput     = 1001
@@ -20,6 +24,35 @@ func ErrorResponse(code int, message string, data interface{}) Response {
 	}
 }
 
+func NewErrorResponse(err error) Response {
+	if customErr, ok := err.(*Error); ok {
+		return Response{Message: customErr.Message, Code: customErr.Code, Data: nil}
+	}
+	return Response{Message: err.Error(), Code: http.StatusInternalServerError, Data: nil}
+}
+
 func NewValidator() *validator.Validate {
 	return validator.New()
+}
+
+// Error 自定义错误
+type Error struct {
+	Code    int
+	Message string
+	Err     error
+}
+
+func (e *Error) Error() string {
+	if e.Err != nil {
+		return e.Message + ": " + e.Err.Error()
+	}
+	return e.Message
+}
+
+func NewBadRequestError(message string, err error) *Error {
+	return &Error{Code: http.StatusBadRequest, Message: message, Err: err}
+}
+
+func NewInternalError(message string, err error) *Error {
+	return &Error{Code: http.StatusInternalServerError, Message: message, Err: err}
 }

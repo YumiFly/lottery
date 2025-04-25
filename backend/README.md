@@ -171,7 +171,7 @@ TODO:
       ```bash
         ` curl -X POST http://localhost:8080/auth/verify \
                         -H "Content-Type: application/json" \
-                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDQ3NzAxMjUsInJvbGUiOiJhZG1pbiJ9.97k5a1AhD8gzsH8-nMrZJ1A5nIeevSASj39BaXoHNS8" \
+                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDUwNDcwNTYsInJvbGUiOiJhZG1pbiJ9.Y8_MVGkmxr80IyT9zuCFhSS5YEXn-DEbPG4unqbtSPo" \
                         -d '{
                            "history_id": 3,
                            "customer_address": "0x12C749293E91AC65389a0e547362ECC501AF6C67",
@@ -223,10 +223,10 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/lottery \
                -H "Content-Type: application/json" \
-               -d '{"type_id":"1","ticket_name":"乐可可","ticket_price":2.0,"ticket_supply":10,
+               -d '{"type_id":"1","ticket_name":"数字奇缘","ticket_price":2.0,"ticket_supply":10,
                "betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool",
-               "registered_addr":"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-               "rollout_contract_address":"0x0E801D84Fa97b50751Dbf25036d067dCf18858bF"}'`
+               "registered_addr":"0x12C749293E91AC65389a0e547362ECC501AF6C67",
+               "rollout_contract_address":"0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"}'`
          {"message":"Lottery created successfully","code":200,"data":{"lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","type_id":"3e3ff670-9201-4f17-9ff2-972a785cb40f","ticket_name":"SimpleTicket","ticket_price":"0.1","betting_rules":"Choose 3 numbers between 1 and 36","prize_structure":"1st Prize: 50% of pool","registered_addr":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8","contract_address":"0x1234567890abcdef1234567890abcdef12345678","created_at":"2025-03-31T10:21:06.091355+08:00","updated_at":"2025-03-31T10:21:06.091355+08:00"}}% 
       ```
       获取彩票列表
@@ -239,7 +239,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/issues \
                -H "Content-Type: application/json" \
-                -d '{"lottery_id":"6ef1ecde-a58d-4377-933f-34a93760257e","issue_number":"20250429","sale_end_time":"2025-04-29T12:00:00Z"}'
+                -d '{"lottery_id":"d3bf6c59-26a9-45d5-8a4f-d9bc775415bd","issue_number":"20250429","sale_end_time":"2025-04-29T12:00:00Z"}'
          {"message":"Issue created successfully","code":200,"data":{"issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","lottery_id":"a0ccdbef-0f74-4096-b69e-012e882a7f65","issue_number":"20250405","sale_end_time":"2025-04-05T12:00:00Z","draw_time":"0001-01-01T00:00:00Z","prize_pool":"","winning_numbers":"","random_seed":"","draw_tx_hash":"","created_at":"2025-03-31T10:29:20.406934+08:00","updated_at":"2025-03-31T10:29:20.406935+08:00"}}%
       ```
      
@@ -253,7 +253,7 @@ TODO:
       ```bash
          `curl -X POST http://localhost:8080/lottery/tickets \
                -H "Content-Type: application/json" \
-               -d '{"ticket_id":"TK001","issue_id":"24f8445c-d831-4447-a2b8-e37eff8437c3","buyer_address":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8","bet_content":"6,12,16","purchase_amount":4.0}'
+               -d '{"ticket_id":"TK001","issue_id":"issue-20250423105421","buyer_address":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8","bet_content":"6,12,16","purchase_amount":4.0}'
          {"message":"Ticket purchased successfully","code":200,"data":{"ticket_id":"7caf92e5-b6d2-4a81-9753-06843d4113ed","issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","purchase_time":"2025-03-31T10:30:12.724715+08:00","bet_content":"6,11,16","purchase_amount":"0.1","transaction_hash":"","claim_tx_hash":"","created_at":"2025-03-31T10:30:12.724715+08:00","updated_at":"2025-03-31T10:30:12.724716+08:00"}}
 
       curl -X POST http://localhost:8080/lottery/tickets \
@@ -266,6 +266,7 @@ TODO:
       获取用户购买的彩票列表 (GetUserTickets)
       ```bash
          `curl -X GET http://localhost:8080/lottery/tickets/customer/0xabcdef1234567890abcdef1234567890abcdef12
+         `curl -X GET "http://localhost:8080/lottery/tickets/customer/v2/0x12C749293E91AC65389a0e547362ECC501AF6C67"
          {"message":"Purchased tickets retrieved successfully","code":200,"data":[{"ticket_id":"7caf92e5-b6d2-4a81-9753-06843d4113ed","issue_id":"c5b8edda-6d38-4b85-ac3f-9e5ba84d5848","buyer_address":"0xabcdef1234567890abcdef1234567890abcdef12","purchase_time":"2025-03-31T10:30:12.724715Z","bet_content":"6,11,16","purchase_amount":"0.1","transaction_hash":"","claim_tx_hash":"","created_at":"2025-03-31T10:30:12.724715Z","updated_at":"2025-03-31T10:30:12.724716Z"}]}%
       ```
       
@@ -285,6 +286,108 @@ TODO:
       ```bash
          `curl -X GET "http://localhost:8080/lottery/draw?issue_id=IS001"
       ```
+
+      --------------------------新的版本----------------------
+      获取类型列表
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/types/v2
+      ```
+
+       获取cp列表信息
+      ```bash
+         `curl -X GET "http://localhost:8080/lottery/lottery/v2
+         `curl -X GET "http://localhost:8080/lottery/lottery/v2?ticket_name=数字"
+         `curl -X GET "http://localhost:8080/lottery/lottery/v2?type_id=1"
+      ```
+
+      获取发行的期号列表
+      ```bash
+         `curl -X GET "http://localhost:8080/lottery/issues/v2"
+         `curl -X GET "http://localhost:8080/lottery/issues/v2?lottery_id=8c4bbaac-863b-4471-b9d9
+         `curl -X GET "http://localhost:8080/lottery/issues/v2?issue_number=20230401&page=1&page_size=20"
+         `curl -X GET "http://localhost:8080/lottery/issues/v2?status=PENDING&page=1&page_size=20"
+      ```
+
+      获取zj者列表
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/winners/v2
+         `curl -X GET "http://localhost:8080/lottery/winners/v2?issue_id=7d45f51a-6de5-4f83-b8ba-0d8594da1d20"
+         `curl -X GET "http://localhost:8080/lottery/winners/v2?address=0x1234567890abcdef1234567890abcdef12345678"
+         `curl -X GET "http://localhost:8080/lottery/winners/v2?prize_level=First%20Prize"
+         `curl -X GET "http://localhost:8080/lottery/winners/v2?page=2&page_size=10"
+      ```
+
+
+      获取cp购买列表
+      ```bash
+         `curl -X GET "http://localhost:8080/lottery/tickets/v2"
+         `curl -X GET "http://localhost:8080/lottery/tickets/v2?issue_id=7d45f51a-6de5-4f83-b8ba-0d8594da1d20"
+         `curl -X GET "http://localhost:8080/lottery/tickets/v2?buyer_address=0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
+         `curl -X GET "http://localhost:8080/lottery/tickets/v2?page=2&page_size=10"
+      ```
+
+     创建types (Create)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/types/v2 \
+               -H "Content-Type: application/json" \
+               -d '{"type_name": "Mega Jackpot v3","description":"A huge prize pool for the lucky winner"}'
+      ```
+
+      创建cp (Create)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/lottery/v2 \
+               -H "Content-Type: application/json" \
+               -d '{
+                  "type_id":"cb7d91b9-2b2d-4837-9733-fbfc4aafde3a",
+                  "ticket_name":"number games v6",
+                  "ticket_price":2.0,
+                  "ticket_supply":10,
+                  "betting_rules":"Choose 3 numbers between 1 and 36",
+                  "prize_structure":"1st Prize: 50% of pool",
+                  "registered_addr":"0x12C749293E91AC65389a0e547362ECC501AF6C67",
+                  "rollout_contract_address":"0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
+               }'
+      ```
+
+      创建期号 (Create)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/issues/v2 \
+               -H "Content-Type: application/json" \
+               -d '{
+                  "lottery_id":"7d04caf1-90f5-4369-b0a7-cf594043a929",
+                  "issue_number":"20250502",
+                  "sale_end_time":"2025-05-03T12:00:00Z",
+                  "draw_time": "2025-05-04T00:00:00Z",
+                  "status": "PENDING"
+               }'
+      ```
+
+      购买cp (Create)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/tickets/v2 \
+         -H "Content-Type: application/json" \
+         -d '{
+            "issue_id": "issue-20250425130113",
+            "buyer_address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+            "purchase_amount":4,
+            "bet_content":"8,15,16"
+         }'
+      ```
+
+      开奖 (Draw)
+      ```bash
+         `curl -X POST http://localhost:8080/lottery/draw/v2 \
+          -H "Content-Type: application/json" \
+          -d '{"issue_id": "issue-20250425130113"}'
+      ```
+
+      查询总奖池大小 (Get Total Prize Pool)
+      ```bash
+         `curl -X GET http://localhost:8080/lottery/pools/v2
+      ```
+
+
+
       
 
    - 角色权限检查
@@ -294,7 +397,7 @@ TODO:
    --需要提供一个获取彩票剩余量的合约接口
    curl -X POST http://127.0.0.1:8888/setContractAddress -H "Content-Type: application/json" -d '{"address": "0xbDA5747bFD65F08deb54cb465eB87D40e51B197E","timeout":-1}'
 
-   curl -X POST http://159.13.40.88:58008/setContractAddress -H "Content-Type: application/json" -d '{"address": "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49","timeout":-1}'
+   curl -X POST http://159.13.40.88:58008/setContractAddress -H "Content-Type: application/json" -d '{"address": "0x5FbDB2315678afecb367f032d93F642f64180aa3","timeout":-1}'
 
 INSERT INTO winners (
     winner_id,
@@ -308,8 +411,8 @@ INSERT INTO winners (
     updated_at
 ) VALUES (
     '1',
-    'e63b55f4-a504-466f-9d0f-a4ea9200870e',
-    '7211b67c-9921-4958-8529-45b7475bbaf0',
+    '7d45f51a-6de5-4f83-b8ba-0d8594da1d20',
+    'ad829384-fdd0-47d5-a4ac-fd20f0ce625b',
     '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
     'number 1',
     20,
@@ -329,32 +432,11 @@ INSERT INTO winners (
     updated_at
 ) VALUES (
     '2',
-    'b001af29-a809-43a8-83c6-1175cea4520a',
-    'e88d389d-fff7-4974-9831-3bcd870b299f',
+    '7d45f51a-6de5-4f83-b8ba-0d8594da1d20',
+    'ad829384-fdd0-47d5-a4ac-fd20f0ce625b',
     '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
-    'number 1',
+    'number 2',
     25,
-    'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
-    NOW(),
-    NOW()
-);
-INSERT INTO winners (
-    winner_id,
-    issue_id,
-    ticket_id,
-    address,
-    prize_level,
-    prize_amount,
-    claim_tx_hash,
-    created_at,
-    updated_at
-) VALUES (
-    '3',
-    'a464ed55-30a3-4d39-a9c1-c1c8b90116b6',
-    '7b7cc04c-ac3c-41eb-9dc7-16466f6c2e01',
-    '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
-    'number 1',
-    8,
     'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
     NOW(),
     NOW()

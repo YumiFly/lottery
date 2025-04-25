@@ -16,19 +16,19 @@ import (
 )
 
 // CreateLottery 创建彩票
-func CreateLottery(lottery *models.Lottery) error {
+func CreateLottery(lottery *models.Lottery) (common.Hash, error) {
 	utils.Logger.Info("Creating lottery", "lottery_id", lottery.LotteryID, "type_id", lottery.TypeID)
 
 	// 定义 supply 和 price，确保在整个函数中可用
 	supply, ok := new(big.Int).SetString(big.NewInt(lottery.TicketSupply).String(), 10)
 	if !ok {
 		utils.Logger.Error("Invalid ticket supply format", "supply", lottery.TicketSupply)
-		return utils.NewServiceError("invalid ticket supply format", nil)
+		return common.Hash{}, utils.NewServiceError("invalid ticket supply format", nil)
 	}
 	price, ok := new(big.Int).SetString(big.NewFloat(lottery.TicketPrice).Text('f', 0), 10)
 	if !ok {
 		utils.Logger.Error("Invalid ticket price format", "price", lottery.TicketPrice)
-		return utils.NewServiceError("invalid ticket price format", nil)
+		return common.Hash{}, utils.NewServiceError("invalid ticket price format", nil)
 	}
 
 	// 由于无法修改 lottery.go，我们无法直接调用 Pack，这里使用空的 data

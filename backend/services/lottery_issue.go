@@ -13,7 +13,7 @@ import (
 )
 
 // CreateIssue 创建彩票期号
-func CreateIssue(issue *models.LotteryIssue) error {
+func CreateIssue(issue *models.LotteryIssue) (common.Hash, error) {
 	utils.Logger.Info("Creating issue", "issue_id", issue.IssueID, "lottery_id", issue.LotteryID)
 
 	executeTx := func() (common.Hash, error) {
