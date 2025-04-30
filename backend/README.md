@@ -171,13 +171,13 @@ TODO:
       ```bash
         ` curl -X POST http://localhost:8080/auth/verify \
                         -H "Content-Type: application/json" \
-                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDUwNDcwNTYsInJvbGUiOiJhZG1pbiJ9.Y8_MVGkmxr80IyT9zuCFhSS5YEXn-DEbPG4unqbtSPo" \
+                        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9hZGRyZXNzIjoiMHhBZG1pbkFkZHJlc3MxMjMiLCJleHAiOjE3NDU4Mjg5MDEsInJvbGUiOiJhZG1pbiJ9.6UJ2SMWgAPmQF2qww-XhNfQ9ws_wJj8rMLrFKLT6348" \
                         -d '{
                            "history_id": 3,
                            "customer_address": "0x12C749293E91AC65389a0e547362ECC501AF6C67",
                            "verify_status": "Approved",
                            "verifier_address": "0xAdminAddress123",
-                           "verification_date": "2025-03-24T12:00:00Z",
+                           "verification_date": "2025-04-27T12:00:00Z",
                            "comments": "KYC verification passed"
                         }'`
          {"message":"Verification successful","code":200,"data":null}%
@@ -195,7 +195,10 @@ TODO:
       获取用户列表 
       ```bash
          `curl -X GET http://localhost:8080/customers
-         {"message":"Customers retrieved successfully","code":200,"data":[{"customer_address":"0xAdminAddress123","is_verified":true,"verifier_address":"","verification_time":"0001-01-01T00:00:00Z","registration_time":"2025-03-31T02:06:04.37407Z","role_id":1,"assigned_date":"2025-03-31T02:06:04.37407Z","kyc_data":{"customer_address":"0xAdminAddress123","name":"Jane Doe","birth_date":"1985-05-15T00:00:00Z","nationality":"CN","residential_address":"456 Elm St","phone_number":"9876543210","email":"jane@example.com","document_type":"ID","document_number":"ID123456789","file_path":"/path/to/id_image.jpg","submission_date":"2025-03-31T02:06:04.37407Z","risk_level":"Low","source_of_funds":"Salary","occupation":"Engineer"},"kyc_verifications":[{"history_id":1,"customer_address":"0xAdminAddress123","verify_status":"Approved","verifier_address":"0xVerifierAddress789","verification_date":"2025-03-31T02:06:04.37407Z","comments":"KYC verification completed successfully"}],"role":{"role_id":1,"role_name":"lottery_admin","role_type":"admin","description":"Administrator for lottery management","menus":[{"role_menu_id":1,"role_id":1,"menu_name":"lottery_management","menu_path":"/lottery/manage"},{"role_menu_id":2,"role_id":1,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":3,"role_id":1,"menu_name":"account_management","menu_path":"/account"}]}},{"customer_address":"0xUserAddress456","is_verified":false,"verifier_address":"","verification_time":"0001-01-01T00:00:00Z","registration_time":"2025-03-31T02:06:04.37407Z","role_id":2,"assigned_date":"2025-03-31T02:06:04.37407Z","kyc_data":{"customer_address":"0xUserAddress456","name":"John Doe","birth_date":"1990-01-01T00:00:00Z","nationality":"US","residential_address":"123 Main St","phone_number":"1234567890","email":"john@example.com","document_type":"Passport","document_number":"PP987654321","file_path":"/path/to/passport_image.jpg","submission_date":"2025-03-31T02:06:04.37407Z","risk_level":"Medium","source_of_funds":"Investment","occupation":"Trader"},"kyc_verifications":[],"role":{"role_id":2,"role_name":"normal_user","role_type":"user","description":"Normal user with limited access","menus":[{"role_menu_id":4,"role_id":2,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":5,"role_id":2,"menu_name":"account_management","menu_path":"/account"}]}},{"customer_address":"0xNewUser789","is_verified":true,"verifier_address":"0xAdminAddress123","verification_time":"2025-03-24T12:00:00Z","registration_time":"2025-03-24T12:00:00Z","role_id":2,"assigned_date":"2025-03-31T10:09:57.359221Z","kyc_data":{"customer_address":"0xNewUser789","name":"Alice Smith","birth_date":"1995-08-20T00:00:00Z","nationality":"UK","residential_address":"789 Oak St","phone_number":"5551234567","email":"alice@example.com","document_type":"Passport","document_number":"PP123456789","file_path":"/path/to/new_passport_image.jpg","submission_date":"2025-03-24T12:00:00Z","risk_level":"Low","source_of_funds":"Savings","occupation":"Designer"},"kyc_verifications":[{"history_id":2,"customer_address":"0xNewUser789","verify_status":"Approved","verifier_address":"0xAdminAddress123","verification_date":"2025-03-24T12:00:00Z","comments":"KYC verification passed"}],"role":{"role_id":2,"role_name":"normal_user","role_type":"user","description":"Normal user with limited access","menus":[{"role_menu_id":4,"role_id":2,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":5,"role_id":2,"menu_name":"account_management","menu_path":"/account"}]}}]}%  
+         {"message":"Customers retrieved successfully","code":200,"data":[{"customer_address":"0xAdminAddress123","is_verified":true,"verifier_address":"","verification_time":"0001-01-01T00:00:00Z","registration_time":"2025-03-31T02:06:04.37407Z","role_id":1,"assigned_date":"2025-03-31T02:06:04.37407Z","kyc_data":{"customer_address":"0xAdminAddress123","name":"Jane Doe","birth_date":"1985-05-15T00:00:00Z","nationality":"CN","residential_address":"456 Elm St","phone_number":"9876543210","email":"jane@example.com","document_type":"ID","document_number":"ID123456789","file_path":"/path/to/id_image.jpg","submission_date":"2025-03-31T02:06:04.37407Z","risk_level":"Low","source_of_funds":"Salary","occupation":"Engineer"},"kyc_verifications":[{"history_id":1,"customer_address":"0xAdminAddress123","verify_status":"Approved","verifier_address":"0xVerifierAddress789","verification_date":"2025-03-31T02:06:04.37407Z","comments":"KYC verification completed successfully"}],"role":{"role_id":1,"role_name":"lottery_admin","role_type":"admin","description":"Administrator for lottery management","menus":[{"role_menu_id":1,"role_id":1,"menu_name":"lottery_management","menu_path":"/lottery/manage"},{"role_menu_id":2,"role_id":1,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":3,"role_id":1,"menu_name":"account_management","menu_path":"/account"}]}},{"customer_address":"0xUserAddress456","is_verified":false,"verifier_address":"","verification_time":"0001-01-01T00:00:00Z","registration_time":"2025-03-31T02:06:04.37407Z","role_id":2,"assigned_date":"2025-03-31T02:06:04.37407Z","kyc_data":{"customer_address":"0xUserAddress456","name":"John Doe","birth_date":"1990-01-01T00:00:00Z","nationality":"US","residential_address":"123 Main St","phone_number":"1234567890","email":"john@example.com","document_type":"Passport","document_number":"PP987654321","file_path":"/path/to/passport_image.jpg","submission_date":"2025-03-31T02:06:04.37407Z","risk_level":"Medium","source_of_funds":"Investment","occupation":"Trader"},
+         "kyc_verifications":[],
+         "role":{"role_id":2,"role_name":"normal_user","role_type":"user","description":"Normal user with limited access",
+         "menus":[{"role_menu_id":4,"role_id":2,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":5,"role_id":2,"menu_name":"account_management","menu_path":"/account"}]}},{"customer_address":"0xNewUser789","is_verified":true,"verifier_address":"0xAdminAddress123","verification_time":"2025-03-24T12:00:00Z","registration_time":"2025-03-24T12:00:00Z","role_id":2,"assigned_date":"2025-03-31T10:09:57.359221Z","kyc_data":{"customer_address":"0xNewUser789","name":"Alice Smith","birth_date":"1995-08-20T00:00:00Z","nationality":"UK","residential_address":"789 Oak St","phone_number":"5551234567","email":"alice@example.com","document_type":"Passport","document_number":"PP123456789","file_path":"/path/to/new_passport_image.jpg","submission_date":"2025-03-24T12:00:00Z","risk_level":"Low","source_of_funds":"Savings","occupation":"Designer"},"kyc_verifications":[{"history_id":2,"customer_address":"0xNewUser789","verify_status":"Approved","verifier_address":"0xAdminAddress123","verification_date":"2025-03-24T12:00:00Z","comments":"KYC verification passed"}],"role":{"role_id":2,"role_name":"normal_user","role_type":"user","description":"Normal user with limited access","menus":[{"role_menu_id":4,"role_id":2,"menu_name":"purchase_page","menu_path":"/lottery/purchase"},{"role_menu_id":5,"role_id":2,"menu_name":"account_management","menu_path":"/account"}]}}]}%  
       ```
       根据ID获取用户信息 
       ```bash   
@@ -205,7 +208,7 @@ TODO:
       ```
       根据钱包地址获取用户信息：
       ```bash
-         `curl http://localhost:8080/customers/address/456%20Elm%20St
+         `curl -X GET http://localhost:8080/customers/address/456%20Elm%20St
       ```
       创建彩票类型
       ```bash
@@ -295,7 +298,7 @@ TODO:
 
        获取cp列表信息
       ```bash
-         `curl -X GET "http://localhost:8080/lottery/lottery/v2
+         `curl -X GET "http://localhost:8080/lottery/lottery/v2"
          `curl -X GET "http://localhost:8080/lottery/lottery/v2?ticket_name=数字"
          `curl -X GET "http://localhost:8080/lottery/lottery/v2?type_id=1"
       ```
@@ -338,8 +341,8 @@ TODO:
          `curl -X POST http://localhost:8080/lottery/lottery/v2 \
                -H "Content-Type: application/json" \
                -d '{
-                  "type_id":"cb7d91b9-2b2d-4837-9733-fbfc4aafde3a",
-                  "ticket_name":"number games v6",
+                  "type_id":"1",
+                  "ticket_name":"big jackpot",
                   "ticket_price":2.0,
                   "ticket_supply":10,
                   "betting_rules":"Choose 3 numbers between 1 and 36",
@@ -354,10 +357,10 @@ TODO:
          `curl -X POST http://localhost:8080/lottery/issues/v2 \
                -H "Content-Type: application/json" \
                -d '{
-                  "lottery_id":"7d04caf1-90f5-4369-b0a7-cf594043a929",
-                  "issue_number":"20250502",
-                  "sale_end_time":"2025-05-03T12:00:00Z",
-                  "draw_time": "2025-05-04T00:00:00Z",
+                  "lottery_id":"01c57e58-093b-44ad-9b58-f10c224b36c5",
+                  "issue_number":"20250427",
+                  "sale_end_time":"2025-04-30T12:00:00Z",
+                  "draw_time": "2025-05-01T00:00:00Z",
                   "status": "PENDING"
                }'
       ```
@@ -411,11 +414,11 @@ INSERT INTO winners (
     updated_at
 ) VALUES (
     '1',
-    '7d45f51a-6de5-4f83-b8ba-0d8594da1d20',
-    'ad829384-fdd0-47d5-a4ac-fd20f0ce625b',
+    'issue-20250425155318',
+    'a5696bb0-65eb-4369-b11a-6f510a9863d7',
     '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
     'number 1',
-    20,
+    50,
     'uebhsxcsbchdsdhsjdjsdshdjsdhsjd',
     NOW(),
     NOW()

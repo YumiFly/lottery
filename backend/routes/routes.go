@@ -33,6 +33,7 @@ func SetupRoutes(r *gin.Engine) {
 	r.POST("/customers", middleware.ValidationMiddleware(&models.Customer{}), controllers.CreateCustomer) // KYC 用户注册接口
 	r.GET("/customers", controllers.GetCustomers)                                                         // 获取所有用户，管理员员使用，需要分页，可以和下面的接口合并
 	r.GET("/customers/:customer_address", controllers.GetCustomerByAddress)                               // 根据用户地址获取用户信息，需要验证用户身份
+	r.GET("/customers/roles", controllers.GetRoleList)                                                    // 获取用户角色，需要验证用户身份
 
 	// 彩票相关路由
 	r.POST("/lottery/types", controllers.CreateLotteryType) // 创建彩票类型

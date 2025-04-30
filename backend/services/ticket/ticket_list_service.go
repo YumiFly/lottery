@@ -74,7 +74,7 @@ func (s *TicketListService) GetAllTickets(ctx context.Context, params TicketQuer
 	query = query.Offset(offset).Limit(pageSize)
 
 	// Fetch tickets
-	if err := query.Find(&tickets).Error; err != nil {
+	if err := query.Preload("LotteryIssue").Preload("LotteryIssue.Lottery").Find(&tickets).Error; err != nil {
 		utils.Logger.Error("Failed to fetch tickets", "error", err)
 		return nil, utils.NewInternalError("Failed to fetch tickets", err)
 	}

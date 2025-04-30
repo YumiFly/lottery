@@ -51,15 +51,16 @@ type LotteryIssue struct {
 
 // LotteryTicket 彩票票据表模型
 type LotteryTicket struct {
-	TicketID        string    `gorm:"primaryKey;size:50" json:"ticket_id"`
-	IssueID         string    `gorm:"size:50;not null" json:"issue_id"`
-	BuyerAddress    string    `gorm:"size:66;not null" json:"buyer_address"`
-	PurchaseTime    time.Time `gorm:"type:timestamptz;not null" json:"purchase_time"`
-	BetContent      string    `gorm:"size:100;not null" json:"bet_content"`
-	PurchaseAmount  float64   `gorm:"type:numeric;not null" json:"purchase_amount"`
-	TransactionHash string    `gorm:"size:66" json:"transaction_hash"`
-	CreatedAt       time.Time `gorm:"type:timestamptz;default:now()" json:"created_at"`
-	UpdatedAt       time.Time `gorm:"type:timestamptz;default:now()" json:"updated_at"`
+	TicketID        string       `gorm:"primaryKey;size:50" json:"ticket_id"`
+	IssueID         string       `gorm:"size:50;not null" json:"issue_id"`
+	BuyerAddress    string       `gorm:"size:66;not null" json:"buyer_address"`
+	PurchaseTime    time.Time    `gorm:"type:timestamptz;not null" json:"purchase_time"`
+	BetContent      string       `gorm:"size:100;not null" json:"bet_content"`
+	PurchaseAmount  float64      `gorm:"type:numeric;not null" json:"purchase_amount"`
+	TransactionHash string       `gorm:"size:66" json:"transaction_hash"`
+	CreatedAt       time.Time    `gorm:"type:timestamptz;default:now()" json:"created_at"`
+	UpdatedAt       time.Time    `gorm:"type:timestamptz;default:now()" json:"updated_at"`
+	LotteryIssue    LotteryIssue `gorm:"foreignKey:IssueID;references:IssueID"`
 }
 
 // Winner 中奖者表模型
