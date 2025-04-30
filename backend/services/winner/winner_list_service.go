@@ -74,7 +74,12 @@ func (s *WinnerListService) GetAllWinners(ctx context.Context, params WinnerQuer
 	query = query.Offset(offset).Limit(pageSize)
 
 	// Fetch winners
-	if err := query.Preload("LotteryIssue").Preload("LotteryTicket").Order("created_at desc").Find(&winners).Error; err != nil {
+	if err := query.
+		Preload("LotteryIssue").
+		Preload("LotteryIssue.Lottery").
+		Preload("LotteryTicket").
+		Order("created_at desc").
+		Find(&winners).Error; err != nil {
 		utils.Logger.Error("Failed to fetch winners", "error", err)
 		return nil, utils.NewInternalError("Failed to fetch winners", err)
 	}

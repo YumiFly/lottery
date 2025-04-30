@@ -7,6 +7,8 @@ import (
 	"backend/utils"
 	"errors"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 // GetCustomers 获取所有用户及其关联数据
@@ -52,13 +54,20 @@ func GetCustomers() ([]models.Customer, error) {
 // GetCustomerByAddress 根据 CustomerAddress 获取用户及其关联数据
 func GetCustomerByAddress(customerAddress string) (*models.Customer, error) {
 	var customer models.Customer
+
 	// 查询指定用户
 	if err := db.DB.Where("customer_address = ?", customerAddress).First(&customer).Error; err != nil {
+		// 如果没有找到，直接返回 nil，不报错
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, nil
+		}
+		// 其他数据库错误才返回错误
 		return nil, err
 	}
 	utils.Logger.Info("GetCustomerByAddress's customer from database ,", customer)
 
 	// 手动查询关联数据
+
 	// 查询 KYCData
 	var kycData models.KYCData
 	if err := db.DB.Where("customer_address = ?", customer.CustomerAddress).First(&kycData).Error; err == nil {
@@ -152,4 +161,13 @@ func VerifyCustomer(verification *models.KYCVerificationHistory) error {
 
 	// Rejected 状态下无需更新 Customer 表，仅插入验证记录
 	return nil
+}
+
+// GetRoleList 获取角色列表
+func GetRoleList() ([]models.Role, error) {
+	var roles []models.Role
+	if err := db.DB.Find(&roles).Error; err != nil {
+		return nil, err
+	}
+	return roles, nil
 }

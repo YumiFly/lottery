@@ -217,3 +217,21 @@ func VerifyCustomer(c *gin.Context) {
 		c.JSON(http.StatusOK, utils.SuccessResponse("Verification failed", nil))
 	}
 }
+
+// Get Role List
+// @Summary 获取角色列表
+// @Description 获取所有角色信息
+// @Tags roles
+// @Accept json
+// @Produce json
+// @Success 200 {object} utils.Response{data=[]models.Role}
+// @Failure 500 {object} utils.Response
+// @Router /roles [get]
+func GetRoleList(c *gin.Context) {
+	roles, err := services.GetRoleList()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, utils.ErrorResponse(utils.ErrCodeInternalServer, "Failed to get role list", err.Error()))
+		return
+	}
+	c.JSON(http.StatusOK, utils.SuccessResponse("Role list retrieved successfully", roles))
+}

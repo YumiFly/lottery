@@ -115,6 +115,8 @@ func (s *LotteryCreateService) CreateLottery(ctx context.Context, params CreateL
 		TypeID:                 params.TypeID,
 		TicketName:             params.TicketName,
 		TicketSupply:           params.TicketSupply,
+		BettingRules:           params.BettingRules,
+		PrizeStructure:         params.PrizeStructure,
 		TicketPrice:            params.TicketPrice,
 		RegisteredAddr:         params.RegisteredAddr,
 		RolloutContractAddress: params.RolloutContractAddress,
