@@ -8,12 +8,6 @@ import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "../lottery.sol";
 
-contract FakeU is ERC20, ERC20Permit, Ownable {
-    constructor(uint256 initialSupply) ERC20("Fake USD", "FKU")  ERC20Permit("Fake USD") Ownable(msg.sender) {
-        _mint(msg.sender, initialSupply);
-    }
-}
-
 contract LOTToken is ERC20, ERC20Permit, Ownable {
     // 稳定币信息结构体
     struct StablecoinInfo {
