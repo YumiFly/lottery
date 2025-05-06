@@ -29,113 +29,135 @@ var (
 	_ = abi.ConvertType
 )
 
-// LOTTokenMetaData contains all meta data concerning the LOTToken contract.
-var LOTTokenMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"initialSupply\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"allowance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"ERC20InsufficientAllowance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"ERC20InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"approver\",\"type\":\"address\"}],\"name\":\"ERC20InvalidApprover\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"ERC20InvalidReceiver\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"ERC20InvalidSender\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"ERC20InvalidSpender\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"placeAddr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"target\",\"type\":\"uint256[]\"}],\"name\":\"buy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+// LotteryMetaData contains all meta data concerning the Lottery contract.
+var LotteryMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"initialSupply\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"ECDSAInvalidSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"ECDSAInvalidSignatureLength\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"ECDSAInvalidSignatureS\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"allowance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"ERC20InsufficientAllowance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"needed\",\"type\":\"uint256\"}],\"name\":\"ERC20InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"approver\",\"type\":\"address\"}],\"name\":\"ERC20InvalidApprover\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"ERC20InvalidReceiver\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"ERC20InvalidSender\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"ERC20InvalidSpender\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"ERC2612ExpiredSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"signer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"ERC2612InvalidSigner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"currentNonce\",\"type\":\"uint256\"}],\"name\":\"InvalidAccountNonce\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidShortString\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"str\",\"type\":\"string\"}],\"name\":\"StringTooLong\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"EIP712DomainChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"stablecoin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"lotAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"stablecoinAmount\",\"type\":\"uint256\"}],\"name\":\"LOTExchanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"stablecoin\",\"type\":\"address\"}],\"name\":\"StablecoinRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"stablecoin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"StablecoinUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"stablecoin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"stablecoinAmount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"lotAmount\",\"type\":\"uint256\"}],\"name\":\"TokensExchanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DOMAIN_SEPARATOR\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"placeAddr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"target\",\"type\":\"uint256[]\"}],\"name\":\"buy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"eip712Domain\",\"outputs\":[{\"internalType\":\"bytes1\",\"name\":\"fields\",\"type\":\"bytes1\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"chainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"verifyingContract\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"},{\"internalType\":\"uint256[]\",\"name\":\"extensions\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"stablecoinAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"exchangeForLOT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"stablecoinAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"lotAmount\",\"type\":\"uint256\"}],\"name\":\"exchangeForStablecoin\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getReleased\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"stablecoinAddress\",\"type\":\"address\"}],\"name\":\"getStablecoinInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSupportedStablecoinsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"nonces\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"v\",\"type\":\"uint8\"},{\"internalType\":\"bytes32\",\"name\":\"r\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"s\",\"type\":\"bytes32\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"stablecoinAddress\",\"type\":\"address\"}],\"name\":\"removeStablecoin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"setReleased\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"stablecoinAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"setStablecoin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stablecoins\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rate\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isSupported\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"supportedStablecoinsList\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x610160604052348015610010575f80fd5b5060405161509d38038061509d83398181016040528101906100329190610736565b336040518060400160405280600d81526020017f4c6f747465727920546f6b656e00000000000000000000000000000000000000815250806040518060400160405280600181526020017f31000000000000000000000000000000000000000000000000000000000000008152506040518060400160405280600d81526020017f4c6f747465727920546f6b656e000000000000000000000000000000000000008152506040518060400160405280600381526020017f4c4f540000000000000000000000000000000000000000000000000000000000815250816003908161011b9190610992565b50806004908161012b9190610992565b50505061014260058361028960201b90919060201c565b610120818152505061015e60068261028960201b90919060201c565b6101408181525050818051906020012060e08181525050808051906020012061010081815250504660a0818152505061019b6102d660201b60201c565b608081815250503073ffffffffffffffffffffffffffffffffffffffff1660c08173ffffffffffffffffffffffffffffffffffffffff16815250505050505f73ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603610249575f6040517f1e4fbdf70000000000000000000000000000000000000000000000000000000081526004016102409190610aa0565b60405180910390fd5b6102588161033060201b60201c565b505f600860146101000a81548160ff02191690831515021790555061028333826103f360201b60201c565b50610cf8565b5f6020835110156102aa576102a38361047860201b60201c565b90506102d0565b826102ba836104dd60201b60201c565b5f0190816102c89190610992565b5060ff5f1b90505b92915050565b5f7f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f60e051610100514630604051602001610315959493929190610ae0565b60405160208183030381529060405280519060200120905090565b5f60085f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508160085f6101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a35050565b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1603610463575f6040517fec442f0500000000000000000000000000000000000000000000000000000000815260040161045a9190610aa0565b60405180910390fd5b6104745f83836104e660201b60201c565b5050565b5f80829050601f815111156104c457826040517f305a27a90000000000000000000000000000000000000000000000000000000081526004016104bb9190610b97565b60405180910390fd5b8051816104d090610be4565b5f1c175f1b915050919050565b5f819050919050565b5f73ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1603610536578060025f82825461052a9190610c77565b92505081905550610604565b5f805f8573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f20549050818110156105bf578381836040517fe450d38c0000000000000000000000000000000000000000000000000000000081526004016105b693929190610caa565b60405180910390fd5b8181035f808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2081905550505b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff160361064b578060025f8282540392505081905550610695565b805f808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f82825401925050819055505b8173ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef836040516106f29190610cdf565b60405180910390a3505050565b5f80fd5b5f819050919050565b61071581610703565b811461071f575f80fd5b50565b5f815190506107308161070c565b92915050565b5f6020828403121561074b5761074a6106ff565b5b5f61075884828501610722565b91505092915050565b5f81519050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52602260045260245ffd5b5f60028204905060018216806107dc57607f821691505b6020821081036107ef576107ee610798565b5b50919050565b5f819050815f5260205f209050919050565b5f6020601f8301049050919050565b5f82821b905092915050565b5f600883026108517fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82610816565b61085b8683610816565b95508019841693508086168417925050509392505050565b5f819050919050565b5f61089661089161088c84610703565b610873565b610703565b9050919050565b5f819050919050565b6108af8361087c565b6108c36108bb8261089d565b848454610822565b825550505050565b5f90565b6108d76108cb565b6108e28184846108a6565b505050565b5b81811015610905576108fa5f826108cf565b6001810190506108e8565b5050565b601f82111561094a5761091b816107f5565b61092484610807565b81016020851015610933578190505b61094761093f85610807565b8301826108e7565b50505b505050565b5f82821c905092915050565b5f61096a5f198460080261094f565b1980831691505092915050565b5f610982838361095b565b9150826002028217905092915050565b61099b82610761565b67ffffffffffffffff8111156109b4576109b361076b565b5b6109be82546107c5565b6109c9828285610909565b5f60209050601f8311600181146109fa575f84156109e8578287015190505b6109f28582610977565b865550610a59565b601f198416610a08866107f5565b5f5b82811015610a2f57848901518255600182019150602085019450602081019050610a0a565b86831015610a4c5784890151610a48601f89168261095b565b8355505b6001600288020188555050505b505050505050565b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f610a8a82610a61565b9050919050565b610a9a81610a80565b82525050565b5f602082019050610ab35f830184610a91565b92915050565b5f819050919050565b610acb81610ab9565b82525050565b610ada81610703565b82525050565b5f60a082019050610af35f830188610ac2565b610b006020830187610ac2565b610b0d6040830186610ac2565b610b1a6060830185610ad1565b610b276080830184610a91565b9695505050505050565b5f82825260208201905092915050565b8281835e5f83830152505050565b5f601f19601f8301169050919050565b5f610b6982610761565b610b738185610b31565b9350610b83818560208601610b41565b610b8c81610b4f565b840191505092915050565b5f6020820190508181035f830152610baf8184610b5f565b905092915050565b5f81519050919050565b5f819050602082019050919050565b5f610bdb8251610ab9565b80915050919050565b5f610bee82610bb7565b82610bf884610bc1565b9050610c0381610bd0565b92506020821015610c4357610c3e7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff83602003600802610816565b831692505b5050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f610c8182610703565b9150610c8c83610703565b9250828201905080821115610ca457610ca3610c4a565b5b92915050565b5f606082019050610cbd5f830186610a91565b610cca6020830185610ad1565b610cd76040830184610ad1565b949350505050565b5f602082019050610cf25f830184610ad1565b92915050565b60805160a05160c05160e051610100516101205161014051614354610d495f395f61225401525f61221901525f61284b01525f61282a01525f611fcd01525f61202301525f61204c01526143545ff3fe608060405234801561000f575f80fd5b50600436106101a7575f3560e01c806384b0196e116100f7578063d6fd2e8e11610095578063eb3f952f1161006f578063eb3f952f146104ec578063f2fde38b1461051c578063f47a6e8414610538578063fa84783614610556576101a7565b8063d6fd2e8e14610482578063dd62ed3e1461048c578063e8120402146104bc576101a7565b80639f9e9760116100d15780639f9e9760146103ea578063a9059cbb1461041a578063c91357c71461044a578063d505accf14610466576101a7565b806384b0196e1461038a5780638da5cb5b146103ae57806395d89b41146103cc576101a7565b80633b947d2b11610164578063643f85801161013e578063643f8580146102f057806370a0823114610320578063715018a6146103505780637ecebe001461035a576101a7565b80633b947d2b14610283578063587a39651461029f57806360e74f56146102bd576101a7565b806306fdde03146101ab578063095ea7b3146101c957806318160ddd146101f957806323b872dd14610217578063313ce567146102475780633644e51514610265575b5f80fd5b6101b3610589565b6040516101c09190612d01565b60405180910390f35b6101e360048036038101906101de9190612db6565b610619565b6040516101f09190612e0e565b60405180910390f35b61020161063b565b60405161020e9190612e36565b60405180910390f35b610231600480360381019061022c9190612e4f565b610644565b60405161023e9190612e0e565b60405180910390f35b61024f610672565b60405161025c9190612eba565b60405180910390f35b61026d61067a565b60405161027a9190612eeb565b60405180910390f35b61029d60048036038101906102989190612f04565b610688565b005b6102a7610935565b6040516102b49190612e36565b60405180910390f35b6102d760048036038101906102d29190612f04565b610941565b6040516102e79493929190612f3e565b60405180910390f35b61030a60048036038101906103059190612fe9565b610abd565b6040516103179190612e0e565b60405180910390f35b61033a60048036038101906103359190612f04565b610c54565b6040516103479190612e36565b60405180910390f35b610358610c99565b005b610374600480360381019061036f9190612f04565b610cac565b6040516103819190612e36565b60405180910390f35b610392610cbd565b6040516103a5979695949392919061314b565b60405180910390f35b6103b6610d62565b6040516103c391906131cd565b60405180910390f35b6103d4610d8a565b6040516103e19190612d01565b60405180910390f35b61040460048036038101906103ff9190612db6565b610e1a565b6040516104119190612e36565b60405180910390f35b610434600480360381019061042f9190612db6565b6112e4565b6040516104419190612e0e565b60405180910390f35b610464600480360381019061045f919061323b565b611306565b005b610480600480360381019061047b9190613313565b6116ea565b005b61048a61182f565b005b6104a660048036038101906104a191906133b0565b611854565b6040516104b39190612e36565b60405180910390f35b6104d660048036038101906104d191906133ee565b6118d6565b6040516104e39190612e36565b60405180910390f35b61050660048036038101906105019190613477565b611c7b565b60405161051391906131cd565b60405180910390f35b61053660048036038101906105319190612f04565b611cb6565b005b610540611d3a565b60405161054d9190612e0e565b60405180910390f35b610570600480360381019061056b9190612f04565b611d50565b6040516105809493929190612f3e565b60405180910390f35b606060038054610598906134cf565b80601f01602080910402602001604051908101604052809291908181526020018280546105c4906134cf565b801561060f5780601f106105e65761010080835404028352916020019161060f565b820191905f5260205f20905b8154815290600101906020018083116105f257829003601f168201915b5050505050905090565b5f80610623611e2e565b9050610630818585611e35565b600191505092915050565b5f600254905090565b5f8061064e611e2e565b905061065b858285611e47565b610666858585611eda565b60019150509392505050565b5f6012905090565b5f610683611fca565b905090565b610690612080565b60095f8273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2060020160149054906101000a900460ff1661071d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161071490613549565b60405180910390fd5b5f5b600a80549050811015610896578173ffffffffffffffffffffffffffffffffffffffff16600a828154811061075757610756613567565b5b905f5260205f20015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff160361088957600a6001600a805490506107ae91906135c1565b815481106107bf576107be613567565b5b905f5260205f20015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600a82815481106107fb576107fa613567565b5b905f5260205f20015f6101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600a805480610852576108516135f4565b5b600190038181905f5260205f20015f6101000a81549073ffffffffffffffffffffffffffffffffffffffff02191690559055610896565b808060010191505061071f565b505f60095f8373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2060020160146101000a81548160ff0219169083151502179055508073ffffffffffffffffffffffffffffffffffffffff167f3302a1b37f04242bb55603f5449e7ecd690a35eef08ba1353c48c20e2aae9cda60405160405180910390a250565b5f600a80549050905090565b60605f805f8060095f8773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f206040518060800160405290815f8201805461099e906134cf565b80601f01602080910402602001604051908101604052809291908181526020018280546109ca906134cf565b8015610a155780601f106109ec57610100808354040283529160200191610a15565b820191905f5260205f20905b8154815290600101906020018083116109f857829003601f168201915b5050505050815260200160018201548152602001600282015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016002820160149054906101000a900460ff1615151515815250509050805f01518160200151826040015183606001519450945094509450509193509193565b5f803390508573ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603610b30576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610b279061366b565b60405180910390fd5b5f8673ffffffffffffffffffffffffffffffffffffffff16632f11d43c838888886040518563ffffffff1660e01b8152600401610b7094939291906136f1565b6020604051808303815f875af1158015610b8c573d5f803e3d5ffd5b505050506040513d601f19601f82011682018060405250810190610bb09190613743565b905080610bbc83610c54565b1015610bfd576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610bf4906137b8565b60405180910390fd5b610c0787826112e4565b610c46576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610c3d90613820565b60405180910390fd5b600192505050949350505050565b5f805f8373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f20549050919050565b610ca1612080565b610caa5f612107565b565b5f610cb6826121ca565b9050919050565b5f6060805f805f6060610cce612210565b610cd661224b565b46305f801b5f67ffffffffffffffff811115610cf557610cf461383e565b5b604051908082528060200260200182016040528015610d235781602001602082028036833780820191505090505b507f0f00000000000000000000000000000000000000000000000000000000000000959493929190965096509650965096509650965090919293949596565b5f60085f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b606060048054610d99906134cf565b80601f0160208091040260200160405190810160405280929190818152602001828054610dc5906134cf565b8015610e105780601f10610de757610100808354040283529160200191610e10565b820191905f5260205f20905b815481529060010190602001808311610df357829003601f168201915b5050505050905090565b5f600860149054906101000a900460ff16610e6a576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610e61906138db565b60405180910390fd5b5f60095f8573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f206040518060800160405290815f82018054610ec2906134cf565b80601f0160208091040260200160405190810160405280929190818152602001828054610eee906134cf565b8015610f395780601f10610f1057610100808354040283529160200191610f39565b820191905f5260205f20905b815481529060010190602001808311610f1c57829003601f168201915b5050505050815260200160018201548152602001600282015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016002820160149054906101000a900460ff16151515158152505090508060600151611002576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401610ff990613549565b60405180910390fd5b5f8311611044576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161103b90613943565b60405180910390fd5b5f816020015184611055919061398e565b90505f8111611099576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161109090613a08565b60405180910390fd5b836110a333610c54565b10156110e4576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016110db90613a70565b60405180910390fd5b5f8590505f83604001519050828273ffffffffffffffffffffffffffffffffffffffff166370a08231836040518263ffffffff1660e01b815260040161112a91906131cd565b602060405180830381865afa158015611145573d5f803e3d5ffd5b505050506040513d601f19601f820116820180604052508101906111699190613743565b10156111aa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016111a190613afe565b60405180910390fd5b6111b43387612286565b8173ffffffffffffffffffffffffffffffffffffffff166323b872dd8233866040518463ffffffff1660e01b81526004016111f193929190613b1c565b6020604051808303815f875af115801561120d573d5f803e3d5ffd5b505050506040513d601f19601f820116820180604052508101906112319190613b7b565b611270576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161126790613bf0565b60405180910390fd5b8673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167ffc6dde45c60c69954c97f71476d3252191ce43e2c4a7aec91806e6185de6788788866040516112cf929190613c0e565b60405180910390a38294505050505092915050565b5f806112ee611e2e565b90506112fb818585611eda565b600191505092915050565b61130e612080565b5f73ffffffffffffffffffffffffffffffffffffffff168573ffffffffffffffffffffffffffffffffffffffff160361137c576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161137390613c7f565b60405180910390fd5b5f84849050116113c1576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016113b890613ce7565b60405180910390fd5b5f8211611403576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016113fa90613d4f565b60405180910390fd5b5f73ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603611471576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161146890613db7565b60405180910390fd5b60095f8673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2060020160149054906101000a900460ff1661157d57600a85908060018154018082558091505060019003905f5260205f20015f9091909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600160095f8773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2060020160146101000a81548160ff0219169083151502179055505b838360095f8873ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f0191826115cb929190613f7c565b508160095f8773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f20600101819055508060095f8773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f206002015f6101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508473ffffffffffffffffffffffffffffffffffffffff167fcc9386c98c5c2a003115422dc0330285d077229aa4414b964c041ea0edef707b858585856040516116db9493929190614083565b60405180910390a25050505050565b8342111561172f57836040517f627913020000000000000000000000000000000000000000000000000000000081526004016117269190612e36565b60405180910390fd5b5f7f6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c988888861175d8c612305565b89604051602001611773969594939291906140c1565b6040516020818303038152906040528051906020012090505f61179582612358565b90505f6117a482878787612371565b90508973ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161461181857808a6040517f4b800e4600000000000000000000000000000000000000000000000000000000815260040161180f929190614120565b60405180910390fd5b6118238a8a8a611e35565b50505050505050505050565b611837612080565b6001600860146101000a81548160ff021916908315150217905550565b5f60015f8473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f8373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2054905092915050565b5f8060095f8973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f206040518060800160405290815f8201805461192f906134cf565b80601f016020809104026020016040519081016040528092919081815260200182805461195b906134cf565b80156119a65780601f1061197d576101008083540402835291602001916119a6565b820191905f5260205f20905b81548152906001019060200180831161198957829003601f168201915b5050505050815260200160018201548152602001600282015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020016002820160149054906101000a900460ff16151515158152505090508060600151611a6f576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401611a6690613549565b60405180910390fd5b5f8711611ab1576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401611aa890613943565b60405180910390fd5b8773ffffffffffffffffffffffffffffffffffffffff1663d505accf33308a8a8a8a8a6040518863ffffffff1660e01b8152600401611af69796959493929190614147565b5f604051808303815f87803b158015611b0d575f80fd5b505af1158015611b1f573d5f803e3d5ffd5b505050505f816020015188611b3491906141b4565b90505f8990508073ffffffffffffffffffffffffffffffffffffffff166323b872dd3385604001518c6040518463ffffffff1660e01b8152600401611b7b93929190613b1c565b6020604051808303815f875af1158015611b97573d5f803e3d5ffd5b505050506040513d601f19601f82011682018060405250810190611bbb9190613b7b565b611bfa576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401611bf190613bf0565b60405180910390fd5b611c04338361239f565b8973ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fc268aa3dfcf26d893e64804923970c993cb04f61bf2a8729638222b91b41a79a8b85604051611c63929190613c0e565b60405180910390a38193505050509695505050505050565b600a8181548110611c8a575f80fd5b905f5260205f20015f915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b611cbe612080565b5f73ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603611d2e575f6040517f1e4fbdf7000000000000000000000000000000000000000000000000000000008152600401611d2591906131cd565b60405180910390fd5b611d3781612107565b50565b5f600860149054906101000a900460ff16905090565b6009602052805f5260405f205f91509050805f018054611d6f906134cf565b80601f0160208091040260200160405190810160405280929190818152602001828054611d9b906134cf565b8015611de65780601f10611dbd57610100808354040283529160200191611de6565b820191905f5260205f20905b815481529060010190602001808311611dc957829003601f168201915b505050505090806001015490806002015f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff16908060020160149054906101000a900460ff16905084565b5f33905090565b611e42838383600161241e565b505050565b5f611e528484611854565b90507fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff811015611ed45781811015611ec5578281836040517ffb8f41b2000000000000000000000000000000000000000000000000000000008152600401611ebc939291906141f5565b60405180910390fd5b611ed384848484035f61241e565b5b50505050565b5f73ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff1603611f4a575f6040517f96c6fd1e000000000000000000000000000000000000000000000000000000008152600401611f4191906131cd565b60405180910390fd5b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1603611fba575f6040517fec442f05000000000000000000000000000000000000000000000000000000008152600401611fb191906131cd565b60405180910390fd5b611fc58383836125ed565b505050565b5f7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff163073ffffffffffffffffffffffffffffffffffffffff1614801561204557507f000000000000000000000000000000000000000000000000000000000000000046145b15612072577f0000000000000000000000000000000000000000000000000000000000000000905061207d565b61207a612806565b90505b90565b612088611e2e565b73ffffffffffffffffffffffffffffffffffffffff166120a6610d62565b73ffffffffffffffffffffffffffffffffffffffff1614612105576120c9611e2e565b6040517f118cdaa70000000000000000000000000000000000000000000000000000000081526004016120fc91906131cd565b60405180910390fd5b565b5f60085f9054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508160085f6101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508173ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a35050565b5f60075f8373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f20549050919050565b606061224660057f000000000000000000000000000000000000000000000000000000000000000061289b90919063ffffffff16565b905090565b606061228160067f000000000000000000000000000000000000000000000000000000000000000061289b90919063ffffffff16565b905090565b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff16036122f6575f6040517f96c6fd1e0000000000000000000000000000000000000000000000000000000081526004016122ed91906131cd565b60405180910390fd5b612301825f836125ed565b5050565b5f60075f8373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f815480929190600101919050559050919050565b5f61236a612364611fca565b83612948565b9050919050565b5f805f8061238188888888612988565b9250925092506123918282612a6f565b829350505050949350505050565b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff160361240f575f6040517fec442f0500000000000000000000000000000000000000000000000000000000815260040161240691906131cd565b60405180910390fd5b61241a5f83836125ed565b5050565b5f73ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff160361248e575f6040517fe602df0500000000000000000000000000000000000000000000000000000000815260040161248591906131cd565b60405180910390fd5b5f73ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff16036124fe575f6040517f94280d620000000000000000000000000000000000000000000000000000000081526004016124f591906131cd565b60405180910390fd5b8160015f8673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f8573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f208190555080156125e7578273ffffffffffffffffffffffffffffffffffffffff168473ffffffffffffffffffffffffffffffffffffffff167f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925846040516125de9190612e36565b60405180910390a35b50505050565b5f73ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff160361263d578060025f828254612631919061422a565b9250508190555061270b565b5f805f8573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f20549050818110156126c6578381836040517fe450d38c0000000000000000000000000000000000000000000000000000000081526004016126bd939291906141f5565b60405180910390fd5b8181035f808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f2081905550505b5f73ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1603612752578060025f828254039250508190555061279c565b805f808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020015f205f82825401925050819055505b8173ffffffffffffffffffffffffffffffffffffffff168373ffffffffffffffffffffffffffffffffffffffff167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef836040516127f99190612e36565b60405180910390a3505050565b5f7f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f7f00000000000000000000000000000000000000000000000000000000000000007f0000000000000000000000000000000000000000000000000000000000000000463060405160200161288095949392919061425d565b60405160208183030381529060405280519060200120905090565b606060ff5f1b83146128b7576128b083612bd1565b9050612942565b8180546128c3906134cf565b80601f01602080910402602001604051908101604052809291908181526020018280546128ef906134cf565b801561293a5780601f106129115761010080835404028352916020019161293a565b820191905f5260205f20905b81548152906001019060200180831161291d57829003601f168201915b505050505090505b92915050565b5f6040517f190100000000000000000000000000000000000000000000000000000000000081528360028201528260228201526042812091505092915050565b5f805f7f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0845f1c11156129c4575f600385925092509250612a65565b5f6001888888886040515f81526020016040526040516129e794939291906142ae565b6020604051602081039080840390855afa158015612a07573d5f803e3d5ffd5b5050506020604051035190505f73ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1603612a58575f60015f801b93509350935050612a65565b805f805f1b935093509350505b9450945094915050565b5f6003811115612a8257612a816142f1565b5b826003811115612a9557612a946142f1565b5b0315612bcd5760016003811115612aaf57612aae6142f1565b5b826003811115612ac257612ac16142f1565b5b03612af9576040517ff645eedf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b60026003811115612b0d57612b0c6142f1565b5b826003811115612b2057612b1f6142f1565b5b03612b6457805f1c6040517ffce698f7000000000000000000000000000000000000000000000000000000008152600401612b5b9190612e36565b60405180910390fd5b600380811115612b7757612b766142f1565b5b826003811115612b8a57612b896142f1565b5b03612bcc57806040517fd78bce0c000000000000000000000000000000000000000000000000000000008152600401612bc39190612eeb565b60405180910390fd5b5b5050565b60605f612bdd83612c43565b90505f602067ffffffffffffffff811115612bfb57612bfa61383e565b5b6040519080825280601f01601f191660200182016040528015612c2d5781602001600182028036833780820191505090505b5090508181528360208201528092505050919050565b5f8060ff835f1c169050601f811115612c88576040517fb3512b0c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b80915050919050565b5f81519050919050565b5f82825260208201905092915050565b8281835e5f83830152505050565b5f601f19601f8301169050919050565b5f612cd382612c91565b612cdd8185612c9b565b9350612ced818560208601612cab565b612cf681612cb9565b840191505092915050565b5f6020820190508181035f830152612d198184612cc9565b905092915050565b5f80fd5b5f80fd5b5f73ffffffffffffffffffffffffffffffffffffffff82169050919050565b5f612d5282612d29565b9050919050565b612d6281612d48565b8114612d6c575f80fd5b50565b5f81359050612d7d81612d59565b92915050565b5f819050919050565b612d9581612d83565b8114612d9f575f80fd5b50565b5f81359050612db081612d8c565b92915050565b5f8060408385031215612dcc57612dcb612d21565b5b5f612dd985828601612d6f565b9250506020612dea85828601612da2565b9150509250929050565b5f8115159050919050565b612e0881612df4565b82525050565b5f602082019050612e215f830184612dff565b92915050565b612e3081612d83565b82525050565b5f602082019050612e495f830184612e27565b92915050565b5f805f60608486031215612e6657612e65612d21565b5b5f612e7386828701612d6f565b9350506020612e8486828701612d6f565b9250506040612e9586828701612da2565b9150509250925092565b5f60ff82169050919050565b612eb481612e9f565b82525050565b5f602082019050612ecd5f830184612eab565b92915050565b5f819050919050565b612ee581612ed3565b82525050565b5f602082019050612efe5f830184612edc565b92915050565b5f60208284031215612f1957612f18612d21565b5b5f612f2684828501612d6f565b91505092915050565b612f3881612d48565b82525050565b5f6080820190508181035f830152612f568187612cc9565b9050612f656020830186612e27565b612f726040830185612f2f565b612f7f6060830184612dff565b95945050505050565b5f80fd5b5f80fd5b5f80fd5b5f8083601f840112612fa957612fa8612f88565b5b8235905067ffffffffffffffff811115612fc657612fc5612f8c565b5b602083019150836020820283011115612fe257612fe1612f90565b5b9250929050565b5f805f806060858703121561300157613000612d21565b5b5f61300e87828801612d6f565b945050602061301f87828801612da2565b935050604085013567ffffffffffffffff8111156130405761303f612d25565b5b61304c87828801612f94565b925092505092959194509250565b5f7fff0000000000000000000000000000000000000000000000000000000000000082169050919050565b61308e8161305a565b82525050565b5f81519050919050565b5f82825260208201905092915050565b5f819050602082019050919050565b6130c681612d83565b82525050565b5f6130d783836130bd565b60208301905092915050565b5f602082019050919050565b5f6130f982613094565b613103818561309e565b935061310e836130ae565b805f5b8381101561313e57815161312588826130cc565b9750613130836130e3565b925050600181019050613111565b5085935050505092915050565b5f60e08201905061315e5f83018a613085565b81810360208301526131708189612cc9565b905081810360408301526131848188612cc9565b90506131936060830187612e27565b6131a06080830186612f2f565b6131ad60a0830185612edc565b81810360c08301526131bf81846130ef565b905098975050505050505050565b5f6020820190506131e05f830184612f2f565b92915050565b5f8083601f8401126131fb576131fa612f88565b5b8235905067ffffffffffffffff81111561321857613217612f8c565b5b60208301915083600182028301111561323457613233612f90565b5b9250929050565b5f805f805f6080868803121561325457613253612d21565b5b5f61326188828901612d6f565b955050602086013567ffffffffffffffff81111561328257613281612d25565b5b61328e888289016131e6565b945094505060406132a188828901612da2565b92505060606132b288828901612d6f565b9150509295509295909350565b6132c881612e9f565b81146132d2575f80fd5b50565b5f813590506132e3816132bf565b92915050565b6132f281612ed3565b81146132fc575f80fd5b50565b5f8135905061330d816132e9565b92915050565b5f805f805f805f60e0888a03121561332e5761332d612d21565b5b5f61333b8a828b01612d6f565b975050602061334c8a828b01612d6f565b965050604061335d8a828b01612da2565b955050606061336e8a828b01612da2565b945050608061337f8a828b016132d5565b93505060a06133908a828b016132ff565b92505060c06133a18a828b016132ff565b91505092959891949750929550565b5f80604083850312156133c6576133c5612d21565b5b5f6133d385828601612d6f565b92505060206133e485828601612d6f565b9150509250929050565b5f805f805f8060c0878903121561340857613407612d21565b5b5f61341589828a01612d6f565b965050602061342689828a01612da2565b955050604061343789828a01612da2565b945050606061344889828a016132d5565b935050608061345989828a016132ff565b92505060a061346a89828a016132ff565b9150509295509295509295565b5f6020828403121561348c5761348b612d21565b5b5f61349984828501612da2565b91505092915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52602260045260245ffd5b5f60028204905060018216806134e657607f821691505b6020821081036134f9576134f86134a2565b5b50919050565b7f537461626c65636f696e206e6f7420737570706f7274656400000000000000005f82015250565b5f613533601883612c9b565b915061353e826134ff565b602082019050919050565b5f6020820190508181035f83015261356081613527565b9050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52603260045260245ffd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b5f6135cb82612d83565b91506135d683612d83565b92508282039050818111156135ee576135ed613594565b5b92915050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52603160045260245ffd5b7f4e6f7420616c6c6f7765642e00000000000000000000000000000000000000005f82015250565b5f613655600c83612c9b565b915061366082613621565b602082019050919050565b5f6020820190508181035f83015261368281613649565b9050919050565b5f80fd5b82818337505050565b5f6136a1838561309e565b93507f07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff8311156136d4576136d3613689565b5b6020830292506136e583858461368d565b82840190509392505050565b5f6060820190506137045f830187612f2f565b6137116020830186612e27565b8181036040830152613724818486613696565b905095945050505050565b5f8151905061373d81612d8c565b92915050565b5f6020828403121561375857613757612d21565b5b5f6137658482850161372f565b91505092915050565b7f5468657265206973206e6f20656e6f75676820746f6b656e2e000000000000005f82015250565b5f6137a2601983612c9b565b91506137ad8261376e565b602082019050919050565b5f6020820190508181035f8301526137cf81613796565b9050919050565b7f5061796d656e74206661696c65642e00000000000000000000000000000000005f82015250565b5f61380a600f83612c9b565b9150613815826137d6565b602082019050919050565b5f6020820190508181035f830152613837816137fe565b9050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b7f5468652066756e6374696f6e206973206e6f742072656c6561736564207965745f8201527f2e00000000000000000000000000000000000000000000000000000000000000602082015250565b5f6138c5602183612c9b565b91506138d08261386b565b604082019050919050565b5f6020820190508181035f8301526138f2816138b9565b9050919050565b7f416d6f756e74206d7573742062652067726561746572207468616e20300000005f82015250565b5f61392d601d83612c9b565b9150613938826138f9565b602082019050919050565b5f6020820190508181035f83015261395a81613921565b9050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601260045260245ffd5b5f61399882612d83565b91506139a383612d83565b9250826139b3576139b2613961565b5b828204905092915050565b7f45786368616e676520616d6f756e7420746f6f20736d616c6c000000000000005f82015250565b5f6139f2601983612c9b565b91506139fd826139be565b602082019050919050565b5f6020820190508181035f830152613a1f816139e6565b9050919050565b7f496e73756666696369656e74204c4f542062616c616e636500000000000000005f82015250565b5f613a5a601883612c9b565b9150613a6582613a26565b602082019050919050565b5f6020820190508181035f830152613a8781613a4e565b9050919050565b7f496e73756666696369656e7420737461626c65636f696e2062616c616e6365205f8201527f696e20636f6e7472616374000000000000000000000000000000000000000000602082015250565b5f613ae8602b83612c9b565b9150613af382613a8e565b604082019050919050565b5f6020820190508181035f830152613b1581613adc565b9050919050565b5f606082019050613b2f5f830186612f2f565b613b3c6020830185612f2f565b613b496040830184612e27565b949350505050565b613b5a81612df4565b8114613b64575f80fd5b50565b5f81519050613b7581613b51565b92915050565b5f60208284031215613b9057613b8f612d21565b5b5f613b9d84828501613b67565b91505092915050565b7f537461626c65636f696e207472616e73666572206661696c65640000000000005f82015250565b5f613bda601a83612c9b565b9150613be582613ba6565b602082019050919050565b5f6020820190508181035f830152613c0781613bce565b9050919050565b5f604082019050613c215f830185612e27565b613c2e6020830184612e27565b9392505050565b7f496e76616c696420737461626c65636f696e20616464726573730000000000005f82015250565b5f613c69601a83612c9b565b9150613c7482613c35565b602082019050919050565b5f6020820190508181035f830152613c9681613c5d565b9050919050565b7f4e616d652063616e6e6f7420626520656d7074790000000000000000000000005f82015250565b5f613cd1601483612c9b565b9150613cdc82613c9d565b602082019050919050565b5f6020820190508181035f830152613cfe81613cc5565b9050919050565b7f52617465206d7573742062652067726561746572207468616e203000000000005f82015250565b5f613d39601b83612c9b565b9150613d4482613d05565b602082019050919050565b5f6020820190508181035f830152613d6681613d2d565b9050919050565b7f496e76616c6964207265636569766572206164647265737300000000000000005f82015250565b5f613da1601883612c9b565b9150613dac82613d6d565b602082019050919050565b5f6020820190508181035f830152613dce81613d95565b9050919050565b5f82905092915050565b5f819050815f5260205f209050919050565b5f6020601f8301049050919050565b5f82821b905092915050565b5f60088302613e3b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82613e00565b613e458683613e00565b95508019841693508086168417925050509392505050565b5f819050919050565b5f613e80613e7b613e7684612d83565b613e5d565b612d83565b9050919050565b5f819050919050565b613e9983613e66565b613ead613ea582613e87565b848454613e0c565b825550505050565b5f90565b613ec1613eb5565b613ecc818484613e90565b505050565b5b81811015613eef57613ee45f82613eb9565b600181019050613ed2565b5050565b601f821115613f3457613f0581613ddf565b613f0e84613df1565b81016020851015613f1d578190505b613f31613f2985613df1565b830182613ed1565b50505b505050565b5f82821c905092915050565b5f613f545f1984600802613f39565b1980831691505092915050565b5f613f6c8383613f45565b9150826002028217905092915050565b613f868383613dd5565b67ffffffffffffffff811115613f9f57613f9e61383e565b5b613fa982546134cf565b613fb4828285613ef3565b5f601f831160018114613fe1575f8415613fcf578287013590505b613fd98582613f61565b865550614040565b601f198416613fef86613ddf565b5f5b8281101561401657848901358255600182019150602085019450602081019050613ff1565b86831015614033578489013561402f601f891682613f45565b8355505b6001600288020188555050505b50505050505050565b828183375f83830152505050565b5f6140628385612c9b565b935061406f838584614049565b61407883612cb9565b840190509392505050565b5f6060820190508181035f83015261409c818688614057565b90506140ab6020830185612e27565b6140b86040830184612f2f565b95945050505050565b5f60c0820190506140d45f830189612edc565b6140e16020830188612f2f565b6140ee6040830187612f2f565b6140fb6060830186612e27565b6141086080830185612e27565b61411560a0830184612e27565b979650505050505050565b5f6040820190506141335f830185612f2f565b6141406020830184612f2f565b9392505050565b5f60e08201905061415a5f83018a612f2f565b6141676020830189612f2f565b6141746040830188612e27565b6141816060830187612e27565b61418e6080830186612eab565b61419b60a0830185612edc565b6141a860c0830184612edc565b98975050505050505050565b5f6141be82612d83565b91506141c983612d83565b92508282026141d781612d83565b915082820484148315176141ee576141ed613594565b5b5092915050565b5f6060820190506142085f830186612f2f565b6142156020830185612e27565b6142226040830184612e27565b949350505050565b5f61423482612d83565b915061423f83612d83565b925082820190508082111561425757614256613594565b5b92915050565b5f60a0820190506142705f830188612edc565b61427d6020830187612edc565b61428a6040830186612edc565b6142976060830185612e27565b6142a46080830184612f2f565b9695505050505050565b5f6080820190506142c15f830187612edc565b6142ce6020830186612eab565b6142db6040830185612edc565b6142e86060830184612edc565b95945050505050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52602160045260245ffdfea2646970667358221220b61f5400b138066d05a2e0571693a99ce074d0801a9dd593391da3f14078622464736f6c634300081a0033",
 }
 
-// LOTTokenABI is the input ABI used to generate the binding from.
-// Deprecated: Use LOTTokenMetaData.ABI instead.
-var LOTTokenABI = LOTTokenMetaData.ABI
+// LotteryABI is the input ABI used to generate the binding from.
+// Deprecated: Use LotteryMetaData.ABI instead.
+var LotteryABI = LotteryMetaData.ABI
 
-// LOTToken is an auto generated Go binding around an Ethereum contract.
-type LOTToken struct {
-	LOTTokenCaller     // Read-only binding to the contract
-	LOTTokenTransactor // Write-only binding to the contract
-	LOTTokenFilterer   // Log filterer for contract events
+// LotteryBin is the compiled bytecode used for deploying new contracts.
+// Deprecated: Use LotteryMetaData.Bin instead.
+var LotteryBin = LotteryMetaData.Bin
+
+// DeployLottery deploys a new Ethereum contract, binding an instance of Lottery to it.
+func DeployLottery(auth *bind.TransactOpts, backend bind.ContractBackend, initialSupply *big.Int) (common.Address, *types.Transaction, *Lottery, error) {
+	parsed, err := LotteryMetaData.GetAbi()
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	if parsed == nil {
+		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
+	}
+
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(LotteryBin), backend, initialSupply)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &Lottery{LotteryCaller: LotteryCaller{contract: contract}, LotteryTransactor: LotteryTransactor{contract: contract}, LotteryFilterer: LotteryFilterer{contract: contract}}, nil
 }
 
-// LOTTokenCaller is an auto generated read-only Go binding around an Ethereum contract.
-type LOTTokenCaller struct {
+// Lottery is an auto generated Go binding around an Ethereum contract.
+type Lottery struct {
+	LotteryCaller     // Read-only binding to the contract
+	LotteryTransactor // Write-only binding to the contract
+	LotteryFilterer   // Log filterer for contract events
+}
+
+// LotteryCaller is an auto generated read-only Go binding around an Ethereum contract.
+type LotteryCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// LOTTokenTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type LOTTokenTransactor struct {
+// LotteryTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type LotteryTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// LOTTokenFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type LOTTokenFilterer struct {
+// LotteryFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type LotteryFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// LOTTokenSession is an auto generated Go binding around an Ethereum contract,
+// LotterySession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type LOTTokenSession struct {
-	Contract     *LOTToken         // Generic contract binding to set the session for
+type LotterySession struct {
+	Contract     *Lottery          // Generic contract binding to set the session for
 	CallOpts     bind.CallOpts     // Call options to use throughout this session
 	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// LOTTokenCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// LotteryCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type LOTTokenCallerSession struct {
-	Contract *LOTTokenCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts   // Call options to use throughout this session
+type LotteryCallerSession struct {
+	Contract *LotteryCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts  // Call options to use throughout this session
 }
 
-// LOTTokenTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// LotteryTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type LOTTokenTransactorSession struct {
-	Contract     *LOTTokenTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+type LotteryTransactorSession struct {
+	Contract     *LotteryTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts  // Transaction auth options to use throughout this session
 }
 
-// LOTTokenRaw is an auto generated low-level Go binding around an Ethereum contract.
-type LOTTokenRaw struct {
-	Contract *LOTToken // Generic contract binding to access the raw methods on
+// LotteryRaw is an auto generated low-level Go binding around an Ethereum contract.
+type LotteryRaw struct {
+	Contract *Lottery // Generic contract binding to access the raw methods on
 }
 
-// LOTTokenCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type LOTTokenCallerRaw struct {
-	Contract *LOTTokenCaller // Generic read-only contract binding to access the raw methods on
+// LotteryCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type LotteryCallerRaw struct {
+	Contract *LotteryCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// LOTTokenTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type LOTTokenTransactorRaw struct {
-	Contract *LOTTokenTransactor // Generic write-only contract binding to access the raw methods on
+// LotteryTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type LotteryTransactorRaw struct {
+	Contract *LotteryTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewLOTToken creates a new instance of LOTToken, bound to a specific deployed contract.
-func NewLOTToken(address common.Address, backend bind.ContractBackend) (*LOTToken, error) {
-	contract, err := bindLOTToken(address, backend, backend, backend)
+// NewLottery creates a new instance of Lottery, bound to a specific deployed contract.
+func NewLottery(address common.Address, backend bind.ContractBackend) (*Lottery, error) {
+	contract, err := bindLottery(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTToken{LOTTokenCaller: LOTTokenCaller{contract: contract}, LOTTokenTransactor: LOTTokenTransactor{contract: contract}, LOTTokenFilterer: LOTTokenFilterer{contract: contract}}, nil
+	return &Lottery{LotteryCaller: LotteryCaller{contract: contract}, LotteryTransactor: LotteryTransactor{contract: contract}, LotteryFilterer: LotteryFilterer{contract: contract}}, nil
 }
 
-// NewLOTTokenCaller creates a new read-only instance of LOTToken, bound to a specific deployed contract.
-func NewLOTTokenCaller(address common.Address, caller bind.ContractCaller) (*LOTTokenCaller, error) {
-	contract, err := bindLOTToken(address, caller, nil, nil)
+// NewLotteryCaller creates a new read-only instance of Lottery, bound to a specific deployed contract.
+func NewLotteryCaller(address common.Address, caller bind.ContractCaller) (*LotteryCaller, error) {
+	contract, err := bindLottery(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenCaller{contract: contract}, nil
+	return &LotteryCaller{contract: contract}, nil
 }
 
-// NewLOTTokenTransactor creates a new write-only instance of LOTToken, bound to a specific deployed contract.
-func NewLOTTokenTransactor(address common.Address, transactor bind.ContractTransactor) (*LOTTokenTransactor, error) {
-	contract, err := bindLOTToken(address, nil, transactor, nil)
+// NewLotteryTransactor creates a new write-only instance of Lottery, bound to a specific deployed contract.
+func NewLotteryTransactor(address common.Address, transactor bind.ContractTransactor) (*LotteryTransactor, error) {
+	contract, err := bindLottery(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenTransactor{contract: contract}, nil
+	return &LotteryTransactor{contract: contract}, nil
 }
 
-// NewLOTTokenFilterer creates a new log filterer instance of LOTToken, bound to a specific deployed contract.
-func NewLOTTokenFilterer(address common.Address, filterer bind.ContractFilterer) (*LOTTokenFilterer, error) {
-	contract, err := bindLOTToken(address, nil, nil, filterer)
+// NewLotteryFilterer creates a new log filterer instance of Lottery, bound to a specific deployed contract.
+func NewLotteryFilterer(address common.Address, filterer bind.ContractFilterer) (*LotteryFilterer, error) {
+	contract, err := bindLottery(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenFilterer{contract: contract}, nil
+	return &LotteryFilterer{contract: contract}, nil
 }
 
-// bindLOTToken binds a generic wrapper to an already deployed contract.
-func bindLOTToken(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := LOTTokenMetaData.GetAbi()
+// bindLottery binds a generic wrapper to an already deployed contract.
+func bindLottery(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := LotteryMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -146,46 +168,77 @@ func bindLOTToken(address common.Address, caller bind.ContractCaller, transactor
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_LOTToken *LOTTokenRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _LOTToken.Contract.LOTTokenCaller.contract.Call(opts, result, method, params...)
+func (_Lottery *LotteryRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Lottery.Contract.LotteryCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_LOTToken *LOTTokenRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _LOTToken.Contract.LOTTokenTransactor.contract.Transfer(opts)
+func (_Lottery *LotteryRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Lottery.Contract.LotteryTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_LOTToken *LOTTokenRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _LOTToken.Contract.LOTTokenTransactor.contract.Transact(opts, method, params...)
+func (_Lottery *LotteryRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Lottery.Contract.LotteryTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_LOTToken *LOTTokenCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _LOTToken.Contract.contract.Call(opts, result, method, params...)
+func (_Lottery *LotteryCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _Lottery.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_LOTToken *LOTTokenTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _LOTToken.Contract.contract.Transfer(opts)
+func (_Lottery *LotteryTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Lottery.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_LOTToken *LOTTokenTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _LOTToken.Contract.contract.Transact(opts, method, params...)
+func (_Lottery *LotteryTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _Lottery.Contract.contract.Transact(opts, method, params...)
+}
+
+// DOMAINSEPARATOR is a free data retrieval call binding the contract method 0x3644e515.
+//
+// Solidity: function DOMAIN_SEPARATOR() view returns(bytes32)
+func (_Lottery *LotteryCaller) DOMAINSEPARATOR(opts *bind.CallOpts) ([32]byte, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "DOMAIN_SEPARATOR")
+
+	if err != nil {
+		return *new([32]byte), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
+
+	return out0, err
+
+}
+
+// DOMAINSEPARATOR is a free data retrieval call binding the contract method 0x3644e515.
+//
+// Solidity: function DOMAIN_SEPARATOR() view returns(bytes32)
+func (_Lottery *LotterySession) DOMAINSEPARATOR() ([32]byte, error) {
+	return _Lottery.Contract.DOMAINSEPARATOR(&_Lottery.CallOpts)
+}
+
+// DOMAINSEPARATOR is a free data retrieval call binding the contract method 0x3644e515.
+//
+// Solidity: function DOMAIN_SEPARATOR() view returns(bytes32)
+func (_Lottery *LotteryCallerSession) DOMAINSEPARATOR() ([32]byte, error) {
+	return _Lottery.Contract.DOMAINSEPARATOR(&_Lottery.CallOpts)
 }
 
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address owner, address spender) view returns(uint256)
-func (_LOTToken *LOTTokenCaller) Allowance(opts *bind.CallOpts, owner common.Address, spender common.Address) (*big.Int, error) {
+func (_Lottery *LotteryCaller) Allowance(opts *bind.CallOpts, owner common.Address, spender common.Address) (*big.Int, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "allowance", owner, spender)
+	err := _Lottery.contract.Call(opts, &out, "allowance", owner, spender)
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -200,23 +253,23 @@ func (_LOTToken *LOTTokenCaller) Allowance(opts *bind.CallOpts, owner common.Add
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address owner, address spender) view returns(uint256)
-func (_LOTToken *LOTTokenSession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
-	return _LOTToken.Contract.Allowance(&_LOTToken.CallOpts, owner, spender)
+func (_Lottery *LotterySession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _Lottery.Contract.Allowance(&_Lottery.CallOpts, owner, spender)
 }
 
 // Allowance is a free data retrieval call binding the contract method 0xdd62ed3e.
 //
 // Solidity: function allowance(address owner, address spender) view returns(uint256)
-func (_LOTToken *LOTTokenCallerSession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
-	return _LOTToken.Contract.Allowance(&_LOTToken.CallOpts, owner, spender)
+func (_Lottery *LotteryCallerSession) Allowance(owner common.Address, spender common.Address) (*big.Int, error) {
+	return _Lottery.Contract.Allowance(&_Lottery.CallOpts, owner, spender)
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address account) view returns(uint256)
-func (_LOTToken *LOTTokenCaller) BalanceOf(opts *bind.CallOpts, account common.Address) (*big.Int, error) {
+func (_Lottery *LotteryCaller) BalanceOf(opts *bind.CallOpts, account common.Address) (*big.Int, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "balanceOf", account)
+	err := _Lottery.contract.Call(opts, &out, "balanceOf", account)
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -231,23 +284,23 @@ func (_LOTToken *LOTTokenCaller) BalanceOf(opts *bind.CallOpts, account common.A
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address account) view returns(uint256)
-func (_LOTToken *LOTTokenSession) BalanceOf(account common.Address) (*big.Int, error) {
-	return _LOTToken.Contract.BalanceOf(&_LOTToken.CallOpts, account)
+func (_Lottery *LotterySession) BalanceOf(account common.Address) (*big.Int, error) {
+	return _Lottery.Contract.BalanceOf(&_Lottery.CallOpts, account)
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
 // Solidity: function balanceOf(address account) view returns(uint256)
-func (_LOTToken *LOTTokenCallerSession) BalanceOf(account common.Address) (*big.Int, error) {
-	return _LOTToken.Contract.BalanceOf(&_LOTToken.CallOpts, account)
+func (_Lottery *LotteryCallerSession) BalanceOf(account common.Address) (*big.Int, error) {
+	return _Lottery.Contract.BalanceOf(&_Lottery.CallOpts, account)
 }
 
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() view returns(uint8)
-func (_LOTToken *LOTTokenCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
+func (_Lottery *LotteryCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "decimals")
+	err := _Lottery.contract.Call(opts, &out, "decimals")
 
 	if err != nil {
 		return *new(uint8), err
@@ -262,23 +315,189 @@ func (_LOTToken *LOTTokenCaller) Decimals(opts *bind.CallOpts) (uint8, error) {
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() view returns(uint8)
-func (_LOTToken *LOTTokenSession) Decimals() (uint8, error) {
-	return _LOTToken.Contract.Decimals(&_LOTToken.CallOpts)
+func (_Lottery *LotterySession) Decimals() (uint8, error) {
+	return _Lottery.Contract.Decimals(&_Lottery.CallOpts)
 }
 
 // Decimals is a free data retrieval call binding the contract method 0x313ce567.
 //
 // Solidity: function decimals() view returns(uint8)
-func (_LOTToken *LOTTokenCallerSession) Decimals() (uint8, error) {
-	return _LOTToken.Contract.Decimals(&_LOTToken.CallOpts)
+func (_Lottery *LotteryCallerSession) Decimals() (uint8, error) {
+	return _Lottery.Contract.Decimals(&_Lottery.CallOpts)
+}
+
+// Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
+//
+// Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
+func (_Lottery *LotteryCaller) Eip712Domain(opts *bind.CallOpts) (struct {
+	Fields            [1]byte
+	Name              string
+	Version           string
+	ChainId           *big.Int
+	VerifyingContract common.Address
+	Salt              [32]byte
+	Extensions        []*big.Int
+}, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "eip712Domain")
+
+	outstruct := new(struct {
+		Fields            [1]byte
+		Name              string
+		Version           string
+		ChainId           *big.Int
+		VerifyingContract common.Address
+		Salt              [32]byte
+		Extensions        []*big.Int
+	})
+	if err != nil {
+		return *outstruct, err
+	}
+
+	outstruct.Fields = *abi.ConvertType(out[0], new([1]byte)).(*[1]byte)
+	outstruct.Name = *abi.ConvertType(out[1], new(string)).(*string)
+	outstruct.Version = *abi.ConvertType(out[2], new(string)).(*string)
+	outstruct.ChainId = *abi.ConvertType(out[3], new(*big.Int)).(**big.Int)
+	outstruct.VerifyingContract = *abi.ConvertType(out[4], new(common.Address)).(*common.Address)
+	outstruct.Salt = *abi.ConvertType(out[5], new([32]byte)).(*[32]byte)
+	outstruct.Extensions = *abi.ConvertType(out[6], new([]*big.Int)).(*[]*big.Int)
+
+	return *outstruct, err
+
+}
+
+// Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
+//
+// Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
+func (_Lottery *LotterySession) Eip712Domain() (struct {
+	Fields            [1]byte
+	Name              string
+	Version           string
+	ChainId           *big.Int
+	VerifyingContract common.Address
+	Salt              [32]byte
+	Extensions        []*big.Int
+}, error) {
+	return _Lottery.Contract.Eip712Domain(&_Lottery.CallOpts)
+}
+
+// Eip712Domain is a free data retrieval call binding the contract method 0x84b0196e.
+//
+// Solidity: function eip712Domain() view returns(bytes1 fields, string name, string version, uint256 chainId, address verifyingContract, bytes32 salt, uint256[] extensions)
+func (_Lottery *LotteryCallerSession) Eip712Domain() (struct {
+	Fields            [1]byte
+	Name              string
+	Version           string
+	ChainId           *big.Int
+	VerifyingContract common.Address
+	Salt              [32]byte
+	Extensions        []*big.Int
+}, error) {
+	return _Lottery.Contract.Eip712Domain(&_Lottery.CallOpts)
+}
+
+// GetReleased is a free data retrieval call binding the contract method 0xf47a6e84.
+//
+// Solidity: function getReleased() view returns(bool)
+func (_Lottery *LotteryCaller) GetReleased(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "getReleased")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// GetReleased is a free data retrieval call binding the contract method 0xf47a6e84.
+//
+// Solidity: function getReleased() view returns(bool)
+func (_Lottery *LotterySession) GetReleased() (bool, error) {
+	return _Lottery.Contract.GetReleased(&_Lottery.CallOpts)
+}
+
+// GetReleased is a free data retrieval call binding the contract method 0xf47a6e84.
+//
+// Solidity: function getReleased() view returns(bool)
+func (_Lottery *LotteryCallerSession) GetReleased() (bool, error) {
+	return _Lottery.Contract.GetReleased(&_Lottery.CallOpts)
+}
+
+// GetStablecoinInfo is a free data retrieval call binding the contract method 0x60e74f56.
+//
+// Solidity: function getStablecoinInfo(address stablecoinAddress) view returns(string, uint256, address, bool)
+func (_Lottery *LotteryCaller) GetStablecoinInfo(opts *bind.CallOpts, stablecoinAddress common.Address) (string, *big.Int, common.Address, bool, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "getStablecoinInfo", stablecoinAddress)
+
+	if err != nil {
+		return *new(string), *new(*big.Int), *new(common.Address), *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(string)).(*string)
+	out1 := *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
+	out2 := *abi.ConvertType(out[2], new(common.Address)).(*common.Address)
+	out3 := *abi.ConvertType(out[3], new(bool)).(*bool)
+
+	return out0, out1, out2, out3, err
+
+}
+
+// GetStablecoinInfo is a free data retrieval call binding the contract method 0x60e74f56.
+//
+// Solidity: function getStablecoinInfo(address stablecoinAddress) view returns(string, uint256, address, bool)
+func (_Lottery *LotterySession) GetStablecoinInfo(stablecoinAddress common.Address) (string, *big.Int, common.Address, bool, error) {
+	return _Lottery.Contract.GetStablecoinInfo(&_Lottery.CallOpts, stablecoinAddress)
+}
+
+// GetStablecoinInfo is a free data retrieval call binding the contract method 0x60e74f56.
+//
+// Solidity: function getStablecoinInfo(address stablecoinAddress) view returns(string, uint256, address, bool)
+func (_Lottery *LotteryCallerSession) GetStablecoinInfo(stablecoinAddress common.Address) (string, *big.Int, common.Address, bool, error) {
+	return _Lottery.Contract.GetStablecoinInfo(&_Lottery.CallOpts, stablecoinAddress)
+}
+
+// GetSupportedStablecoinsCount is a free data retrieval call binding the contract method 0x587a3965.
+//
+// Solidity: function getSupportedStablecoinsCount() view returns(uint256)
+func (_Lottery *LotteryCaller) GetSupportedStablecoinsCount(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "getSupportedStablecoinsCount")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetSupportedStablecoinsCount is a free data retrieval call binding the contract method 0x587a3965.
+//
+// Solidity: function getSupportedStablecoinsCount() view returns(uint256)
+func (_Lottery *LotterySession) GetSupportedStablecoinsCount() (*big.Int, error) {
+	return _Lottery.Contract.GetSupportedStablecoinsCount(&_Lottery.CallOpts)
+}
+
+// GetSupportedStablecoinsCount is a free data retrieval call binding the contract method 0x587a3965.
+//
+// Solidity: function getSupportedStablecoinsCount() view returns(uint256)
+func (_Lottery *LotteryCallerSession) GetSupportedStablecoinsCount() (*big.Int, error) {
+	return _Lottery.Contract.GetSupportedStablecoinsCount(&_Lottery.CallOpts)
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() view returns(string)
-func (_LOTToken *LOTTokenCaller) Name(opts *bind.CallOpts) (string, error) {
+func (_Lottery *LotteryCaller) Name(opts *bind.CallOpts) (string, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "name")
+	err := _Lottery.contract.Call(opts, &out, "name")
 
 	if err != nil {
 		return *new(string), err
@@ -293,23 +512,54 @@ func (_LOTToken *LOTTokenCaller) Name(opts *bind.CallOpts) (string, error) {
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() view returns(string)
-func (_LOTToken *LOTTokenSession) Name() (string, error) {
-	return _LOTToken.Contract.Name(&_LOTToken.CallOpts)
+func (_Lottery *LotterySession) Name() (string, error) {
+	return _Lottery.Contract.Name(&_Lottery.CallOpts)
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
 //
 // Solidity: function name() view returns(string)
-func (_LOTToken *LOTTokenCallerSession) Name() (string, error) {
-	return _LOTToken.Contract.Name(&_LOTToken.CallOpts)
+func (_Lottery *LotteryCallerSession) Name() (string, error) {
+	return _Lottery.Contract.Name(&_Lottery.CallOpts)
+}
+
+// Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
+//
+// Solidity: function nonces(address owner) view returns(uint256)
+func (_Lottery *LotteryCaller) Nonces(opts *bind.CallOpts, owner common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "nonces", owner)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
+//
+// Solidity: function nonces(address owner) view returns(uint256)
+func (_Lottery *LotterySession) Nonces(owner common.Address) (*big.Int, error) {
+	return _Lottery.Contract.Nonces(&_Lottery.CallOpts, owner)
+}
+
+// Nonces is a free data retrieval call binding the contract method 0x7ecebe00.
+//
+// Solidity: function nonces(address owner) view returns(uint256)
+func (_Lottery *LotteryCallerSession) Nonces(owner common.Address) (*big.Int, error) {
+	return _Lottery.Contract.Nonces(&_Lottery.CallOpts, owner)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_LOTToken *LOTTokenCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+func (_Lottery *LotteryCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "owner")
+	err := _Lottery.contract.Call(opts, &out, "owner")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -324,23 +574,109 @@ func (_LOTToken *LOTTokenCaller) Owner(opts *bind.CallOpts) (common.Address, err
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_LOTToken *LOTTokenSession) Owner() (common.Address, error) {
-	return _LOTToken.Contract.Owner(&_LOTToken.CallOpts)
+func (_Lottery *LotterySession) Owner() (common.Address, error) {
+	return _Lottery.Contract.Owner(&_Lottery.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
 //
 // Solidity: function owner() view returns(address)
-func (_LOTToken *LOTTokenCallerSession) Owner() (common.Address, error) {
-	return _LOTToken.Contract.Owner(&_LOTToken.CallOpts)
+func (_Lottery *LotteryCallerSession) Owner() (common.Address, error) {
+	return _Lottery.Contract.Owner(&_Lottery.CallOpts)
+}
+
+// Stablecoins is a free data retrieval call binding the contract method 0xfa847836.
+//
+// Solidity: function stablecoins(address ) view returns(string name, uint256 rate, address receiver, bool isSupported)
+func (_Lottery *LotteryCaller) Stablecoins(opts *bind.CallOpts, arg0 common.Address) (struct {
+	Name        string
+	Rate        *big.Int
+	Receiver    common.Address
+	IsSupported bool
+}, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "stablecoins", arg0)
+
+	outstruct := new(struct {
+		Name        string
+		Rate        *big.Int
+		Receiver    common.Address
+		IsSupported bool
+	})
+	if err != nil {
+		return *outstruct, err
+	}
+
+	outstruct.Name = *abi.ConvertType(out[0], new(string)).(*string)
+	outstruct.Rate = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
+	outstruct.Receiver = *abi.ConvertType(out[2], new(common.Address)).(*common.Address)
+	outstruct.IsSupported = *abi.ConvertType(out[3], new(bool)).(*bool)
+
+	return *outstruct, err
+
+}
+
+// Stablecoins is a free data retrieval call binding the contract method 0xfa847836.
+//
+// Solidity: function stablecoins(address ) view returns(string name, uint256 rate, address receiver, bool isSupported)
+func (_Lottery *LotterySession) Stablecoins(arg0 common.Address) (struct {
+	Name        string
+	Rate        *big.Int
+	Receiver    common.Address
+	IsSupported bool
+}, error) {
+	return _Lottery.Contract.Stablecoins(&_Lottery.CallOpts, arg0)
+}
+
+// Stablecoins is a free data retrieval call binding the contract method 0xfa847836.
+//
+// Solidity: function stablecoins(address ) view returns(string name, uint256 rate, address receiver, bool isSupported)
+func (_Lottery *LotteryCallerSession) Stablecoins(arg0 common.Address) (struct {
+	Name        string
+	Rate        *big.Int
+	Receiver    common.Address
+	IsSupported bool
+}, error) {
+	return _Lottery.Contract.Stablecoins(&_Lottery.CallOpts, arg0)
+}
+
+// SupportedStablecoinsList is a free data retrieval call binding the contract method 0xeb3f952f.
+//
+// Solidity: function supportedStablecoinsList(uint256 ) view returns(address)
+func (_Lottery *LotteryCaller) SupportedStablecoinsList(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
+	var out []interface{}
+	err := _Lottery.contract.Call(opts, &out, "supportedStablecoinsList", arg0)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// SupportedStablecoinsList is a free data retrieval call binding the contract method 0xeb3f952f.
+//
+// Solidity: function supportedStablecoinsList(uint256 ) view returns(address)
+func (_Lottery *LotterySession) SupportedStablecoinsList(arg0 *big.Int) (common.Address, error) {
+	return _Lottery.Contract.SupportedStablecoinsList(&_Lottery.CallOpts, arg0)
+}
+
+// SupportedStablecoinsList is a free data retrieval call binding the contract method 0xeb3f952f.
+//
+// Solidity: function supportedStablecoinsList(uint256 ) view returns(address)
+func (_Lottery *LotteryCallerSession) SupportedStablecoinsList(arg0 *big.Int) (common.Address, error) {
+	return _Lottery.Contract.SupportedStablecoinsList(&_Lottery.CallOpts, arg0)
 }
 
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() view returns(string)
-func (_LOTToken *LOTTokenCaller) Symbol(opts *bind.CallOpts) (string, error) {
+func (_Lottery *LotteryCaller) Symbol(opts *bind.CallOpts) (string, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "symbol")
+	err := _Lottery.contract.Call(opts, &out, "symbol")
 
 	if err != nil {
 		return *new(string), err
@@ -355,23 +691,23 @@ func (_LOTToken *LOTTokenCaller) Symbol(opts *bind.CallOpts) (string, error) {
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() view returns(string)
-func (_LOTToken *LOTTokenSession) Symbol() (string, error) {
-	return _LOTToken.Contract.Symbol(&_LOTToken.CallOpts)
+func (_Lottery *LotterySession) Symbol() (string, error) {
+	return _Lottery.Contract.Symbol(&_Lottery.CallOpts)
 }
 
 // Symbol is a free data retrieval call binding the contract method 0x95d89b41.
 //
 // Solidity: function symbol() view returns(string)
-func (_LOTToken *LOTTokenCallerSession) Symbol() (string, error) {
-	return _LOTToken.Contract.Symbol(&_LOTToken.CallOpts)
+func (_Lottery *LotteryCallerSession) Symbol() (string, error) {
+	return _Lottery.Contract.Symbol(&_Lottery.CallOpts)
 }
 
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() view returns(uint256)
-func (_LOTToken *LOTTokenCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+func (_Lottery *LotteryCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _LOTToken.contract.Call(opts, &out, "totalSupply")
+	err := _Lottery.contract.Call(opts, &out, "totalSupply")
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -386,146 +722,272 @@ func (_LOTToken *LOTTokenCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, err
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() view returns(uint256)
-func (_LOTToken *LOTTokenSession) TotalSupply() (*big.Int, error) {
-	return _LOTToken.Contract.TotalSupply(&_LOTToken.CallOpts)
+func (_Lottery *LotterySession) TotalSupply() (*big.Int, error) {
+	return _Lottery.Contract.TotalSupply(&_Lottery.CallOpts)
 }
 
 // TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
 // Solidity: function totalSupply() view returns(uint256)
-func (_LOTToken *LOTTokenCallerSession) TotalSupply() (*big.Int, error) {
-	return _LOTToken.Contract.TotalSupply(&_LOTToken.CallOpts)
+func (_Lottery *LotteryCallerSession) TotalSupply() (*big.Int, error) {
+	return _Lottery.Contract.TotalSupply(&_Lottery.CallOpts)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address spender, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactor) Approve(opts *bind.TransactOpts, spender common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "approve", spender, value)
+func (_Lottery *LotteryTransactor) Approve(opts *bind.TransactOpts, spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "approve", spender, value)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address spender, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenSession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Approve(&_LOTToken.TransactOpts, spender, value)
+func (_Lottery *LotterySession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Approve(&_Lottery.TransactOpts, spender, value)
 }
 
 // Approve is a paid mutator transaction binding the contract method 0x095ea7b3.
 //
 // Solidity: function approve(address spender, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactorSession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Approve(&_LOTToken.TransactOpts, spender, value)
+func (_Lottery *LotteryTransactorSession) Approve(spender common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Approve(&_Lottery.TransactOpts, spender, value)
 }
 
 // Buy is a paid mutator transaction binding the contract method 0x643f8580.
 //
 // Solidity: function buy(address placeAddr, uint256 _amount, uint256[] target) returns(bool)
-func (_LOTToken *LOTTokenTransactor) Buy(opts *bind.TransactOpts, placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "buy", placeAddr, _amount, target)
+func (_Lottery *LotteryTransactor) Buy(opts *bind.TransactOpts, placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "buy", placeAddr, _amount, target)
 }
 
 // Buy is a paid mutator transaction binding the contract method 0x643f8580.
 //
 // Solidity: function buy(address placeAddr, uint256 _amount, uint256[] target) returns(bool)
-func (_LOTToken *LOTTokenSession) Buy(placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Buy(&_LOTToken.TransactOpts, placeAddr, _amount, target)
+func (_Lottery *LotterySession) Buy(placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Buy(&_Lottery.TransactOpts, placeAddr, _amount, target)
 }
 
 // Buy is a paid mutator transaction binding the contract method 0x643f8580.
 //
 // Solidity: function buy(address placeAddr, uint256 _amount, uint256[] target) returns(bool)
-func (_LOTToken *LOTTokenTransactorSession) Buy(placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Buy(&_LOTToken.TransactOpts, placeAddr, _amount, target)
+func (_Lottery *LotteryTransactorSession) Buy(placeAddr common.Address, _amount *big.Int, target []*big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Buy(&_Lottery.TransactOpts, placeAddr, _amount, target)
+}
+
+// ExchangeForLOT is a paid mutator transaction binding the contract method 0xe8120402.
+//
+// Solidity: function exchangeForLOT(address stablecoinAddress, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns(uint256)
+func (_Lottery *LotteryTransactor) ExchangeForLOT(opts *bind.TransactOpts, stablecoinAddress common.Address, amount *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "exchangeForLOT", stablecoinAddress, amount, deadline, v, r, s)
+}
+
+// ExchangeForLOT is a paid mutator transaction binding the contract method 0xe8120402.
+//
+// Solidity: function exchangeForLOT(address stablecoinAddress, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns(uint256)
+func (_Lottery *LotterySession) ExchangeForLOT(stablecoinAddress common.Address, amount *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.Contract.ExchangeForLOT(&_Lottery.TransactOpts, stablecoinAddress, amount, deadline, v, r, s)
+}
+
+// ExchangeForLOT is a paid mutator transaction binding the contract method 0xe8120402.
+//
+// Solidity: function exchangeForLOT(address stablecoinAddress, uint256 amount, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns(uint256)
+func (_Lottery *LotteryTransactorSession) ExchangeForLOT(stablecoinAddress common.Address, amount *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.Contract.ExchangeForLOT(&_Lottery.TransactOpts, stablecoinAddress, amount, deadline, v, r, s)
+}
+
+// ExchangeForStablecoin is a paid mutator transaction binding the contract method 0x9f9e9760.
+//
+// Solidity: function exchangeForStablecoin(address stablecoinAddress, uint256 lotAmount) returns(uint256)
+func (_Lottery *LotteryTransactor) ExchangeForStablecoin(opts *bind.TransactOpts, stablecoinAddress common.Address, lotAmount *big.Int) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "exchangeForStablecoin", stablecoinAddress, lotAmount)
+}
+
+// ExchangeForStablecoin is a paid mutator transaction binding the contract method 0x9f9e9760.
+//
+// Solidity: function exchangeForStablecoin(address stablecoinAddress, uint256 lotAmount) returns(uint256)
+func (_Lottery *LotterySession) ExchangeForStablecoin(stablecoinAddress common.Address, lotAmount *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.ExchangeForStablecoin(&_Lottery.TransactOpts, stablecoinAddress, lotAmount)
+}
+
+// ExchangeForStablecoin is a paid mutator transaction binding the contract method 0x9f9e9760.
+//
+// Solidity: function exchangeForStablecoin(address stablecoinAddress, uint256 lotAmount) returns(uint256)
+func (_Lottery *LotteryTransactorSession) ExchangeForStablecoin(stablecoinAddress common.Address, lotAmount *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.ExchangeForStablecoin(&_Lottery.TransactOpts, stablecoinAddress, lotAmount)
+}
+
+// Permit is a paid mutator transaction binding the contract method 0xd505accf.
+//
+// Solidity: function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns()
+func (_Lottery *LotteryTransactor) Permit(opts *bind.TransactOpts, owner common.Address, spender common.Address, value *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "permit", owner, spender, value, deadline, v, r, s)
+}
+
+// Permit is a paid mutator transaction binding the contract method 0xd505accf.
+//
+// Solidity: function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns()
+func (_Lottery *LotterySession) Permit(owner common.Address, spender common.Address, value *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.Contract.Permit(&_Lottery.TransactOpts, owner, spender, value, deadline, v, r, s)
+}
+
+// Permit is a paid mutator transaction binding the contract method 0xd505accf.
+//
+// Solidity: function permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s) returns()
+func (_Lottery *LotteryTransactorSession) Permit(owner common.Address, spender common.Address, value *big.Int, deadline *big.Int, v uint8, r [32]byte, s [32]byte) (*types.Transaction, error) {
+	return _Lottery.Contract.Permit(&_Lottery.TransactOpts, owner, spender, value, deadline, v, r, s)
+}
+
+// RemoveStablecoin is a paid mutator transaction binding the contract method 0x3b947d2b.
+//
+// Solidity: function removeStablecoin(address stablecoinAddress) returns()
+func (_Lottery *LotteryTransactor) RemoveStablecoin(opts *bind.TransactOpts, stablecoinAddress common.Address) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "removeStablecoin", stablecoinAddress)
+}
+
+// RemoveStablecoin is a paid mutator transaction binding the contract method 0x3b947d2b.
+//
+// Solidity: function removeStablecoin(address stablecoinAddress) returns()
+func (_Lottery *LotterySession) RemoveStablecoin(stablecoinAddress common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.RemoveStablecoin(&_Lottery.TransactOpts, stablecoinAddress)
+}
+
+// RemoveStablecoin is a paid mutator transaction binding the contract method 0x3b947d2b.
+//
+// Solidity: function removeStablecoin(address stablecoinAddress) returns()
+func (_Lottery *LotteryTransactorSession) RemoveStablecoin(stablecoinAddress common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.RemoveStablecoin(&_Lottery.TransactOpts, stablecoinAddress)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_LOTToken *LOTTokenTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "renounceOwnership")
+func (_Lottery *LotteryTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "renounceOwnership")
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_LOTToken *LOTTokenSession) RenounceOwnership() (*types.Transaction, error) {
-	return _LOTToken.Contract.RenounceOwnership(&_LOTToken.TransactOpts)
+func (_Lottery *LotterySession) RenounceOwnership() (*types.Transaction, error) {
+	return _Lottery.Contract.RenounceOwnership(&_Lottery.TransactOpts)
 }
 
 // RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
 //
 // Solidity: function renounceOwnership() returns()
-func (_LOTToken *LOTTokenTransactorSession) RenounceOwnership() (*types.Transaction, error) {
-	return _LOTToken.Contract.RenounceOwnership(&_LOTToken.TransactOpts)
+func (_Lottery *LotteryTransactorSession) RenounceOwnership() (*types.Transaction, error) {
+	return _Lottery.Contract.RenounceOwnership(&_Lottery.TransactOpts)
+}
+
+// SetReleased is a paid mutator transaction binding the contract method 0xd6fd2e8e.
+//
+// Solidity: function setReleased() returns()
+func (_Lottery *LotteryTransactor) SetReleased(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "setReleased")
+}
+
+// SetReleased is a paid mutator transaction binding the contract method 0xd6fd2e8e.
+//
+// Solidity: function setReleased() returns()
+func (_Lottery *LotterySession) SetReleased() (*types.Transaction, error) {
+	return _Lottery.Contract.SetReleased(&_Lottery.TransactOpts)
+}
+
+// SetReleased is a paid mutator transaction binding the contract method 0xd6fd2e8e.
+//
+// Solidity: function setReleased() returns()
+func (_Lottery *LotteryTransactorSession) SetReleased() (*types.Transaction, error) {
+	return _Lottery.Contract.SetReleased(&_Lottery.TransactOpts)
+}
+
+// SetStablecoin is a paid mutator transaction binding the contract method 0xc91357c7.
+//
+// Solidity: function setStablecoin(address stablecoinAddress, string name, uint256 rate, address receiver) returns()
+func (_Lottery *LotteryTransactor) SetStablecoin(opts *bind.TransactOpts, stablecoinAddress common.Address, name string, rate *big.Int, receiver common.Address) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "setStablecoin", stablecoinAddress, name, rate, receiver)
+}
+
+// SetStablecoin is a paid mutator transaction binding the contract method 0xc91357c7.
+//
+// Solidity: function setStablecoin(address stablecoinAddress, string name, uint256 rate, address receiver) returns()
+func (_Lottery *LotterySession) SetStablecoin(stablecoinAddress common.Address, name string, rate *big.Int, receiver common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.SetStablecoin(&_Lottery.TransactOpts, stablecoinAddress, name, rate, receiver)
+}
+
+// SetStablecoin is a paid mutator transaction binding the contract method 0xc91357c7.
+//
+// Solidity: function setStablecoin(address stablecoinAddress, string name, uint256 rate, address receiver) returns()
+func (_Lottery *LotteryTransactorSession) SetStablecoin(stablecoinAddress common.Address, name string, rate *big.Int, receiver common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.SetStablecoin(&_Lottery.TransactOpts, stablecoinAddress, name, rate, receiver)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "transfer", to, value)
+func (_Lottery *LotteryTransactor) Transfer(opts *bind.TransactOpts, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "transfer", to, value)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Transfer(&_LOTToken.TransactOpts, to, value)
+func (_Lottery *LotterySession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Transfer(&_Lottery.TransactOpts, to, value)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0xa9059cbb.
 //
 // Solidity: function transfer(address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.Transfer(&_LOTToken.TransactOpts, to, value)
+func (_Lottery *LotteryTransactorSession) Transfer(to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.Transfer(&_Lottery.TransactOpts, to, value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactor) TransferFrom(opts *bind.TransactOpts, from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "transferFrom", from, to, value)
+func (_Lottery *LotteryTransactor) TransferFrom(opts *bind.TransactOpts, from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "transferFrom", from, to, value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenSession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.TransferFrom(&_LOTToken.TransactOpts, from, to, value)
+func (_Lottery *LotterySession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.TransferFrom(&_Lottery.TransactOpts, from, to, value)
 }
 
 // TransferFrom is a paid mutator transaction binding the contract method 0x23b872dd.
 //
 // Solidity: function transferFrom(address from, address to, uint256 value) returns(bool)
-func (_LOTToken *LOTTokenTransactorSession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
-	return _LOTToken.Contract.TransferFrom(&_LOTToken.TransactOpts, from, to, value)
+func (_Lottery *LotteryTransactorSession) TransferFrom(from common.Address, to common.Address, value *big.Int) (*types.Transaction, error) {
+	return _Lottery.Contract.TransferFrom(&_Lottery.TransactOpts, from, to, value)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_LOTToken *LOTTokenTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
-	return _LOTToken.contract.Transact(opts, "transferOwnership", newOwner)
+func (_Lottery *LotteryTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
+	return _Lottery.contract.Transact(opts, "transferOwnership", newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_LOTToken *LOTTokenSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _LOTToken.Contract.TransferOwnership(&_LOTToken.TransactOpts, newOwner)
+func (_Lottery *LotterySession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.TransferOwnership(&_Lottery.TransactOpts, newOwner)
 }
 
 // TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
 //
 // Solidity: function transferOwnership(address newOwner) returns()
-func (_LOTToken *LOTTokenTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _LOTToken.Contract.TransferOwnership(&_LOTToken.TransactOpts, newOwner)
+func (_Lottery *LotteryTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
+	return _Lottery.Contract.TransferOwnership(&_Lottery.TransactOpts, newOwner)
 }
 
-// LOTTokenApprovalIterator is returned from FilterApproval and is used to iterate over the raw logs and unpacked data for Approval events raised by the LOTToken contract.
-type LOTTokenApprovalIterator struct {
-	Event *LOTTokenApproval // Event containing the contract specifics and raw log
+// LotteryApprovalIterator is returned from FilterApproval and is used to iterate over the raw logs and unpacked data for Approval events raised by the Lottery contract.
+type LotteryApprovalIterator struct {
+	Event *LotteryApproval // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -539,7 +1001,7 @@ type LOTTokenApprovalIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *LOTTokenApprovalIterator) Next() bool {
+func (it *LotteryApprovalIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -548,7 +1010,7 @@ func (it *LOTTokenApprovalIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(LOTTokenApproval)
+			it.Event = new(LotteryApproval)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -563,7 +1025,7 @@ func (it *LOTTokenApprovalIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(LOTTokenApproval)
+		it.Event = new(LotteryApproval)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -579,19 +1041,19 @@ func (it *LOTTokenApprovalIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *LOTTokenApprovalIterator) Error() error {
+func (it *LotteryApprovalIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *LOTTokenApprovalIterator) Close() error {
+func (it *LotteryApprovalIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// LOTTokenApproval represents a Approval event raised by the LOTToken contract.
-type LOTTokenApproval struct {
+// LotteryApproval represents a Approval event raised by the Lottery contract.
+type LotteryApproval struct {
 	Owner   common.Address
 	Spender common.Address
 	Value   *big.Int
@@ -601,7 +1063,7 @@ type LOTTokenApproval struct {
 // FilterApproval is a free log retrieval operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
 //
 // Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
-func (_LOTToken *LOTTokenFilterer) FilterApproval(opts *bind.FilterOpts, owner []common.Address, spender []common.Address) (*LOTTokenApprovalIterator, error) {
+func (_Lottery *LotteryFilterer) FilterApproval(opts *bind.FilterOpts, owner []common.Address, spender []common.Address) (*LotteryApprovalIterator, error) {
 
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
@@ -612,17 +1074,17 @@ func (_LOTToken *LOTTokenFilterer) FilterApproval(opts *bind.FilterOpts, owner [
 		spenderRule = append(spenderRule, spenderItem)
 	}
 
-	logs, sub, err := _LOTToken.contract.FilterLogs(opts, "Approval", ownerRule, spenderRule)
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "Approval", ownerRule, spenderRule)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenApprovalIterator{contract: _LOTToken.contract, event: "Approval", logs: logs, sub: sub}, nil
+	return &LotteryApprovalIterator{contract: _Lottery.contract, event: "Approval", logs: logs, sub: sub}, nil
 }
 
 // WatchApproval is a free log subscription operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
 //
 // Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
-func (_LOTToken *LOTTokenFilterer) WatchApproval(opts *bind.WatchOpts, sink chan<- *LOTTokenApproval, owner []common.Address, spender []common.Address) (event.Subscription, error) {
+func (_Lottery *LotteryFilterer) WatchApproval(opts *bind.WatchOpts, sink chan<- *LotteryApproval, owner []common.Address, spender []common.Address) (event.Subscription, error) {
 
 	var ownerRule []interface{}
 	for _, ownerItem := range owner {
@@ -633,7 +1095,7 @@ func (_LOTToken *LOTTokenFilterer) WatchApproval(opts *bind.WatchOpts, sink chan
 		spenderRule = append(spenderRule, spenderItem)
 	}
 
-	logs, sub, err := _LOTToken.contract.WatchLogs(opts, "Approval", ownerRule, spenderRule)
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "Approval", ownerRule, spenderRule)
 	if err != nil {
 		return nil, err
 	}
@@ -643,8 +1105,8 @@ func (_LOTToken *LOTTokenFilterer) WatchApproval(opts *bind.WatchOpts, sink chan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(LOTTokenApproval)
-				if err := _LOTToken.contract.UnpackLog(event, "Approval", log); err != nil {
+				event := new(LotteryApproval)
+				if err := _Lottery.contract.UnpackLog(event, "Approval", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -668,18 +1130,18 @@ func (_LOTToken *LOTTokenFilterer) WatchApproval(opts *bind.WatchOpts, sink chan
 // ParseApproval is a log parse operation binding the contract event 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925.
 //
 // Solidity: event Approval(address indexed owner, address indexed spender, uint256 value)
-func (_LOTToken *LOTTokenFilterer) ParseApproval(log types.Log) (*LOTTokenApproval, error) {
-	event := new(LOTTokenApproval)
-	if err := _LOTToken.contract.UnpackLog(event, "Approval", log); err != nil {
+func (_Lottery *LotteryFilterer) ParseApproval(log types.Log) (*LotteryApproval, error) {
+	event := new(LotteryApproval)
+	if err := _Lottery.contract.UnpackLog(event, "Approval", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// LOTTokenOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the LOTToken contract.
-type LOTTokenOwnershipTransferredIterator struct {
-	Event *LOTTokenOwnershipTransferred // Event containing the contract specifics and raw log
+// LotteryEIP712DomainChangedIterator is returned from FilterEIP712DomainChanged and is used to iterate over the raw logs and unpacked data for EIP712DomainChanged events raised by the Lottery contract.
+type LotteryEIP712DomainChangedIterator struct {
+	Event *LotteryEIP712DomainChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -693,7 +1155,7 @@ type LOTTokenOwnershipTransferredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *LOTTokenOwnershipTransferredIterator) Next() bool {
+func (it *LotteryEIP712DomainChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -702,7 +1164,7 @@ func (it *LOTTokenOwnershipTransferredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(LOTTokenOwnershipTransferred)
+			it.Event = new(LotteryEIP712DomainChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -717,7 +1179,7 @@ func (it *LOTTokenOwnershipTransferredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(LOTTokenOwnershipTransferred)
+		it.Event = new(LotteryEIP712DomainChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -733,60 +1195,40 @@ func (it *LOTTokenOwnershipTransferredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *LOTTokenOwnershipTransferredIterator) Error() error {
+func (it *LotteryEIP712DomainChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *LOTTokenOwnershipTransferredIterator) Close() error {
+func (it *LotteryEIP712DomainChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// LOTTokenOwnershipTransferred represents a OwnershipTransferred event raised by the LOTToken contract.
-type LOTTokenOwnershipTransferred struct {
-	PreviousOwner common.Address
-	NewOwner      common.Address
-	Raw           types.Log // Blockchain specific contextual infos
+// LotteryEIP712DomainChanged represents a EIP712DomainChanged event raised by the Lottery contract.
+type LotteryEIP712DomainChanged struct {
+	Raw types.Log // Blockchain specific contextual infos
 }
 
-// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// FilterEIP712DomainChanged is a free log retrieval operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
 //
-// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_LOTToken *LOTTokenFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*LOTTokenOwnershipTransferredIterator, error) {
+// Solidity: event EIP712DomainChanged()
+func (_Lottery *LotteryFilterer) FilterEIP712DomainChanged(opts *bind.FilterOpts) (*LotteryEIP712DomainChangedIterator, error) {
 
-	var previousOwnerRule []interface{}
-	for _, previousOwnerItem := range previousOwner {
-		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
-	}
-	var newOwnerRule []interface{}
-	for _, newOwnerItem := range newOwner {
-		newOwnerRule = append(newOwnerRule, newOwnerItem)
-	}
-
-	logs, sub, err := _LOTToken.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "EIP712DomainChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenOwnershipTransferredIterator{contract: _LOTToken.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+	return &LotteryEIP712DomainChangedIterator{contract: _Lottery.contract, event: "EIP712DomainChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// WatchEIP712DomainChanged is a free log subscription operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
 //
-// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_LOTToken *LOTTokenFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *LOTTokenOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+// Solidity: event EIP712DomainChanged()
+func (_Lottery *LotteryFilterer) WatchEIP712DomainChanged(opts *bind.WatchOpts, sink chan<- *LotteryEIP712DomainChanged) (event.Subscription, error) {
 
-	var previousOwnerRule []interface{}
-	for _, previousOwnerItem := range previousOwner {
-		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
-	}
-	var newOwnerRule []interface{}
-	for _, newOwnerItem := range newOwner {
-		newOwnerRule = append(newOwnerRule, newOwnerItem)
-	}
-
-	logs, sub, err := _LOTToken.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "EIP712DomainChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -796,8 +1238,316 @@ func (_LOTToken *LOTTokenFilterer) WatchOwnershipTransferred(opts *bind.WatchOpt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(LOTTokenOwnershipTransferred)
-				if err := _LOTToken.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+				event := new(LotteryEIP712DomainChanged)
+				if err := _Lottery.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseEIP712DomainChanged is a log parse operation binding the contract event 0x0a6387c9ea3628b88a633bb4f3b151770f70085117a15f9bf3787cda53f13d31.
+//
+// Solidity: event EIP712DomainChanged()
+func (_Lottery *LotteryFilterer) ParseEIP712DomainChanged(log types.Log) (*LotteryEIP712DomainChanged, error) {
+	event := new(LotteryEIP712DomainChanged)
+	if err := _Lottery.contract.UnpackLog(event, "EIP712DomainChanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// LotteryLOTExchangedIterator is returned from FilterLOTExchanged and is used to iterate over the raw logs and unpacked data for LOTExchanged events raised by the Lottery contract.
+type LotteryLOTExchangedIterator struct {
+	Event *LotteryLOTExchanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *LotteryLOTExchangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(LotteryLOTExchanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(LotteryLOTExchanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *LotteryLOTExchangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *LotteryLOTExchangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// LotteryLOTExchanged represents a LOTExchanged event raised by the Lottery contract.
+type LotteryLOTExchanged struct {
+	User             common.Address
+	Stablecoin       common.Address
+	LotAmount        *big.Int
+	StablecoinAmount *big.Int
+	Raw              types.Log // Blockchain specific contextual infos
+}
+
+// FilterLOTExchanged is a free log retrieval operation binding the contract event 0xfc6dde45c60c69954c97f71476d3252191ce43e2c4a7aec91806e6185de67887.
+//
+// Solidity: event LOTExchanged(address indexed user, address indexed stablecoin, uint256 lotAmount, uint256 stablecoinAmount)
+func (_Lottery *LotteryFilterer) FilterLOTExchanged(opts *bind.FilterOpts, user []common.Address, stablecoin []common.Address) (*LotteryLOTExchangedIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "LOTExchanged", userRule, stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return &LotteryLOTExchangedIterator{contract: _Lottery.contract, event: "LOTExchanged", logs: logs, sub: sub}, nil
+}
+
+// WatchLOTExchanged is a free log subscription operation binding the contract event 0xfc6dde45c60c69954c97f71476d3252191ce43e2c4a7aec91806e6185de67887.
+//
+// Solidity: event LOTExchanged(address indexed user, address indexed stablecoin, uint256 lotAmount, uint256 stablecoinAmount)
+func (_Lottery *LotteryFilterer) WatchLOTExchanged(opts *bind.WatchOpts, sink chan<- *LotteryLOTExchanged, user []common.Address, stablecoin []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "LOTExchanged", userRule, stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(LotteryLOTExchanged)
+				if err := _Lottery.contract.UnpackLog(event, "LOTExchanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseLOTExchanged is a log parse operation binding the contract event 0xfc6dde45c60c69954c97f71476d3252191ce43e2c4a7aec91806e6185de67887.
+//
+// Solidity: event LOTExchanged(address indexed user, address indexed stablecoin, uint256 lotAmount, uint256 stablecoinAmount)
+func (_Lottery *LotteryFilterer) ParseLOTExchanged(log types.Log) (*LotteryLOTExchanged, error) {
+	event := new(LotteryLOTExchanged)
+	if err := _Lottery.contract.UnpackLog(event, "LOTExchanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// LotteryOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the Lottery contract.
+type LotteryOwnershipTransferredIterator struct {
+	Event *LotteryOwnershipTransferred // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *LotteryOwnershipTransferredIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(LotteryOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(LotteryOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *LotteryOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *LotteryOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// LotteryOwnershipTransferred represents a OwnershipTransferred event raised by the Lottery contract.
+type LotteryOwnershipTransferred struct {
+	PreviousOwner common.Address
+	NewOwner      common.Address
+	Raw           types.Log // Blockchain specific contextual infos
+}
+
+// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_Lottery *LotteryFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*LotteryOwnershipTransferredIterator, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return &LotteryOwnershipTransferredIterator{contract: _Lottery.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+//
+// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+func (_Lottery *LotteryFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *LotteryOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+
+	var previousOwnerRule []interface{}
+	for _, previousOwnerItem := range previousOwner {
+		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
+	}
+	var newOwnerRule []interface{}
+	for _, newOwnerItem := range newOwner {
+		newOwnerRule = append(newOwnerRule, newOwnerItem)
+	}
+
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(LotteryOwnershipTransferred)
+				if err := _Lottery.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -821,18 +1571,18 @@ func (_LOTToken *LOTTokenFilterer) WatchOwnershipTransferred(opts *bind.WatchOpt
 // ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
 //
 // Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_LOTToken *LOTTokenFilterer) ParseOwnershipTransferred(log types.Log) (*LOTTokenOwnershipTransferred, error) {
-	event := new(LOTTokenOwnershipTransferred)
-	if err := _LOTToken.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+func (_Lottery *LotteryFilterer) ParseOwnershipTransferred(log types.Log) (*LotteryOwnershipTransferred, error) {
+	event := new(LotteryOwnershipTransferred)
+	if err := _Lottery.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// LOTTokenTransferIterator is returned from FilterTransfer and is used to iterate over the raw logs and unpacked data for Transfer events raised by the LOTToken contract.
-type LOTTokenTransferIterator struct {
-	Event *LOTTokenTransfer // Event containing the contract specifics and raw log
+// LotteryStablecoinRemovedIterator is returned from FilterStablecoinRemoved and is used to iterate over the raw logs and unpacked data for StablecoinRemoved events raised by the Lottery contract.
+type LotteryStablecoinRemovedIterator struct {
+	Event *LotteryStablecoinRemoved // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -846,7 +1596,7 @@ type LOTTokenTransferIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *LOTTokenTransferIterator) Next() bool {
+func (it *LotteryStablecoinRemovedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -855,7 +1605,7 @@ func (it *LOTTokenTransferIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(LOTTokenTransfer)
+			it.Event = new(LotteryStablecoinRemoved)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -870,7 +1620,7 @@ func (it *LOTTokenTransferIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(LOTTokenTransfer)
+		it.Event = new(LotteryStablecoinRemoved)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -886,61 +1636,51 @@ func (it *LOTTokenTransferIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *LOTTokenTransferIterator) Error() error {
+func (it *LotteryStablecoinRemovedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *LOTTokenTransferIterator) Close() error {
+func (it *LotteryStablecoinRemovedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// LOTTokenTransfer represents a Transfer event raised by the LOTToken contract.
-type LOTTokenTransfer struct {
-	From  common.Address
-	To    common.Address
-	Value *big.Int
-	Raw   types.Log // Blockchain specific contextual infos
+// LotteryStablecoinRemoved represents a StablecoinRemoved event raised by the Lottery contract.
+type LotteryStablecoinRemoved struct {
+	Stablecoin common.Address
+	Raw        types.Log // Blockchain specific contextual infos
 }
 
-// FilterTransfer is a free log retrieval operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+// FilterStablecoinRemoved is a free log retrieval operation binding the contract event 0x3302a1b37f04242bb55603f5449e7ecd690a35eef08ba1353c48c20e2aae9cda.
 //
-// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
-func (_LOTToken *LOTTokenFilterer) FilterTransfer(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*LOTTokenTransferIterator, error) {
+// Solidity: event StablecoinRemoved(address indexed stablecoin)
+func (_Lottery *LotteryFilterer) FilterStablecoinRemoved(opts *bind.FilterOpts, stablecoin []common.Address) (*LotteryStablecoinRemovedIterator, error) {
 
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
 	}
 
-	logs, sub, err := _LOTToken.contract.FilterLogs(opts, "Transfer", fromRule, toRule)
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "StablecoinRemoved", stablecoinRule)
 	if err != nil {
 		return nil, err
 	}
-	return &LOTTokenTransferIterator{contract: _LOTToken.contract, event: "Transfer", logs: logs, sub: sub}, nil
+	return &LotteryStablecoinRemovedIterator{contract: _Lottery.contract, event: "StablecoinRemoved", logs: logs, sub: sub}, nil
 }
 
-// WatchTransfer is a free log subscription operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+// WatchStablecoinRemoved is a free log subscription operation binding the contract event 0x3302a1b37f04242bb55603f5449e7ecd690a35eef08ba1353c48c20e2aae9cda.
 //
-// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
-func (_LOTToken *LOTTokenFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan<- *LOTTokenTransfer, from []common.Address, to []common.Address) (event.Subscription, error) {
+// Solidity: event StablecoinRemoved(address indexed stablecoin)
+func (_Lottery *LotteryFilterer) WatchStablecoinRemoved(opts *bind.WatchOpts, sink chan<- *LotteryStablecoinRemoved, stablecoin []common.Address) (event.Subscription, error) {
 
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
 	}
 
-	logs, sub, err := _LOTToken.contract.WatchLogs(opts, "Transfer", fromRule, toRule)
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "StablecoinRemoved", stablecoinRule)
 	if err != nil {
 		return nil, err
 	}
@@ -950,8 +1690,464 @@ func (_LOTToken *LOTTokenFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(LOTTokenTransfer)
-				if err := _LOTToken.contract.UnpackLog(event, "Transfer", log); err != nil {
+				event := new(LotteryStablecoinRemoved)
+				if err := _Lottery.contract.UnpackLog(event, "StablecoinRemoved", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStablecoinRemoved is a log parse operation binding the contract event 0x3302a1b37f04242bb55603f5449e7ecd690a35eef08ba1353c48c20e2aae9cda.
+//
+// Solidity: event StablecoinRemoved(address indexed stablecoin)
+func (_Lottery *LotteryFilterer) ParseStablecoinRemoved(log types.Log) (*LotteryStablecoinRemoved, error) {
+	event := new(LotteryStablecoinRemoved)
+	if err := _Lottery.contract.UnpackLog(event, "StablecoinRemoved", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// LotteryStablecoinUpdatedIterator is returned from FilterStablecoinUpdated and is used to iterate over the raw logs and unpacked data for StablecoinUpdated events raised by the Lottery contract.
+type LotteryStablecoinUpdatedIterator struct {
+	Event *LotteryStablecoinUpdated // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *LotteryStablecoinUpdatedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(LotteryStablecoinUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(LotteryStablecoinUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *LotteryStablecoinUpdatedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *LotteryStablecoinUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// LotteryStablecoinUpdated represents a StablecoinUpdated event raised by the Lottery contract.
+type LotteryStablecoinUpdated struct {
+	Stablecoin common.Address
+	Name       string
+	Rate       *big.Int
+	Receiver   common.Address
+	Raw        types.Log // Blockchain specific contextual infos
+}
+
+// FilterStablecoinUpdated is a free log retrieval operation binding the contract event 0xcc9386c98c5c2a003115422dc0330285d077229aa4414b964c041ea0edef707b.
+//
+// Solidity: event StablecoinUpdated(address indexed stablecoin, string name, uint256 rate, address receiver)
+func (_Lottery *LotteryFilterer) FilterStablecoinUpdated(opts *bind.FilterOpts, stablecoin []common.Address) (*LotteryStablecoinUpdatedIterator, error) {
+
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "StablecoinUpdated", stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return &LotteryStablecoinUpdatedIterator{contract: _Lottery.contract, event: "StablecoinUpdated", logs: logs, sub: sub}, nil
+}
+
+// WatchStablecoinUpdated is a free log subscription operation binding the contract event 0xcc9386c98c5c2a003115422dc0330285d077229aa4414b964c041ea0edef707b.
+//
+// Solidity: event StablecoinUpdated(address indexed stablecoin, string name, uint256 rate, address receiver)
+func (_Lottery *LotteryFilterer) WatchStablecoinUpdated(opts *bind.WatchOpts, sink chan<- *LotteryStablecoinUpdated, stablecoin []common.Address) (event.Subscription, error) {
+
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "StablecoinUpdated", stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(LotteryStablecoinUpdated)
+				if err := _Lottery.contract.UnpackLog(event, "StablecoinUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStablecoinUpdated is a log parse operation binding the contract event 0xcc9386c98c5c2a003115422dc0330285d077229aa4414b964c041ea0edef707b.
+//
+// Solidity: event StablecoinUpdated(address indexed stablecoin, string name, uint256 rate, address receiver)
+func (_Lottery *LotteryFilterer) ParseStablecoinUpdated(log types.Log) (*LotteryStablecoinUpdated, error) {
+	event := new(LotteryStablecoinUpdated)
+	if err := _Lottery.contract.UnpackLog(event, "StablecoinUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// LotteryTokensExchangedIterator is returned from FilterTokensExchanged and is used to iterate over the raw logs and unpacked data for TokensExchanged events raised by the Lottery contract.
+type LotteryTokensExchangedIterator struct {
+	Event *LotteryTokensExchanged // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *LotteryTokensExchangedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(LotteryTokensExchanged)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(LotteryTokensExchanged)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *LotteryTokensExchangedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *LotteryTokensExchangedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// LotteryTokensExchanged represents a TokensExchanged event raised by the Lottery contract.
+type LotteryTokensExchanged struct {
+	User             common.Address
+	Stablecoin       common.Address
+	StablecoinAmount *big.Int
+	LotAmount        *big.Int
+	Raw              types.Log // Blockchain specific contextual infos
+}
+
+// FilterTokensExchanged is a free log retrieval operation binding the contract event 0xc268aa3dfcf26d893e64804923970c993cb04f61bf2a8729638222b91b41a79a.
+//
+// Solidity: event TokensExchanged(address indexed user, address indexed stablecoin, uint256 stablecoinAmount, uint256 lotAmount)
+func (_Lottery *LotteryFilterer) FilterTokensExchanged(opts *bind.FilterOpts, user []common.Address, stablecoin []common.Address) (*LotteryTokensExchangedIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "TokensExchanged", userRule, stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return &LotteryTokensExchangedIterator{contract: _Lottery.contract, event: "TokensExchanged", logs: logs, sub: sub}, nil
+}
+
+// WatchTokensExchanged is a free log subscription operation binding the contract event 0xc268aa3dfcf26d893e64804923970c993cb04f61bf2a8729638222b91b41a79a.
+//
+// Solidity: event TokensExchanged(address indexed user, address indexed stablecoin, uint256 stablecoinAmount, uint256 lotAmount)
+func (_Lottery *LotteryFilterer) WatchTokensExchanged(opts *bind.WatchOpts, sink chan<- *LotteryTokensExchanged, user []common.Address, stablecoin []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+	var stablecoinRule []interface{}
+	for _, stablecoinItem := range stablecoin {
+		stablecoinRule = append(stablecoinRule, stablecoinItem)
+	}
+
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "TokensExchanged", userRule, stablecoinRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(LotteryTokensExchanged)
+				if err := _Lottery.contract.UnpackLog(event, "TokensExchanged", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseTokensExchanged is a log parse operation binding the contract event 0xc268aa3dfcf26d893e64804923970c993cb04f61bf2a8729638222b91b41a79a.
+//
+// Solidity: event TokensExchanged(address indexed user, address indexed stablecoin, uint256 stablecoinAmount, uint256 lotAmount)
+func (_Lottery *LotteryFilterer) ParseTokensExchanged(log types.Log) (*LotteryTokensExchanged, error) {
+	event := new(LotteryTokensExchanged)
+	if err := _Lottery.contract.UnpackLog(event, "TokensExchanged", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// LotteryTransferIterator is returned from FilterTransfer and is used to iterate over the raw logs and unpacked data for Transfer events raised by the Lottery contract.
+type LotteryTransferIterator struct {
+	Event *LotteryTransfer // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *LotteryTransferIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(LotteryTransfer)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(LotteryTransfer)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *LotteryTransferIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *LotteryTransferIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// LotteryTransfer represents a Transfer event raised by the Lottery contract.
+type LotteryTransfer struct {
+	From  common.Address
+	To    common.Address
+	Value *big.Int
+	Raw   types.Log // Blockchain specific contextual infos
+}
+
+// FilterTransfer is a free log retrieval operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+//
+// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
+func (_Lottery *LotteryFilterer) FilterTransfer(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*LotteryTransferIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _Lottery.contract.FilterLogs(opts, "Transfer", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &LotteryTransferIterator{contract: _Lottery.contract, event: "Transfer", logs: logs, sub: sub}, nil
+}
+
+// WatchTransfer is a free log subscription operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
+//
+// Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
+func (_Lottery *LotteryFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan<- *LotteryTransfer, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _Lottery.contract.WatchLogs(opts, "Transfer", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(LotteryTransfer)
+				if err := _Lottery.contract.UnpackLog(event, "Transfer", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -975,9 +2171,9 @@ func (_LOTToken *LOTTokenFilterer) WatchTransfer(opts *bind.WatchOpts, sink chan
 // ParseTransfer is a log parse operation binding the contract event 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef.
 //
 // Solidity: event Transfer(address indexed from, address indexed to, uint256 value)
-func (_LOTToken *LOTTokenFilterer) ParseTransfer(log types.Log) (*LOTTokenTransfer, error) {
-	event := new(LOTTokenTransfer)
-	if err := _LOTToken.contract.UnpackLog(event, "Transfer", log); err != nil {
+func (_Lottery *LotteryFilterer) ParseTransfer(log types.Log) (*LotteryTransfer, error) {
+	event := new(LotteryTransfer)
+	if err := _Lottery.contract.UnpackLog(event, "Transfer", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
