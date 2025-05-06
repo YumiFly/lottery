@@ -322,3 +322,5 @@
 {"level":"info","msg":"Transaction submitted successfullytx_hash0x1ba815b6df1de382372707557fff171439192a0f6a1f142ccae7e04b89db134egas_used2607110","time":"2025-04-03T16:15:44+08:00"}
 {"level":"info","msg":"Lottery created successfullylottery_id2d7a1882-2eff-4569-acdd-18fbb18ec360contract_address0x8A791620dd6260079BF849Dc5567aDC3F2FdC318","time":"2025-04-03T16:15:46+08:00"}
 {"duration":"7.85979275s","ip":"::1","level":"info","method":"POST","msg":"Request processed","path":"/lottery/lottery","status":200,"time":"2025-04-03T16:15:46+08:00"}
+{"level":"warning","msg":"S3 configuration is incomplete, S3 storage will not be available","time":"2025-05-06T11:04:48+08:00"}
+{"level":"info","msg":"Blockchain client initializednonce91gas_price1000007714gas_limit5000000","time":"2025-05-06T11:04:50+08:00"}
