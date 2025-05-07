@@ -78,3 +78,10 @@ type Winner struct {
 	LotteryIssue  LotteryIssue  `gorm:"foreignKey:IssueID;references:IssueID"`
 	LotteryTicket LotteryTicket `gorm:"foreignKey:TicketID;references:TicketID"`
 }
+
+type LotterySTBCoin struct {
+	STBCoinName     string
+	STBCoinAddr     string
+	STB2LOTRate     int64
+	STBReceiverAddr string
+}
