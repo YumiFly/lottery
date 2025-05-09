@@ -10,6 +10,7 @@ artifacts/
 go.sum
 backend/logs/
 backend/services/logs/
+backend/cmd/operator/logs
 .env
 backend/uploads/*
 

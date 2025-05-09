@@ -80,8 +80,8 @@ type Winner struct {
 }
 
 type LotterySTBCoin struct {
-	STBCoinName     string
-	STBCoinAddr     string
-	STB2LOTRate     int64
-	STBReceiverAddr string
+	STBCoinName     string `json:"stbcoin_name"`
+	STBCoinAddr     string `json:"stbcoin_addr"`
+	STB2LOTRate     int64  `json:"stb2lot_rate"`
+	STBReceiverAddr string `json:"stbreceive_addr"`
 }
