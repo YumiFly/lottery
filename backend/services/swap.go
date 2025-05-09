@@ -18,7 +18,7 @@ func SetStableCoin(stbCoin *models.LotterySTBCoin) error {
 
 	executeTx := func() (common.Hash, error) {
 		// 获取 LOTToken 合约实例
-		tokenContract, err := connectTokenContract(config.AppConfig.TokenContractAddress)
+		tokenContract, err := blockchain.ConnectTokenContract(config.AppConfig.TokenContractAddress)
 		if err != nil {
 			utils.Logger.Error("Failed to connect to LOTToken contract", "error", err)
 			return common.Hash{}, utils.NewServiceError("failed to connect to LOTToken contract", err)
@@ -54,7 +54,8 @@ func SetStableCoin(stbCoin *models.LotterySTBCoin) error {
 
 	// 使用空的 data 调用 WithBlockchain，Gas 估算依赖内部逻辑
 	data := []byte{}
-	return blockchain.WithBlockchain(context.Background(), data, executeTx)
+	_, err := blockchain.WithBlockchain(context.Background(), data, executeTx)
+	return err
 }
 
 // 移除稳定币
@@ -63,7 +64,7 @@ func RemoveStableCoin(stbCoin *models.LotterySTBCoin) error {
 
 	executeTx := func() (common.Hash, error) {
 		// 获取 LOTToken 合约实例
-		tokenContract, err := connectTokenContract(config.AppConfig.TokenContractAddress)
+		tokenContract, err := blockchain.ConnectTokenContract(config.AppConfig.TokenContractAddress)
 		if err != nil {
 			utils.Logger.Error("Failed to connect to LOTToken contract", "error", err)
 			return common.Hash{}, utils.NewServiceError("failed to connect to LOTToken contract", err)
@@ -95,5 +96,6 @@ func RemoveStableCoin(stbCoin *models.LotterySTBCoin) error {
 
 	// 使用空的 data 调用 WithBlockchain，Gas 估算依赖内部逻辑
 	data := []byte{}
-	return blockchain.WithBlockchain(context.Background(), data, executeTx)
+	_, err := blockchain.WithBlockchain(context.Background(), data, executeTx)
+	return err
 }
