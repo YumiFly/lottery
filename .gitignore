@@ -13,4 +13,5 @@ backend/services/logs/
 backend/cmd/operator/logs
 .env
 backend/uploads/*
-
+backend/cmd/operator/__debug_*
+backend/cmd/normal/__debug_*
