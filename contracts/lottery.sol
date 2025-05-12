@@ -28,6 +28,8 @@ contract LotteryManager is IRolloutCallback {
     enum ContractState { Ready, Distribute, Rollout, Terminal }
     ContractState private state;
 
+
+    event LotteryResults(uint256[] results, uint256 epoch, uint256 timestamp);
     event RolloutCallbakTXFailed(address, address, uint256);
     event TransState(ContractState);
 
@@ -111,6 +113,7 @@ contract LotteryManager is IRolloutCallback {
                 }
             }
         }
+        emit LotteryResults(_results, epoch, block.timestamp); // 触发事件
         setState(ContractState.Ready);
     }
 
