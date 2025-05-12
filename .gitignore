@@ -1,6 +1,7 @@
 contracts/artifacts/
+contracts/cache/
 contracts/deps/
-node_modules/*
+contracts/node_modules/
 build/
 dist/
 coverage/
