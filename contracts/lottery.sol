@@ -113,8 +113,8 @@ contract LotteryManager is IRolloutCallback {
                 }
             }
         }
-        emit LotteryResults(_results, epoch, block.timestamp); // 触发事件
         setState(ContractState.Ready);
+        emit LotteryResults(_results, epoch, block.timestamp); // 触发事件
     }
 
     /**
